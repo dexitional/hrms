@@ -1,0 +1,344 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold">PERSONAL INFORMATION&nbsp;&nbsp;>&nbsp;&nbsp;<em style="color:brown"><%= data.bio.fname !== undefined ? (data.bio.fname+' '+data.bio.mname+' '+data.bio.lname).toUpperCase() : ''; %> <%= data.bio.staff_no !== undefined ? '( '+data.bio.staff_no+' )':'' %></em></b></h6>
+                      <div class="text-subline"></div><br><br>
+                      <%= data.bio.fname %>
+                  <form name="" method="post" action="/hrm/poststaff" enctype="application/x-www-form-urlencoded">
+                      <div class="range offset-top-7">
+                        <div class="cell-sm-3">
+                          <div class="form-group">
+                            <label class="form-label form-label-outside rd-input-label focus not-empty" for="gender">Gender</label>
+                            <select class="form-control select-filter" id="gender" data-placeholder="Choose Gender" data-minimum-results-for-search="Infinity" tabindex="-1" aria-hidden="true">
+                                <option>Choose Gender</option>
+                              <option value="M" <%= data.bio.gender == 'M' ? 'selected="selected"':'' %>>Male</option>
+                              <option value="F" <%= data.bio.gender == 'F' ? 'selected="selected"':'' %>>Female</option>
+                            </select>                                
+                          </div>
+                        </div>
+                        <div class="cell-sm-9 offset-top-17 offset-sm-top-0">
+                          <div class="range">
+                            <div class="cell-sm-4">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="fname">First Name</label>
+                                <input class="form-control form-control-has-validation form-control-last-child" id="fname" type="text" name="fname" value="<%= data.bio.fname %>" data-constraints="@Required"><span class="form-validation"></span>
+                              </div>
+                            </div>
+                            <div class="cell-sm-4 offset-top-17 offset-sm-top-0">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="mname">Middle Name(s)</label>
+                                <input class="form-control form-control-has-validation form-control-last-child" id="mname" type="text" name="mname" value="<%= data.bio.mname %>" data-constraints="@Required"><span class="form-validation"></span>
+                              </div>
+                            </div>
+                            <div class="cell-sm-4 offset-top-17 offset-sm-top-0">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="lname">Last Name</label>
+                                  <input class="form-control form-control-has-validation form-control-last-child" id="lname" type="text" name="lname" value="<%= data.bio.lname %>" data-constraints="@Required"><span class="form-validation"></span>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Line 2 -->
+                      <div class="range offset-top-17">                          
+                          <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                            <div class="range">
+                              <div class="cell-sm-3">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="dob">Date of Birth</label>
+                                    <input class="form-control form-control-has-validation form-control-last-child" id="dob" type="date" name="dob" value="<%= data.bio.dob %>" data-constraints="@Required"><span class="form-validation"></span>
+                                  </div>
+                              </div>
+                              <div class="cell-sm-3">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="birth_place">Place of Birth</label>
+                                  <input class="form-control form-control-has-validation form-control-last-child" id="birth_place" type="text" name="birth_place" value="<%= data.bio.birth_place %>" data-constraints="@Required"><span class="form-validation"></span>
+                                </div>
+                              </div>
+                              <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="hometown">Home Town</label>
+                                  <input class="form-control form-control-has-validation form-control-last-child" id="hometown" type="text" name="hometown" value="<%= data.bio.hometown %>" data-constraints="@Required"><span class="form-validation"></span>
+                                </div>
+                              </div>
+                              <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="district">District</label>
+                                    <input class="form-control form-control-has-validation form-control-last-child" id="district" type="text" name="district" value="<%= data.bio.district %>" data-constraints="@Required"><span class="form-validation"></span>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+                         <!-- Line 3 -->
+                      <div class="range offset-top-17">                          
+                          <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                            <div class="range">
+                              <div class="cell-sm-3">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="region">Region</label>
+                                    <input class="form-control form-control-has-validation form-control-last-child" id="region" type="text" name="region" value="<%= data.bio.region %>" data-constraints="@Required"><span class="form-validation"></span>
+                                  </div>
+                              </div>
+                              <div class="cell-sm-3">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="country">Nationality</label>
+                                  <input class="form-control form-control-has-validation form-control-last-child" id="country" type="text" name="country" value="<%= data.bio.country %>"  data-constraints="@Required"><span class="form-validation"></span>
+                                </div>
+                              </div>
+                              <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="phone">Phone</label>
+                                  <input class="form-control form-control-has-validation form-control-last-child" id="phone" type="integer" name="phone" value="<%= data.bio.phone %>" data-constraints="@Required @IsNumeric"><span class="form-validation"></span>
+                                </div>
+                              </div>
+                              <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="email">E-mail Address</label>
+                                    <input class="form-control form-control-has-validation form-control-last-child" id="email" type="email" name="email" value="<%= data.bio.email %>" data-constraints="@Required @Email"><span class="form-validation"></span>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Line 4 -->
+                        <div class="offset-top-17">
+                            <div class="form-group">
+                              <label class="form-label form-label-outside rd-input-label" for="address">Home Address</label>
+                              <textarea class="form-control form-control-has-validation form-control-last-child" id="address" name="address" data-constraints="@Required" style="height: 100px;"><%= data.bio.address %></textarea><span class="form-validation"></span>
+                            </div>
+                        </div>
+
+
+                             <!-- Line 7 -->
+                           <div class="range offset-top-17">                          
+                              <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                <div class="range">
+                                  <div class="cell-sm-4">
+                                      <div class="form-group">
+                                        <label class="form-label form-label-outside rd-input-label focus not-empty" for="gender">Marital Status</label>
+                                        <select class="form-control select-filter" id="mstatus" name="mstatus" data-placeholder="Choose Marital Status" data-minimum-results-for-search="Infinity" tabindex="-1" aria-hidden="true">
+                                            <option value="">Choose Marital Status</option>
+                                            <option value="SINGLE" <%= data.bio.mstatus == 'SINGLE' ? 'selected="selected"':'' %>>Single</option>
+                                            <option value="MARRIED" <%= data.bio.mstatus == 'MARRIED' ? 'selected="selected"':'' %>>Married</option>
+                                        </select>                                
+                                      </div>
+                                  </div>
+                                  <div class="cell-sm-4">
+                                    <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="spouse">Name of Spouse (<em> if married </em>)</label>
+                                      <input class="form-control form-control-has-validation form-control-last-child" id="spouse" type="text" name="spouse" value="<%= data.bio.spouse %>">
+                                    </div>
+                                  </div>
+                                  <div class="cell-sm-4 offset-top-17 offset-sm-top-0">
+                                    <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="children_no">Number of Children (<em> if any </em>)</label>
+                                      <input class="form-control form-control-has-validation form-control-last-child" id="mother_address" type="text" name="children_no" value="<%= data.bio.children_no %>"data-constraints="@Required"><span class="form-validation"></span>
+                                    </div>
+                                  </div>                              
+                                </div>
+                              </div>
+                            </div>
+
+
+                         <!-- Line 8 -->
+                         <div class="range offset-top-17">                          
+                            <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                              <div class="range">
+                                  <div class="cell-sm-4">
+                                      <div class="form-group">
+                                        <label class="form-label form-label-outside rd-input-label" for="next_kin">Name of Next of Kin</label>
+                                        <input class="form-control form-control-has-validation form-control-last-child" id="next_kin" type="text" name="next_kin" value="<%= data.bio.next_kin %>">
+                                      </div>
+                                    </div>
+                                <div class="cell-sm-4">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="rel_kin">Relationship to Next of Kin</label>
+                                    <input class="form-control form-control-has-validation form-control-last-child" id="rel_kin" type="text" name="rel_kin" value="<%= data.bio.rel_kin %>">
+                                  </div>
+                                </div>
+                                <div class="cell-sm-4 offset-top-17 offset-sm-top-0">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="kin_address">Address of Next of Kin</label>
+                                    <input class="form-control form-control-has-validation form-control-last-child" id="kin_address" type="text" name="kin_address" value="<%= data.bio.kin_address %>" data-constraints="@Required"><span class="form-validation"></span>
+                                  </div>
+                                </div>                              
+                              </div>
+                            </div>
+                          </div>  
+                          
+                          
+
+                          <br><br><h6 class="text-bold">PERSONAL DOCUMENTS</h6>
+                          <div class="text-subline"></div>
+
+
+                           <!-- Line 10 -->
+                         <div class="range offset-top-17">                          
+                            <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                              <div class="range">
+                                  <div class="cell-sm-4">
+                                      <div class="form-group">
+                                          <!-- CV-->                                       
+                                          <label class="form-label form-label-outside rd-input-label">Curriculum Vitae (CV) <em><small>( PDF Version only )</small></em></label>
+                                          <%  data.doc.map((cert,i) =>{ if(cert.category == 'CV'){ %>
+                                          <%- '<i class="fa fa-check fa-lg" style="position:relative;bottom:-45px;color:green;"></i>' %>
+                                          <%  } }); %>
+                                          <input name="cv_cert" id="cert" type="file" multiple="" class="form-control form-control-has-validation form-control-last-child">                                  
+                                      </div>
+                                  </div>
+                                <div class="cell-sm-4">
+                                    <div class="form-group">
+                                        <!-- CERTIFICATES-->                                       
+                                        <label class="form-label form-label-outside rd-input-label" >Marriage Certificate(s) <em><small>( PDF Versions only )</small></em></label>
+                                         <%  data.doc.map((cert,i) =>{ if(cert.category == 'MARITAL'){ %>
+                                         <%- '<i class="fa fa-check fa-lg" style="position:relative;bottom:-45px;color:green;"></i>' %>
+                                         <%  } }); %>
+                                        <input name="ma_cert" id="cert" type="file" multiple="" class="form-control form-control-has-validation form-control-last-child">                                         
+                                    </div>
+                                </div>
+                                <div class="cell-sm-4">
+                                    <div class="form-group">
+                                        <!-- BIRTH-->                                       
+                                        <label class="form-label form-label-outside rd-input-label" for="acad_qualification">Birth Certificate <em><small>( PDF Version only )</small></em></label>
+                                         <%  data.doc.map((cert,i) =>{ if(cert.category == 'BIRTH'){ %>
+                                         <%- '<i class="fa fa-check fa-lg" style="position:relative;bottom:-45px;color:green;"></i>' %>
+                                         <%  } }); %>
+                                        <input name="birth_cert" id="cert" type="file" multiple="" class="form-control form-control-has-validation form-control-last-child">                                         
+                                    </div>
+                                </div>                           
+                              </div>
+                            </div>
+                          </div>
+                          
+
+                        <br><br><h6 class="text-bold">UNIVERSITY INFORMATION</h6>
+                        <div class="text-subline"></div>
+                        <div class="data2">                    
+                          
+                                <!-- Line 1 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">
+                                        <div class="cell-sm-3">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="dob">Present Appointment</label>
+                                              <select name="letter_id" class="form-control">
+                                                   <option value="">Select Appointment letter</option>
+                                                   <%  data.letter.map((cert,i) =>{ %>
+                                                   <option value="<%= cert.id%>" <% cert.id == data.sdata.letter_id ? 'selected="selected"':'' %>><%= cert.title%></option>
+                                                   <%   }); %>
+                                              </select>
+                                            </div>
+                                        </div>
+                                        <div class="cell-sm-3">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="ssnit">SSNIT Number</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="ssnit" type="text" name="ssnit" value="<%= data.sdata.ssnit %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="ucc_mail">University E-Mail</label>
+                                            <input class="form-control form-control-has-validation form-control-last-child" id="ucc_mail" type="text" name="ucc_mail" value="<%= data.sdata.ucc_mail %>" data-constraints="@Required"><span class="form-validation"></span>
+                                          </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="staffno">Staff Number</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="staff_no" type="text" name="staff_no" value="<%= data.sdata.staff_no %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+
+                                    <!-- Line 2 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">                                        
+                                        <div class="cell-sm-3">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="dob">Current Job Title/Role</label>
+                                            <select name="letter_id" class="form-control">
+                                              <option value="">Select Job Title</option>
+                                              <%  data.jobs.map((job,i) =>{ %>
+                                                <option value="<%= job.id%>" <% job.id == data.sdata.job_id ? 'selected="selected"': '' %>>
+                                                  <%= job.title%>
+                                                </option>
+                                                <%   }); %>
+                                            </select>
+                                          </div>
+                                        </div>
+                                        <div class="cell-sm-3">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="dob">Current Section/Unit</label>
+                                            <select name="letter_id" class="form-control">
+                                              <option value="">Select Section/Unit</option>
+                                              <%  data.units.map((unit,i) =>{ %>
+                                                <option value="<%= unit.id%>" <% unit.id == data.sdata.unit_id ? 'selected="selected"': '' %>>
+                                                  <%= unit.unit%>
+                                                </option>
+                                                <%   }); %>
+                                            </select>
+                                          </div>
+                                        </div>
+                                        <div class="cell-sm-3">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="dob">Current Grade / Scale</label>
+                                            <select name="letter_id" class="form-control">
+                                              <option value="">Select Grade/Scale</option>
+                                              <%  data.scales.map((scale,i) =>{ %>
+                                                <option value="<%= scale.id%>" <% scale.id == data.sdata.scale_id ? 'selected="selected"': '' %>>
+                                                  <%= scale.title%>
+                                                </option>
+                                                <%   }); %>
+                                            </select>
+                                          </div>
+                                        </div>
+                                        <div class="cell-sm-3">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="staff_group">Staff Membership Group</label>
+                                            <select name="staff_group" class="form-control">
+                                              <option value="JS" <% 'JS'==data.sdata.staff_group ? 'selected="selected"': '' %>>Junior Staff</option>
+                                              <option value="SS" <% 'SS'==data.sdata.staff_group ? 'selected="selected"': '' %>>Senior Staff</option>
+                                              <option value="SM" <% 'SM'==data.sdata.staff_group ? 'selected="selected"': '' %>>Senior Member</option>
+                                            </select>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+
+                        </div>
+                        <br><div class="text-subline"></div><br>
+
+
+
+                        <div class="offset-top-25">
+                             <button class="btn btn-primary btn-2x" type="submit" onclick="return confirm('Do you want to Submit?');">SAVE</button>
+                             <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>
+                             <input name="staff" type="hidden" value="<%= data.bio.staff_no || 0 %>" />
+                        </div>
+                       <hr/>
+
+                       </form>
+
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

@@ -1,0 +1,103 @@
+
+      <main class="page-content section-70 section-md-70">   
+        
+         
+        <!-- vertical link Tabs-->
+        <section>
+          <div class="shell">
+            <div class="range range-xs-center">
+                <div class="cell-xs-10 cell-lg-12">                                   
+                    <div class="">
+                        
+
+                      <!-- Responsive-tabs-->
+                      <div class="responsive-tabs responsive-tabs-boxed vertical resp-vtabs tabs-group-default" data-type="horizontal" style="width: 100%;">
+                        <ul class="resp-tabs-list text-center tabs-group-default" data-group="tabs-group-default">
+                                <a href="/hrm/dash/"><li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> DASHBOARD</li></a>                                               
+                        </ul>
+                        <hr style="border:1px dashed #0d2d62;"/>
+                        
+                        <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                          <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                
+                                 <!-- TITLE -->
+                                 <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                     <div class="col-md-4"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">STAFF MODULE</h3></div>
+                                     <div class="col-md-8">
+                                         <a href="javascript:;"  onclick="window.open('/hrm/addstaff?gp=JS','_blank','location=no,')" class="btn btn-primary btn-sm pull-right" style="margin:0px 5px"><i class="fa fa-user-plus"></i>ADD JUNIOR STAFF</a>&nbsp;&nbsp;
+                                         <a href="javascript:;"  onclick="window.open('/hrm/addstaff?gp=SS','_blank','location=no,')" class="btn btn-primary btn-sm pull-right" style="margin:0px 5px"><i class="fa fa-user-plus"></i>ADD SENIOR STAFF</a>&nbsp;&nbsp;
+                                         <a href="javascript:;"  onclick="window.open('/hrm/addstaff?gp=SM','_blank','location=no,')" class="btn btn-primary btn-sm pull-right" style="margin:0px 5px"><i class="fa fa-user-plus"></i>ADD SENIOR MEMBER</a>&nbsp;&nbsp;
+                                    
+                                    </div>
+                                  </div>
+                            
+                                 <!-- JOB STATUS CONTENT -->
+                                 <div class="table-responsive clearfix">
+                                    <table class="table table-bordered  dataTable js-exportable" style="text-align:center">
+                                        <thead>
+                                            <tr>                                               
+                                                <th width="150px">IDENTITY</th>
+                                                <th>FULL NAME</th>
+                                                <th>GENDER</th>                                                                                    
+                                                <th>JOB TITLE</th>
+                                                <th>UNIT</th>                                                
+                                                <th>SCALE</th>                                               
+                                                <th>APPOINTMENT</th>
+                                                <th></th>                                        
+                                            </tr>
+                                        </thead>                                        
+                                        <tbody> 
+
+                                            <% if(data.length == 0){ %>
+                                            <%- '<tr><td colspan="9" align="center"><em><b>No Staff found!</b></em></td>' %>         
+                                            <% }else{                                              
+                                                data.map((row,i) => {                                                
+                                            %>
+                                             <tr>                                                                                              
+                                                  <td> <%- row.photo != null ? '<img src="'+row.photo+'" style="height:50px;text-align:center;margin:3px auto;border-radius:5px;display:block;"/>':'<img src="/public/images/none.png" style="height:50px;text-align:center;margin:3px auto;border-radius:5px;display:none;"/><a href="javascript:alert(\'Please take Snapshot of Staff!\');" style="display:block"><i class="icon fa fa-camera fa-3x" style="display:block;border-radius:50%;margin:3px auto;padding-top:10px;color:#fff;text-align:center;width:60px;height:60px;background:brown;"></i></a>' %>
+                                                   <center><h5> <%= row.staff_group+'-'+row.staff_no %></h5></center>
+                                                  </td> 
+                                                  <td><small><%= (row.lname+', '+row.fname).toUpperCase() %></small></td>
+                                                  <td><small><%= row.gender == 'M' ? 'MALE' : 'FEMALE' %></small></td>   
+                                                  <td><small><%= row.job_title %></small></td> 
+                                                  <td><small><%= row.short_name %></small></td>                                                 
+                                                  <td><%= row.scale %></td>                                                  
+                                                  <td><small> 
+                                                        <%if(row.appoint_id > 0){%>
+                                                         <a class="btn btn-primary btn-sm  btn-icon btn-left" target="_blank" title="View Appointment Letter" href="/hrm/staff/appoint/<%= row.appoint_id %>"><i class="icon fa fa-file-text-o "></i></a>
+                                                       <%}else{%>
+                                                          <em>Not attached!</em>
+                                                         <%}%>
+                                                      </small>
+                                                  </td>
+                                                  <td width="200px">                                                      
+                                                       <div class="group">                                                       
+                                                          <a class="btn btn-default btn-sm" style="display:none;" href="/hrm/staff/view/<%= row.staff_no %>" target="_blank" title="Staff File"><i class="fa fa-eye"></i></a>
+                                                          <a class="btn btn-default btn-sm" href="javascript:;" onclick="window.open('/hrm/staff/page/<%= row.staff_no %>','_blank','location=no,')" title="Staff Page"><i class="mdi mdi-archive"></i></a> 
+                                                          <a class="btn btn-default btn-sm btn-primary" style="display:none;" href="/hrm/delstaff/<%= row.id %>" onclick="return confirm('Delete Staff?\n\n This Action shall Remove All Records of Staff from HR!\n So Please Proceed With Care!')"><i class="fa fa-trash"></i></a>                                                                                                               
+                                                       </div>                                                                                                    
+                                                  </td>                                                                                                                          
+                                              </tr> 
+                                            <% }); } %>                                           
+                                        </tbody>
+                                    </table>
+                                </div>
+                          </div>                        
+
+
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              
+            </div>
+          </div>
+        </section>
+        <section class="offset-top-110">
+          
+          </div>
+        </section>
+      </main>
+

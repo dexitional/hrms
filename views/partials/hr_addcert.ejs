@@ -1,0 +1,118 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold">CERTIFICATE REGISTRATION</h6>
+                      <div class="text-subline"></div><br>
+                  <form name="" method="post" action="/hrm/postcert" enctype="multipart/form-data">                         
+
+                        <div class="data2"> 
+
+                           
+                                <!-- Line 1 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">
+                                        <div class="cell-sm-3">
+                                              <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="birth_place">Certificate Title</label>
+                                                <input class="form-control form-control-has-validation form-control-last-child" id="cert_title" type="text" name="cert_title" value="<%= row.cert_title %>" data-constraints="@Required"><span class="form-validation"></span>
+                                              </div>
+                                        </div>
+                                        <div class="cell-sm-3">                                          
+                                            <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="cert_rate">Certificate Rank & Weight</label>
+                                                <select name="cert_rate" class="form-control">
+                                                    <option value="1" <%- '1'== row.cert_rate ? 'selected="selected"': '' %>>1ST DEGREE</option>
+                                                    <option value="2" <%- '2'== row.cert_rate ? 'selected="selected"': '' %>>MASTERS DEGREE</option> 
+                                                    <option value="3" <%- '3'== row.cert_rate ? 'selected="selected"': '' %>>PHD</option>  
+                                                    <option value="4" <%- '4'== row.cert_rate ? 'selected="selected"': '' %>>HND</option>  
+                                                    <option value="5" <%- '5'== row.cert_rate ? 'selected="selected"': '' %>>NVTI/SHS/A-O LEVEL</option>                                                 
+                                               </select>
+                                            </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="verified">Certificate verified</label>
+                                            <select name="verified" class="form-control">
+                                                <option value="0" <%- '0'== row.verified ? 'selected="selected"': '' %>>NO</option>
+                                                <option value="1" <%- '1'== row.verified ? 'selected="selected"': '' %>>YES</option>                                                                                              
+                                           </select>
+                                          </div>
+                                        </div>
+
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                                <!-- PHOTO -->                                       
+                                                <label class="form-label form-label-outside rd-input-label">Certificate Doc<em><small>( PDF only )</small></em></label>
+                                                <% if(row.path != null){  %>
+                                                <%- '<i class="fa fa-check fa-lg" style="position:relative;bottom:-45px;left:50px;color:green;"></i>' %>
+                                                <% } %>
+                                                <input name="cert" id="cert" type="file" class="form-control">                                         
+                                            </div>
+                                        </div>                                        
+                                      
+                                      </div>
+                                    </div>
+                                  </div>
+
+
+                                <!-- Line 2 -->
+                                <div class="range offset-top-17">
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                        <div class="range">
+                                            <div class="cell-sm-3">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-outside rd-input-label" for="birth_place">Program Start Date</label>
+                                                    <input class="form-control form-control-has-validation form-control-last-child" id="start_date" type="date" name="start_date" value="<%= row.sdate %>" data-constraints="@Required">
+                                                    <span class="form-validation"></span>
+                                                </div>
+                                            </div>
+                                            <div class="cell-sm-3">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-outside rd-input-label" for="end_date">Program End Date</label>
+                                                    <input class="form-control form-control-has-validation form-control-last-child" id="end_date" type="date" name="end_date" value="<%= row.edate %>" data-constraints="@Required">
+                                                    <span class="form-validation"></span>
+                                                </div>
+                                            </div>
+                                            <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-outside rd-input-label" for="graduated">Program Graduated</label>
+                                                    <select name="graduated" class="form-control">
+                                                        <option value="0" <%- '0'== row.graduated ? 'selected="selected"': '' %>>NO</option>
+                                                        <option value="1"<%- '1'== row.graduated ? 'selected="selected"': '' %>>YES</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="cell-sm-3">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-outside rd-input-label" for="birth_place">Date of Program Graduation</label>
+                                                    <input class="form-control form-control-has-validation form-control-last-child" id="date_graduated" type="date" name="grad_date" value="<%= row.gdate %>"  data-constraints="@Required">
+                                                    <span class="form-validation"></span>
+                                                </div>
+                                            </div>                                          
+                                        </div>
+                                    </div>
+                                </div>
+                                  <br><br><div class="text-subline"></div><br>
+                        </div>
+
+                        <div class="offset-top-25">
+                                <input type="hidden" name="staff_no" value="<%= row.staff_no %>"/>
+                                <input type="hidden" name="id" value="<%= row.id || 0 %>"/>                             
+                                <button class="btn btn-primary btn-2x" type="submit">SAVE</button>
+                                <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>                      
+                        </div>
+                       <hr/>
+                       </form>
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      
