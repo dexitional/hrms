@@ -7,3 +7,5 @@ dump.rdb
 public/staffpic/*
 ..eslintrc.json.icloud
 .vscode
+.pm2.json
+public/staffpic
