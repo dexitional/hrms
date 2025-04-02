@@ -1745,7 +1745,7 @@ module.exports = (function() {
              let rt = await dbx.query("SELECT phone FROM `staff` where staff_no = "+req.body.relieved_by);  
              // Notify Reliever
              let msg = `You have been selected to relieve ${st[0].fname} ${st[0].lname}, who will be on leave from ${start} to ${end} and is scheduled to resume on ${resume}.`;
-             const send = await sms(rt?.phone,msg);
+             const send = await sms(rt.phone,msg);
            }
 
         // Save Data   
