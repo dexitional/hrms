@@ -1,0 +1,9 @@
+.DS_Store
+publicx
+node_modules
+config/database.js
+rough
+dump.rdb
+public/staffpic/*
+..eslintrc.json.icloud
+.vscode

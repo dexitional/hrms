@@ -1,0 +1,79 @@
+
+      <main class="page-content section-70 section-md-70">   
+        
+         
+        <!-- vertical link Tabs-->
+        <section>
+          <div class="shell">
+            <div class="range range-xs-center">
+                <div class="cell-xs-10 cell-lg-12">                   
+                    <div class="">
+                           <!-- TITLE -->
+                           <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                            <div class="col-md-7"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">SYSTEM REPORTS</h3></div>
+                            <div class="col-md-5">
+                             
+                            </div>
+                        </div>
+                   
+                        <!-- REPORT CONTENT -->
+                        <div class="shell">
+                                <div class="cell-md-12">
+                                        <!-- LEAVE REPORTS -->
+                                         <div class="product col-md-12">
+                                            <div class="product-body">
+                                                <center class="offset-top-20"><button class="btn btn-default" href="/hrm/appoints/#page6"><span>MAIN LEAVE REPORTS</span></button></center><br><br>
+                                                <center class="" style="display:block;padding-bottom:20px;">
+                                                        <form class="list-inline list-inline-dark list-inline-lg offset-bottom-20" action="/hrm/leavereport" method="post"> 
+                                                          <li style="width:250px">
+                                                                <select name="action" class="form-control">
+                                                                    <option value="on-leave"> ON-LEAVE </option>
+                                                                    <option value="expired-leave"> EXPIRED-LEAVE </option>
+                                                                    <option value="pended-leave"> PENDED-LEAVE </option>
+                                                                </select>
+                                                          </li>   
+                                                          <li style="width:120px">
+                                                              <select name="type" class="form-control" >
+                                                                 <option value="all">TYPE</option>
+                                                                 <option value="all">ALL</option>
+                                                                  <option value="SM">SM</option>
+                                                                  <option value="SS">SS</option>
+                                                                  <option value="JS">JS</option>
+                                                              </select>
+                                                          </li>   
+                                                          <li style="width:200px">
+                                                              <div>
+                                                                  <Small><strong>START PERIOD</strong></small>
+                                                                  <input type="date" class="form-control" name="start"/>
+                                                              </div>
+                                                           </li>   
+                                                           <li style="width:200px">
+                                                            <div>
+                                                              <small><strong>END PERIOD</strong></small>
+                                                              <input type="date" class="form-control" name="end"/>
+                                                            </div>
+                                                         </li>   
+                                                                                              
+                                                          <li><input type="hidden" name="output" value="pdf" id="output"/>
+                                                              <button class="btn btn-sm"id="excel" style="margin-top:-5px;margin-bottom:5px;"><i class="fa fa-2x fa-file-excel-o alert-success"></i></button>
+                                                              <button class="btn btn-sm" id="pdf" type="submit" style="margin-top:-5px;margin-bottom:5px;"><i class="fa fa-2x fa-print text-danger"></i></button>
+                                                          </li>
+                                                         </form>
+                                                    </center><BR>
+                                            </div>
+                                         </div>
+
+                                       
+                                </div>
+                        </div>
+                    </div>
+                  </div>
+              
+            </div>
+          </div>
+        </section>
+        <section class="offset-top-110">
+          
+          </div>
+        </section>
+      </main>

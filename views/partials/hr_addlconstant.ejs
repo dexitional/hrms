@@ -1,0 +1,85 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold">LEAVE CONSTANT</h6>
+                      <div class="text-subline"></div><br>
+                  <form method="post" action="/hrm/postlconstant" enctype="application/x-www-form-urlencoded">                         
+
+                        <div class="data2">                            
+                                                          
+                                   <!-- Line 2 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">
+                                        <div class="cell-sm-3">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="weight">Days</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="weight" type="text" name="weight" value="<%= row.weight %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>                                        
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="desc">Description</label>
+                                            <input class="form-control form-control-has-validation form-control-last-child" id="desc" type="text" name="desc" value="<%= row.desc %>" data-constraints="@Required"><span class="form-validation"></span>
+                                          </div>
+                                        </div>
+                                        <div class="cell-sm-3">                                          
+                                          <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="type">Type</label>
+                                              <select name="type" class="form-control">
+                                                  <option value="SUB" <%= row.type == 'SUB' ? 'selected="selected"':'' %>>DEDUCTION</option> 
+                                                  <option value="ADD" <%= row.type == 'ADD' ? 'selected="selected"':'' %>>ADDITION</option>                                                  
+                                             </select>
+                                            </div>
+                                        </div>     
+                                        <div class="cell-sm-3">                                          
+                                          <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="active">Enabled</label>
+                                              <select name="active" class="form-control">
+                                                  <option value="0" <%= row.active == '0' ? 'selected="selected"':'' %>>NO</option> 
+                                                  <option value="1" <%= row.active == '1' ? 'selected="selected"':'' %>>YES</option>                                                  
+                                             </select>
+                                            </div>
+                                        </div>                                                                           
+                                      </div>
+                                      <div class="range">
+                                          <div class="cell-sm-3">                                          
+                                              <div class="form-group">
+                                                  <label class="form-label form-label-outside rd-input-label" for="category">Staff Category</label>
+                                                  <select name="category" class="form-control">
+                                                      <option value="JS" <%= row.category == 'JS' ? 'selected="selected"':'' %>>JUNIOR STAFF</option> 
+                                                      <option value="SS" <%= row.category == 'SS' ? 'selected="selected"':'' %>>SENIOR STAFF</option> 
+                                                      <option value="SM" <%= row.category == 'SM' ? 'selected="selected"':'' %>>SENIOR MEMBER</option>                                                  
+                                                 </select>
+                                                </div>
+                                          </div>    
+                                          <div class="cell-sm-9 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="exclusion">Staff to Exclude</label>
+                                              <textarea class="form-control form-control-has-validation" id="exclusion" name="exclusion"><%= row.exclusion %></textarea>
+                                            </div>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                               
+                        <div class="offset-top-25">
+                             <button class="btn btn-primary btn-2x" type="submit">SAVE</button>
+                             <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>                               
+                             <input type="hidden" name="id" value="<%= row.id || 0 %>"/>                       
+                        </div>
+                       <hr/>
+                       </form>
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

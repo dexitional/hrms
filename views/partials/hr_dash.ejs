@@ -1,0 +1,520 @@
+
+      <main class="page-content section-70 section-md-70">      
+        
+        <!-- vertical link Tabs-->
+        <section>
+          <div class="shell">
+            <div class="range range-xs-center">
+              <div class="cell-xs-10 cell-lg-12">
+                <!-- Responsive-tabs-->
+                <div class="responsive-tabs responsive-tabs-classic vertical" data-type="vertical" id="page">
+                  <ul class="resp-tabs-list tabs-1 text-center tabs-group-default" data-group="tabs-group-default">
+                    <% if(user.adminrole == '01'){ %>
+                    <li class="hidden-xs hidden-sm"><button class="btn btn-default"> &nbsp;&nbsp;<b>HR ENQUIRY</b></button></li>
+                    <% } %>
+
+                    <% if(user.adminrole == '02' || user.adminrole == '07' || user.adminrole == '08'){ %>
+                    <li class="hidden-xs hidden-sm"><button class="btn btn-default"> &nbsp;&nbsp;<b>DATA ENTRY</b></button></li>
+                    <% } %>
+
+                    <% if(user.adminrole == '07' || user.adminrole == '08'){ %>
+                    <li class="hidden-xs hidden-sm"><button class="btn btn-default"> &nbsp;&nbsp;<b>DATA SETUP</b></button></li>
+                    <% } %>
+
+                    <% if(user.staffrole != null) { %>
+                      <li onclick="if(!confirm('Goto Staff Portal?')){window.location='/hrm/dash';}else{ window.location='/hrm/gotodash';}"><button class="btn btn-warning icon icon-xs fa-chevron-left"> &nbsp;&nbsp;Goto Portal</button></li>
+                    <% } %>
+                    <li onclick="if(!confirm('Do you want to logout')){ window.location='/hrm/dash';}else{ window.location='/logout';}"><button class="btn btn-primary icon icon-xs fa-power-off">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LOGOUT</b></button></li>
+                  </ul>
+
+
+                  <!-- CONTENT TABS -->
+
+                 
+                  <div class="resp-tabs-container text-sm-left tabs-group-default" data-group="tabs-group-default">
+                    <% if(user.adminrole == '01'){ %>
+                    <div>
+                         <!-- HR ENQUIRIES -->
+                         <div class="shell"> 
+
+                            <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                                <div class="product col-md-4">
+                                  <div class="product-body">
+                                    <div class="offset-top-20">
+                                      <center class="text-primary"><i class="icon icon-lg fa fa-search"></i></center>
+                                    </div>                   
+                                    <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/staff"><span>People</span></a></center>
+                                  </div>
+                                  <center class="product-meta-info">
+                                    <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                      <li><a class="icon icon-xs fa fa-bar-chart" href="/hrm/staff/#page2"></a></li>
+                                      <li><a class="icon icon-xs fa-eye" href="/hrm/staff/#page1"></a></li>
+                                    </ul>
+                                  </center>
+                                </div>
+                              </div>
+
+                             <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                                <div class="product col-md-4">
+                                  <div class="product-body">
+                                    <div class="offset-top-20">
+                                       <center class="text-primary"><i class="icon icon-lg fa-bar-chart"></i></center>
+                                    </div>                   
+                                    <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/report"><span>Report</span></a></center>
+                                  </div>
+                                </div>
+                             </div> 
+                          </div>
+                    </div>
+                    <% } %>
+
+                    <% if(user.adminrole == '02' || user.adminrole == '07' || user.adminrole == '08'){ %>
+                    <div>
+                        <!-- DATA ENTRY -->
+                        <div class="shell"> 
+                            <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                               <div class="product col-md-4">
+                                 <div class="product-body">
+                                   <div class="offset-top-20">
+                                     <center class="text-primary"><i class="icon icon-lg mdi mdi-human-male-female"></i></center>
+                                   </div>                   
+                                   <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/staff"><span>Staff</span></a></center>
+                                 </div>
+                                 <center class="product-meta-info">
+                                   <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                     <li><a class="icon icon-xs fa fa-bar-chart" href="/hrm/staff/#page2"></a></li>
+                                     <li><a class="icon icon-xs fa-eye" href="/hrm/staff/#page1"></a></li>
+                                   </ul>
+                                 </center>
+                               </div>
+                            </div>
+
+                            <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                                <div class="product col-md-4">
+                                  <div class="product-body">
+                                    <div class="offset-top-20">
+                                      <center class="text-primary"><i class="icon icon-lg mdi mdi-coffee"></i></center>
+                                    </div>                   
+                                    <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/leave"><span>Leave</span></a></center>
+                                  </div>
+                                  <center class="product-meta-info">
+                                    <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                      <li><a class="icon icon-xs fa-exchange" href="#"></a></li>
+                                      <li><a class="icon icon-xs fa-eye" href="/hrm/leave"></a></li>
+                                    </ul>
+                                  </center>
+                                </div>
+                            </div>
+
+                            <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                                <div class="product col-md-4">
+                                  <div class="product-body">
+                                    <div class="offset-top-20">
+                                      <center class="text-primary"><i class="icon icon-lg fa-briefcase"></i></center>
+                                    </div>                   
+                                    <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/appoint"><span>Elevation</span></a></center>
+                                  </div>
+                                </div>
+                            </div>
+
+                            <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                                <div class="product col-md-4">
+                                  <div class="product-body">
+                                    <div class="offset-top-20">
+                                       <center class="text-primary"><i class="icon icon-lg fa-sitemap"></i></center>
+                                    </div>                   
+                                    <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/transfer"><span>Transfer</span></a></center>
+                                  </div>
+                                  <center class="product-meta-info">
+                                    <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                      <li><a class="icon icon-xs fa-exchange" href="/hrm/transfer"></a></li>
+                                      <li><a class="icon icon-xs fa-eye" href="/hrm/transfer"></a></li>
+                                    </ul>
+                                  </center>
+                                </div>
+                            </div> 
+
+
+                            <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                                <div class="product col-md-4">
+                                  <div class="product-body">
+                                    <div class="offset-top-20">
+                                       <center class="text-primary"><i class="icon icon-lg fa-book"></i></center>
+                                    </div>                   
+                                    <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/studyleeave"><span>Study Leave</span></a></center>
+                                  </div>
+                                </div>
+                            </div> 
+
+
+
+                          <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                            <div class="product col-md-4">
+                              <div class="product-body">
+                                <div class="offset-top-20">
+                                   <center class="text-primary"><i class="icon icon-lg mdi mdi-human-male-female"></i></center>
+                                </div>                   
+                                <center class="offset-top-30"><a class="btn btn-primary" href="/hrm/nss"><span>NSS</span></a></center>
+                              </div>
+                              <center class="product-meta-info">
+                                <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                  <li><a class="icon icon-xs fa-exchange" href="/hrm/nss"></a></li>
+                                  <li><a class="icon icon-xs fa-eye" href="/hrm/nss"></a></li>
+                                </ul>
+                              </center>
+                            </div>
+                        </div> 
+
+
+
+                        <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                            <div class="product col-md-4">
+                              <div class="product-body">
+                                <div class="offset-top-20">
+                                  <center class="text-primary"><i class="icon icon-lg fa fa-info"></i></center>
+                                </div>                   
+                                <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/workspace"><span>Workspace</span></a></center>
+                              </div>
+                              <center class="product-meta-info">
+                                <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                  <li><a class="icon icon-xs fa-exchange" href="#"></a></li>
+                                  <li><a class="icon icon-xs fa-eye" href="#"></a></li>
+                                </ul>
+                              </center>
+                            </div>
+                        </div>
+
+
+
+                        <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                            <div class="product col-md-4">
+                              <div class="product-body">
+                                <div class="offset-top-20">
+                                  <center class="text-primary"><i class="icon icon-lg fa fa-info"></i></center>
+                                </div>                   
+                                <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/discipline"><span>Disciplinary</span></a></center>
+                              </div>
+                              <center class="product-meta-info">
+                                <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                  <li><a class="icon icon-xs fa-exchange" href="#"></a></li>
+                                  <li><a class="icon icon-xs fa-eye" href="#"></a></li>
+                                </ul>
+                              </center>
+                            </div>
+                        </div>
+
+
+
+                        <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                            <div class="product col-md-4">
+                              <div class="product-body">
+                                <div class="offset-top-20">
+                                  <center class="text-primary"><i class="icon icon-lg fa fa-send"></i></center>
+                                </div>                   
+                                <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/circular"><span>Circular</span></a></center>
+                              </div>
+                              <center class="product-meta-info">
+                                <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                  <li><a class="icon icon-xs fa-exchange" href="#"></a></li>
+                                  <li><a class="icon icon-xs fa-eye" href="#"></a></li>
+                                </ul>
+                              </center>
+                            </div>
+                        </div>
+
+
+                        <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                            <div class="product col-md-4">
+                              <div class="product-body">
+                                <div class="offset-top-20">
+                                    <center class="text-primary"><i class="icon icon-lg fa-tasks"></i></center>
+                                </div>                   
+                                <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/paper"><span>Papers</span></a></center>
+                              </div>
+                            </div>
+                        </div>
+
+
+                        <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                            <div class="product col-md-4">
+                              <div class="product-body">
+                                <div class="offset-top-20">
+                                    <center class="text-primary"><i class="icon icon-lg fa-tasks"></i></center>
+                                </div>                   
+                                <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/document"><span>Documents</span></a></center>
+                              </div>
+                            </div>
+                        </div>
+
+                        <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                            <div class="product col-md-4">
+                              <div class="product-body">
+                                <div class="offset-top-20">
+                                    <center class="text-primary"><i class="icon icon-lg fa-tasks"></i></center>
+                                </div>                   
+                                <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/promoreq"><span>Promotions</span></a></center>
+                              </div>
+                            </div>
+                        </div>
+
+                        <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                          <div class="product col-md-4">
+                            <div class="product-body">
+                              <div class="offset-top-20">
+                                 <center class="text-primary"><i class="icon icon-lg fa-bar-chart"></i></center>
+                              </div>                   
+                              <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/reports"><span>Reports</span></a></center>
+                            </div>
+                          </div>
+                        </div> 
+
+                        <!--
+                        <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                            <div class="product col-md-4">
+                              <div class="product-body">
+                                <div class="offset-top-20">
+                                    <center class="text-primary"><i class="icon icon-lg fa-tasks"></i></center>
+                                </div>                   
+                                <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/appraisal"><span>Appraisal</span></a></center>
+                              </div>
+                            </div>
+                        </div>
+                       -->
+
+                        </div>
+                   </div>
+                   <% } %>
+
+                   <% if(user.adminrole == '07' || user.adminrole == '08'){ %>
+                    <div>
+                       <!-- HR SETUP -->
+                       <div class="shell"> 
+                          <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                              <div class="product col-md-4">
+                                <div class="product-body">
+                                  <div class="offset-top-20">
+                                    <center class="text-primary"><i class="icon icon-lg mdi mdi-cash-multiple"></i></center>
+                                  </div>                   
+                                  <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/grades"><span>Grades</span></a></center>
+                                </div>
+                                <center class="product-meta-info">
+                                  <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                    <li><a class="icon icon-xs fa-exchange" href="#"></a></li>
+                                    <li><a class="icon icon-xs fa-eye" href="#"></a></li>
+                                  </ul>
+                                </center>
+                              </div>
+                            </div>
+
+
+                            <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                              <div class="product col-md-4">
+                                <div class="product-body">
+                                  <div class="offset-top-20">
+                                    <center class="text-primary"><i class="icon icon-lg fa fa-sitemap"></i></center>
+                                  </div>                   
+                                  <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/units"><span>Units</span></a></center>
+                                </div>
+                                <center class="product-meta-info">
+                                  <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                    <li><a class="icon icon-xs fa-exchange" href="#"></a></li>
+                                    <li><a class="icon icon-xs fa-eye" href="#"></a></li>
+                                  </ul>
+                                </center>
+                              </div>
+                            </div>
+
+
+                            <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                              <div class="product col-md-4">
+                                <div class="product-body">
+                                  <div class="offset-top-20">
+                                    <center class="text-primary"><i class="icon icon-lg mdi mdi-clipboard-account"></i></center>
+                                  </div>                   
+                                  <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/jobs"><span>Designations</span></a></center>
+                                </div>
+                                <center class="product-meta-info">
+                                  <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                    <li><a class="icon icon-xs fa-exchange" href="#"></a></li>
+                                    <li><a class="icon icon-xs fa-eye" href="#"></a></li>
+                                  </ul>
+                                </center>
+                              </div>
+                            </div>
+
+
+                            <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-25 offset-lg-top-0">               
+                                <div class="product col-md-4">
+                                  <div class="product-body">
+                                    <div class="offset-top-20">
+                                       <center class="text-primary"><i class="icon icon-lg fa-tasks"></i></center>
+                                    </div>                   
+                                    <center class="offset-top-15"><a class="btn btn-primary" href="/hrm/position"><span>Position</span></a></center>
+                                  </div>
+                                  <center class="product-meta-info">
+                                    <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                      <li><a class="icon icon-xs fa-exchange" href="/hrm/position"></a></li>
+                                      <li><a class="icon icon-xs fa-eye" href="/hrm/position"></a></li>
+                                    </ul>
+                                  </center>
+                                </div>
+                            </div> 
+                            
+                            <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                                <div class="product col-md-4">
+                                  <div class="product-body">
+                                    <div class="offset-top-20">
+                                      <center class="text-primary"><i class="icon icon-lg mdi mdi-cake-layered"></i></center>
+                                    </div>                   
+                                    <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/dobs"><span>DOB</span></a></center>
+                                  </div>
+                                  <center class="product-meta-info">
+                                    <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                      <li><a class="icon icon-xs fa-exchange" href="#"></a></li>
+                                      <li><a class="icon icon-xs fa-eye" href="#"></a></li>
+                                    </ul>
+                                  </center>
+                                </div>
+                            </div>
+
+
+                            <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                                <div class="product col-md-4">
+                                  <div class="product-body">
+                                    <div class="offset-top-20">
+                                      <center class="text-primary"><i class="icon icon-lg fa fa-photo"></i></center>
+                                    </div>                   
+                                    <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/photos"><span>Photos</span></a></center>
+                                  </div>
+                                  <center class="product-meta-info">
+                                    <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                      <li><a class="icon icon-xs fa-exchange" href="#"></a></li>
+                                      <li><a class="icon icon-xs fa-eye" href="#"></a></li>
+                                    </ul>
+                                  </center>
+                                </div>
+                            </div>
+
+                            <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                                <div class="product col-md-4">
+                                  <div class="product-body">
+                                    <div class="offset-top-20">
+                                      <center class="text-primary"><i class="icon icon-lg mdi mdi-account-multiple"></i></center>
+                                    </div>                   
+                                    <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/users"><span>Roles</span></a></center>
+                                  </div>
+                                  <center class="product-meta-info">
+                                    <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                      <li><a class="icon icon-xs fa-exchange" href="#"></a></li>
+                                      <li><a class="icon icon-xs fa-eye" href="#"></a></li>
+                                    </ul>
+                                  </center>
+                                </div>
+                              </div>
+                    
+
+                              <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                                  <div class="product col-md-4">
+                                    <div class="product-body">
+                                      <div class="offset-top-20">
+                                        <center class="text-primary"><i class="icon icon-lg mdi mdi-information"></i></center>
+                                      </div>                   
+                                      <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/logs"><span>Education</span></a></center>
+                                    </div>
+                                    <center class="product-meta-info">
+                                      <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                        <li><a class="icon icon-xs fa-exchange" href="#"></a></li>
+                                        <li><a class="icon icon-xs fa-eye" href="#"></a></li>
+                                      </ul>
+                                    </center>
+                                  </div><!-- 
+                                             * Certificates
+                                             * Specialization
+                                             * Programs
+
+                                         -->
+                              </div>
+
+
+
+                              <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                                  <div class="product col-md-4">
+                                    <div class="product-body">
+                                      <div class="offset-top-20">
+                                        <center class="text-primary"><i class="icon icon-lg mdi mdi-information"></i></center>
+                                      </div>                   
+                                      <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/logs"><span>Location</span></a></center>
+                                    </div>
+                                    <center class="product-meta-info">
+                                      <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                        <li><a class="icon icon-xs fa-exchange" href="#"></a></li>
+                                        <li><a class="icon icon-xs fa-eye" href="#"></a></li>
+                                      </ul>
+                                    </center>
+                                  </div>
+                                       <!-- 
+                                             * Hometown  (Towns)
+                                             * Regions or State
+                                             * Countries
+
+                                         -->
+                              </div>
+
+
+                              <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                                  <div class="product col-md-4">
+                                    <div class="product-body">
+                                      <div class="offset-top-20">
+                                        <center class="text-primary"><i class="icon icon-lg mdi mdi-information"></i></center>
+                                      </div>                   
+                                      <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/logs"><span>Logs</span></a></center>
+                                    </div>
+                                    <center class="product-meta-info">
+                                      <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                        <li><a class="icon icon-xs fa-exchange" href="#"></a></li>
+                                        <li><a class="icon icon-xs fa-eye" href="#"></a></li>
+                                      </ul>
+                                    </center>
+                                  </div>
+                              </div>
+
+
+                              <div class="cell-xs-10 cell-lg-3 cell-sm-6 cell-md-4 offset-top-30 offset-lg-top-0">               
+                                  <div class="product col-md-4">
+                                    <div class="product-body">
+                                      <div class="offset-top-20">
+                                        <center class="text-primary"><i class="icon icon-lg fa fa-envelope"></i></center>
+                                      </div>                   
+                                      <center class="offset-top-20"><a class="btn btn-primary" href="/hrm/inbox"><span>Inbox</span></a></center>
+                                    </div>
+                                    <center class="product-meta-info">
+                                      <ul class="list-inline list-inline-dark list-inline-lg">                                    
+                                        <li><a class="icon icon-xs fa-exchange" href="#"></a></li>
+                                        <li><a class="icon icon-xs fa-eye" href="#"></a></li>
+                                      </ul>
+                                    </center>
+                                  </div>
+                              </div>
+
+
+
+                       </div>
+                    </div>
+                   <% } %>
+                  </div>
+
+                 
+
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="offset-top-110">
+          
+          </div>
+        </section>
+      </main>

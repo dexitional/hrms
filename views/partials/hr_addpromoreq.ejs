@@ -1,0 +1,130 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                  
+                        <form name="" action="/hrm/postpromoreq" method="post" enctype="multipart/form-data">
+                        <br><br><h6 class="text-bold"><%= title %> FORM </h6>
+                        <div class="text-subline"></div>
+                            <div class="data2">                    
+                    
+                          <!-- Line 1 -->
+                          <div class="range offset-top-17">                          
+                              <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                <div class="range"> 
+                                  <div class="cell-sm-6">
+                                        <div class="form-group">
+                                          <label class="form-label form-label-outside rd-input-label" for="hr_status">Current Request Status</label>
+                                          <select name="hr_status" class="form-control"> 
+                                            <% 
+                                                 if(vars.length > 0){
+                                                     vars.forEach(v => {
+                                            %>
+                                            <option value="<%= v.id %>" <%-  v.id == row.hr_status ? 'selected="selected"': '' %>><%= v.data %></option>
+                                             <%  })} %>
+                                          </select>
+                                        </div>
+                                  </div>                                      
+                                  <div class="cell-sm-6">
+                                      <div class="form-group">
+                                        <label class="form-label form-label-outside rd-input-label" for="staff_no_promoreq">Applicant <em>(Staff No)</em></label>
+                                        <input class="form-control form-control-has-validation form-control-last-child" id="staff_no_promoreq" type="text" name="staff_no" value="<%= row.staff_no %>"/>
+                                      </div>
+                                  </div>
+                                </div>
+                              
+                                <hr>
+                                <div class="range"> 
+                                    <div class="cell-sm-3">
+                                        <div class="form-group">
+                                          <label class="form-label form-label-outside rd-input-label" for="form_attachment">Combined Forms <em>( PDF only )</em></label>
+                                          <input class="form-control form-control-has-validation form-control-last-child" id="form_attachment" type="file" name="form_attachment" value=""></input>
+                                        </div>
+                                    </div>
+                                    <div class="cell-sm-1">
+                                        <% if(row.form_attachment){ %>
+                                        <a href="<%= row.formpath %>" target="_blank">
+                                          <i class="fa fa-file-pdf-o fa-3x text-danger"></i><br>
+                                          <small style="color:brown;font-size:9px">&nbsp;DOC</small>
+                                        </a>
+                                        <% }%>
+                                    </div>                                    
+                                    <div class="cell-sm-3">
+                                        <div class="form-group">
+                                          <label class="form-label form-label-outside rd-input-label" for="paper_attachment">Combined Papers & CV <em>( PDF only )</em></label>
+                                          <input class="form-control form-control-has-validation form-control-last-child" id="paper_attachment" type="file" name="paper_attachment" value=""></input>
+                                        </div>
+                                    </div>
+                                    <div class="cell-sm-1">
+                                        <% if(row.paper_attachment){ %>
+                                        <a href="<%= row.paperpath %>" target="_blank">
+                                          <i class="fa fa-file-pdf-o fa-3x text-danger"></i><br>
+                                          <small style="color:brown;font-size:9px">&nbsp;PAPERS</small>
+                                        </a>
+                                        <% }%>
+                                    </div>
+                                    <div class="cell-sm-3">
+                                        <div class="form-group">
+                                          <label class="form-label form-label-outside rd-input-label" for="attachment">Combined Reports <em>( PDF only )</em></label>
+                                          <input class="form-control form-control-has-validation form-control-last-child" id="report_attachment" type="file" name="report_attachment" value=""></input>
+                                        </div>
+                                    </div>
+                                    <div class="cell-sm-1">
+                                        <% if(row.report_attachment){ %>
+                                        <a href="<%= row.reportpath %>" target="_blank">
+                                          <i class="fa fa-file-pdf-o fa-3x text-danger"></i><br>
+                                          <small style="color:brown;font-size:9px">&nbsp;REPORTS</small>
+                                        </a>
+                                        <% }%>
+                                    </div>
+                                  </div>
+                              
+                              </div>
+                            </div>
+                           <hr>
+                           <div class="range" id="promoreq_cover"> 
+                             <% if(row.id > 0){ %>
+                              <div class="cell-sm-12"><h6 style="color:brown;">LIST OF PAPERS FOR STAFF : <%- row.staff_no %></h6></div><hr>
+                                <% papers.forEach((d,i) => {
+                                     var ex = []
+                                     if(row.papers != null){
+                                          ex = row.papers.split(',').filter(r => {
+                                             return Number(d.id) === Number(r);
+                                          });
+                                     }
+                                  %>
+                                 <div class="cell-sm-12" style="border:thin solid darkred;<%- (i+1) != papers.length ? 'border-bottom:none;':''%>">
+                                     <div class="form-group">
+                                     <label class="form-label" for="papers"><%- d.title %></label>
+                                     <input class="pull-left" style="width:50px;height:40px;padding:0;" id="papers" name="papers" value="<%- d.id %>" type="checkbox" <%- ex.length > 0 ? 'checked="checked"':'' %>/>
+                                     </div>
+                                 </div>
+                                <% }) %>
+                             <% } %>
+
+                           </div>
+                            <br><div class="text-subline"></div><br>
+                        
+                            <div class="offset-top-25">
+                                <button class="btn btn-primary btn-2x" type="submit" onclick="return confirm('Do you want to Submit?');">SAVE</button>
+                                <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>
+                                <input name="id" type="hidden" value="<%= row.id || 0 %>" />
+                                <input name="sid" type="hidden" value="<%= row.hr_status || 0 %>" />
+                                <input name="hr_date" type="hidden" value="<%= row.hr_date || 0 %>" />
+                                <input name="track" type="hidden" value="<%= row.hr_track || 0 %>" />
+                            </div>
+                       <hr/>
+
+                       </form>
+
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

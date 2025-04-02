@@ -1,0 +1,86 @@
+    
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold">USER PRIVILEGES REGISTRATION</h6>
+                      <div class="text-subline"></div><br>
+                  <form method="post" action="/hrm/postuser" enctype="application/x-www-form-urlencoded">                         
+
+                        <div class="data2">                                                
+                                   <!-- Line 2 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">
+                                        <div class="cell-sm-4">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="staff_no">Staff Number</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="staff_no" type="text" name="staff_no" value="<%= row.staff_no %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div> 
+                                        <div class="cell-sm-4">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="username">Username</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="username" type="text" name="username" value="<%= row.username %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>                                        
+                                        
+                                        <div class="cell-sm-4">                                          
+                                          <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="active">Enabled</label>
+                                              <select name="active" class="form-control" id="active"">
+                                                  <option value="1" <%= row.group == '1' ? 'selected="selected"':'' %>>YES</option> 
+                                                  <option value="0" <%= row.group == '0' ? 'selected="selected"':'' %>>NO</option> 
+                                              </select>
+                                          </div>
+                                        </div>   
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                 <!-- Line 2 -->
+                                  <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                         <div class="well">
+                                             <h4 >User Roles<hr style="border:2px solid brown"></h4>
+                                             <div class="range">
+                                               <%
+                                                  roles.map((role,i) =>{
+                                                      if(row.roles != null && row.roles.includes(role.role)){
+                                               %>
+                                                  <div class="cell-sm-4">
+                                                        <input type="checkbox" name="roles" id="roles<%= i%>" class="roles <%- role.role == '03' || role.role == '04' ? 'sfa':'ada' %>" value="<%- role.role %>" checked/>
+                                                        <label for="roles<%= i%>" class="text-primary text-bold"><small><%- role.desc.toUpperCase()%></small></label>                                                        
+                                                  </div> 
+                                               <%     }else{  %>
+                                                  <div class="cell-sm-4">
+                                                      <input type="checkbox" name="roles" id="roles<%= i%>" class="roles <%- role.role == '03' || role.role == '04' ? 'sfa':'ada' %>" value="<%- role.role %>"/>
+                                                      <label for="roles<%= i%>" class="text-primary text-bold"><small><%- role.desc.toUpperCase() %></small></label>                                                        
+                                                  </div> 
+                                               <%     }
+                                                 });
+                                               %>                                                
+                                             </div>
+                                         </div>
+                                      
+                                    </div>
+                                  </div>
+
+
+                        <div class="offset-top-25">
+                             <button class="btn btn-primary btn-2x" type="submit">SAVE</button>
+                             <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>                               
+                             <input type="hidden" name="id" value="<%= row.id || 0 %>"/>                       
+                        </div>
+                       <hr/>
+                       </form>
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+     

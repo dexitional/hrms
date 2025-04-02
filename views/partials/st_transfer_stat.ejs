@@ -1,0 +1,7 @@
+<% if(data[2].length > 0 ) { %>
+<iframe id="printf" name="printf" src="/hrm/transfer/stats/<%= user.staff_no %>" rel="preload" as="document" style="width:100%;height:600px;margin:-10px auto 10px;border:2px solid brown;  transform: scale(1); transform-origin: 0 0;"></iframe>
+<% }else{ %>
+<div class="jumbotron">
+    <p class="text-center text-warning" style="font-weight:400;font-style:italic">No transfer statistics found!</p>
+</div>
+<% } %>

@@ -1,0 +1,178 @@
+      <script>
+          
+          
+      </script>
+      <main class="page-content section-70 section-md-70">       
+         
+        <!-- vertical link Tabs-->
+        <section>
+          <div class="shell">
+            <div class="range range-xs-center">
+                <div class="cell-xs-12 cell-lg-12">                                   
+                    <div class="">  
+                      <!-- Responsive-tabs-->
+                      <div class="responsive-tabs responsive-tabs-boxed vertical resp-vtabs tabs-group-default" id="page" data-type="horizontal" style="width: 100%;">
+                            <ul class="resp-tabs-list text-center tabs-group-default" data-group="tabs-group-default">
+                                    <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> EFFECTIVE TRANSFERS</li>  
+                                    <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> TRANSFER REQUESTS</li>  
+                                    <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> REPORT</li>
+                            </ul>
+                        <hr style="border:1px dashed #0d2d62;display:block;"/>
+                          
+                        <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                                <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                    <!-- TITLE -->
+                                    <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                        <div class="col-md-1 cell-xs-12">
+                                            <a href="/hrm/dash" class="btn btn-warning btn-sm pull-left" style="margin:0px"><i class="fa fa-home fa-lg"></i></a>&nbsp;&nbsp;
+                                        </div>
+                                        <div class="col-md-4 cell-xs-12"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">EFFECTIVE TRANSFERS</h3></div>
+                                        <div class="col-md-7 cell-xs-12">
+                                           
+                                            <div class="btn-group pull-right">
+                                                  <a href="javascript:;" class="btn btn-primary btn-sm" onclick="var ins = prompt('Enter Staff Number!'); if(ins != null){alert('Statistics for Staff Number : '+ins);location.href='/hrm/transfer/stats/'+ins}">VIEW STATS</a>
+                                                  <a class="btn btn-sm btn-primary" onclick="return confirm('Add existing transfer record of a Staff?')" href="/hrm/addtransfer?tp=exst" style="margin:0 10px;">ADD EXISTING TRANSFER</a>
+                                                  <a class="btn btn-sm btn-primary" onclick="return confirm('Transfer Staff to a Unit?')" href="/hrm/addtransfer?tp=new">ADD NEW TRANSFER</a>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                
+                                    <!-- JOB STATUS CONTENT --> 
+                                    <div class="table-responsive clearfix">
+                                            <table class="table table-bordered dataTable transferlist" style="text-align:center">
+                                                 <thead>
+                                                     <tr>                                               
+                                                         <th width="150px">STAFF NO</th>
+                                                         <th>FULL NAME</th>
+                                                         <th>TRANSFER DATE</th> 
+                                                         <th>FROM (UNIT)</th>                                         
+                                                         <th>TO (UNIT)</th>
+                                                         <th>JOB TITLE</th>    
+                                                         <th>ACTION</th>                                        
+                                                     </tr>
+                                                 </thead>                              
+                                            </table>
+                                    </div>
+                                </div>
+      
+                        </div>
+
+                        <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                            <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                <!-- TITLE -->
+                                <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                    <div class="col-md-1 cell-xs-12">
+                                        <a href="/hrm/dash" class="btn btn-warning btn-sm pull-left" style="margin:0px"><i class="fa fa-home fa-lg"></i></a>&nbsp;&nbsp;
+                                    </div>
+                                    <div class="col-md-11 cell-xs-12"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">TRANSFER REQUESTS </h3></div>
+                                    <div class="col-md-7 cell-xs-12 hidden">
+                                       
+                                        <div class="btn-group pull-right">
+                                              <a href="javascript:;" class="btn btn-primary btn-sm" onclick="var ins = prompt('Enter Staff Number!'); if(ins != null){alert('Statistics for Staff Number : '+ins);location.href='/hrm/transfer/stats/'+ins}">VIEW STATS</a>
+                                              <a class="btn btn-sm btn-primary" onclick="return confirm('Add existing transfer record of a Staff?')" href="/hrm/addtransfer?tp=exst" style="margin:0 10px;">ADD EXISTING TRANSFER</a>
+                                              <a class="btn btn-sm btn-primary" onclick="return confirm('Transfer Staff to a Unit?')" href="/hrm/addtransfer?tp=new">ADD NEW TRANSFER</a>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            
+                                <!-- JOB STATUS CONTENT --> 
+                                <div class="table-responsive clearfix">
+                                        <table class="table table-bordered dataTable transfereq" style="text-align:center">
+                                             <thead>
+                                                 <tr>                                               
+                                                     <th width="150px">STAFF NO</th>
+                                                     <th>FULL NAME</th>
+                                                     <th>REASON</th> 
+                                                     <th>PROFILE</th>
+                                                     <th>ASPIRED UNIT</th>
+                                                     <th>STATUS</th>    
+                                                     <th>ACTION</th>                                        
+                                                 </tr>
+                                             </thead>                              
+                                        </table>
+                                </div>
+                            </div>
+  
+                    </div>
+
+                        <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                            <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                   <div class="shell">
+                                        <div class="cell-md-12">
+                                                <div class="product col-md-6" style="min-height:300px">
+                                                    <div class="product-body">
+                                                        <center class="offset-top-20"><button class="btn btn-default" href="/hrm/staff"><span>TRANSFER LIST</span></button></center><br><br>
+                                                        <center class="product-meta-info" style="display:block;padding-bottom:20px;">
+                                                                <form class="list-inline list-inline-dark list-inline-lg offset-bottom-20" action="/hrm/transfer/list" method="get"> 
+                                                                  <li style="width:120px">
+                                                                      <select name="type" >
+                                                                         <option value="">TYPE</option>
+                                                                         <option value="all">ALL</option>
+                                                                          <option value="SM">SM</option>
+                                                                          <option value="SS">SS</option>
+                                                                          <option value="JS">JS</option>
+                                                                      </select>
+                                                                  </li>   
+                                                                  <li style="width:120px">
+                                                                        <select name="year" class="form-control">
+                                                                             <option value="<%= new Date().getFullYear();%>">YEAR</option>
+                                                                              <option value="all">ALL</option>
+                                                                            <%
+                                                                               var j = new Date().getFullYear();
+                                                                               var i = 1995;
+                                                                               for( j; i <= j;j--){
+                                                                            %> <option value="<%= j%>"><%= j%></option>
+                                                                            <% } %>
+                                                                           
+                                                                           
+                                                                        </select>
+                                                                  </li>     
+                                                                  <li style="width:135px">
+                                                                        <select name="month" class="form-control">
+                                                                            <option value="all">MONTH</option>
+                                                                            <option value="all">ALL</option>
+                                                                            <option value="1">JAN</option>
+                                                                            <option value="2">FEB</option>
+                                                                            <option value="3">MAR</option>
+                                                                            <option value="4">APR</option>
+                                                                            <option value="5">MAY</option>
+                                                                            <option value="6">JUN</option>
+                                                                            <option value="7">JUL</option>
+                                                                            <option value="8">AUG</option>
+                                                                            <option value="9">SEP</option>
+                                                                            <option value="10">OCT</option>
+                                                                            <option value="11">NOV</option>
+                                                                            <option value="12">DEC</option>
+                                                                        </select>
+                                                                  </li>                                        
+                                                                  <li><input type="hidden" name="output" value="pdf" id="output"/>
+                                                                      <button class="icon fa fa-file-excel-o alert-success" id="excel"></button>
+                                                                      <button class="icon fa fa-file-pdf-o fa-2x text-danger" id="pdf" type="submit"></button> </li>
+                                                                 </form>
+                                                            </center>
+                                                    </div>
+                                                </div>
+
+                                                <div class="product col-md-6">
+                                                        <div class="product-body">
+                                                            <center class="offset-top-20"><button class="btn btn-default" href="/hrm/staff"><span>CURRENT TRANSFER STATISTICS</span></button></center><hr>
+                                                           <!-- <p class=""><small><b>ALL ( <a href="">2000</a> )  = <em>[ JAN ( <a href="">2000</a> ), FEB ( <a href="">2000</a> ), MAR ( <a href="">2000</a> ),<br> APR ( <a href="">2000</a> ), MAY ( <a href="">2000</a> ), JUN ( <a href="">2000</a> ), JUL ( <a href="">2000</a> ), AUG ( <a href="">2000</a> ), SEP ( <a href="">2000</a> ), OCT ( <a href="">2000</a> ), NOV ( <a href="">2000</a> ), DEC ( <a href="">2000</a> ) ]</em></b></small></p>
+                                                           -->
+                                                           <p><%- data %></p>
+                                                        
+                                                        </div>
+                                                </div>
+                                        </div>
+                                   </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+          </div>        
+        </section>
+      
+      </main>
+

@@ -1,0 +1,116 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold">VEHICLE REGISTRATION</h6>
+                      <div class="text-subline"></div><br>
+                  <form method="post" action="/hrm/postvehicle" enctype="application/x-www-form-urlencoded">                         
+
+                        <div class="data2">                            
+                                                          
+                                   <!-- Line 2 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">
+                                        <div class="cell-sm-3">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="reg_no"> VEHICLE REGISTRATION NO.</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="reg_no" type="text" name="reg_no" value="<%= row.reg_no %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div> 
+                                        <div class="cell-sm-3">                                          
+                                            <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="type">VEHICLE TYPE</label>
+                                                <select name="type" id="type" class="form-control">
+                                                    <option value="" <%= row.type == '' ? 'selected="selected"':'' %>>-- NONE --</option> 
+                                                    <option value="CAR" <%= row.type == 'CAR' ? 'selected="selected"':'' %>>CAR</option> 
+                                                    <option value="MOTO" <%= row.type == 'MOTO' ? 'selected="selected"':'' %>>MOTORCYCLE</option> 
+                                                    <option value="BIKE" <%= row.type == 'BIKE' ? 'selected="selected"':'' %>>BICYCLE</option> 
+                                              </select>
+                                              </div>
+                                        </div>                                         
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="maker">VEHICLE MAKER</label>
+                                            <input class="form-control form-control-has-validation form-control-last-child" id="maker" type="text" name="maker" value="<%= row.maker %>" data-constraints="@Required"><span class="form-validation"></span>
+                                          </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="model">VEHICLE MODEL</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="model" type="text" name="model" value="<%= row.model %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                              <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="desc">VEHICLE DESCRIPTION</label>
+                                                <input class="form-control form-control-has-validation form-control-last-child" id="desc" type="text" name="desc" value="<%= row.desc %>" data-constraints="@Required"><span class="form-validation"></span>
+                                              </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="chassis_no">VEHICLE CHASSIS NO.</label>
+                                              <input class="form-control form-control-has-validation " id="chassis_no" type="text"  name="chassis_no" value="<%= row.chassis_no %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="color">VEHICLE COLOR</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="color" type="text" name="color" value="<%= row.color %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="engine_cc">VEHICLE ENGINE CAPACITY</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="engine_cc" type="text" name="engine_cc" value="<%= row.engine_cc %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="staff_no">STAFF NUMBER OF OWNER</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="staff_no" type="text" name="staff_no" value="<%= row.staff_no %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="staff_no">VEHICLE REGISTRATION DATE</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="reg_date" type="date" name="reg_date" value="<%= row.reg_date %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>
+                                     <!--<div class="cell-sm-3">                                          
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="processed">ALLOWANCE PROCESSED?</label>
+                                              <select name="processed" class="form-control">
+                                                  <option value="0" <%= row.active == '0' ? 'selected="selected"':'' %>>NO</option> 
+                                                  <option value="1" <%= row.acti == '1' ? 'selected="selected"':'' %>>YES</option>                                                  
+                                             </select>
+                                            </div>
+                                        </div>  
+                                 --> 
+
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <br><br><div class="text-subline"></div><br>
+                                 
+                        </div>
+
+                        <div class="offset-top-25">
+                             <button class="btn btn-primary btn-2x" type="submit">SAVE</button>
+                             <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>  
+                             <input type="hidden" name="id" value="<%= row.id || 0 %>"/>  
+                        </div>
+                       <hr/>
+                       </form>
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

@@ -1,0 +1,54 @@
+
+      <main class="page-content section-70 section-md-70">   
+        
+         
+        <!-- vertical link Tabs-->
+        <section>
+          <div class="shell">
+            <div class="range range-xs-center">
+                <div class="cell-xs-10 cell-lg-12">                   
+                    <div class="">
+                      <!-- USER ROLES -->
+                        <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                          <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                 <!-- USERS CONTENT -->
+                                 <div class="row">
+                                      <div class=" col-xs-12 col-md-6 col-md-offset-3">
+                                            <div class="panel panel-warning">
+                                                  <div class="panel-heading"><h3>
+                                                       <span>STAFF PHOTO BOOTH</span>
+                                                       <button class="pull-right btn btn-xsbtn-primary" id="getphoto">GET PHOTO</button>
+                                                  </h3></div>
+                                                  <div class="panel-body">
+                                                      <div class="col-md-7">
+                                                          <img src="<%- row != null ? (row.photo != null ? row.photo : '/public/images/none.png') : (user.photo != null ? user.photo : '/public/images/none.png') %>" id="st_photo" style="border:2px solid brown;width:280px;margin:0 auto;border-radius:10px;"/>
+                                                      </div>
+                                                      <ul class="col-md-5 nav nav-pills nav-stacked page-header">
+                                                          <h5 id="st_name"><%- row != null ? (row.fname+' '+row.mname+' '+row.lname) : (user.fname+' '+user.mname+' '+user.lname)%></h5>
+                                                          <h3 id="st_no"><%- row != null ? (row.staff_no) : (user.staff_no)%></h3>
+                                                          <li><a class="btn-warning" href="javascript:void;" id="st_uploadpic" onclick="document.getElementById('photo').click()"><i class="fa fa-photo"></i> UPLOAD PHOTO</a></li>
+                                                          <li><a class="btn-primary" href="/hrm/staff/rempic/<%- row != null ? (row.staff_no) : (user.staff_no)%>" id="st_remphoto"><i class="fa fa-photo-add"></i> REMOVE PHOTO</a></li>
+                                                          <li><a class="btn-primary" href="/api/sendmail/<%- row != null ? (row.staff_no) : (user.staff_no)%>" ><i class="fa fa-photo-add"></i> MAIL PHOTO</a></li>
+                                                      </ul>
+                                                  </div>
+                                            </div>
+                                      </div>
+                                   
+                                </div>
+                             </div>                        
+                        </div>
+
+                       
+                      </div>
+                    
+
+                  </div>
+              
+            </div>
+          </div>
+        </section>
+        <section class="offset-top-110">
+          
+          </div>
+        </section>
+      </main>

@@ -1,0 +1,157 @@
+
+      <main class="page-content section-70 section-md-70">   
+        
+         
+        <!-- vertical link Tabs-->
+        <section>
+          <div class="shell">
+            <div class="range range-xs-center">
+                <div class="cell-xs-10 cell-lg-12">                   
+                    <div class="">
+                      <!-- Responsive-tabs-->
+                      <div class="responsive-tabs responsive-tabs-boxed vertical resp-vtabs tabs-group-default"  id="page" data-type="horizontal" style="width: 100%;">
+                        <ul class="resp-tabs-list text-center tabs-group-default" data-group="tabs-group-default">                               
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> REGISTERED VEHICLES</li> 
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> VEHICLES HISTORY</li> 
+                        </ul>
+                        <hr style="border:1px dashed #0d2d62;"/>
+                        
+                        <!-- CURRENT VEHICLES -->
+                        <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                          <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                
+                                 <!-- TITLE -->
+                                 <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                     <div class="col-md-4"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">REGISTERED VEHICLES</h3></div>
+                                     <div class="col-md-8">
+                                            <a href="/hrm/addvehicle" class="btn btn-primary btn-sm pull-right" style="margin:0px 5px">Add New Vehicle</a>&nbsp;&nbsp;
+                                            <a href="/hrm/changevehicle" class="btn btn-primary btn-sm pull-right chngowner" style="margin:0px 5px" >Change Owner</a>&nbsp;&nbsp;
+                                            <a href="/hrm/vehicle/alist" class="btn btn-primary btn-sm pull-right" style="margin:0px 5px">List of Vehicles on Allowance</a>&nbsp;&nbsp;
+                                            <a href="/hrm/vehicle/nlist" class="btn btn-primary btn-sm pull-right" style="margin:0px 5px">List of Vehicles Off-Allowance</a>&nbsp;&nbsp;
+                                     </div>
+                                 </div>
+                            
+                                 <!-- CURRENT VEHICLES CONTENT -->
+                                 <div class="table-responsive clearfix">
+                                    <table class="table table-bordered  dataTable" id="dynamic2"> 
+                                        <thead>
+                                            <tr>
+                                                <th>OWNER</th>
+                                                <th>TYPE</th>
+                                                <th>REGISTRATION NO.</th>
+                                                <th>MAKER</th>
+                                                <th>MODEL</th>
+                                               <!-- <th>DESCRIPTION</th>-->
+                                                <th>CHASSIS NO.</th>
+                                                <th>ENGINE CAPACITY</th>
+                                                <th>COLOUR</th>
+                                                <th>REGISTRATION DATE</th>
+                                                <th>&nbsp;</th>                                        
+                                            </tr> 
+                                        </thead>   
+                                        <tbody> 
+                                            <% 
+                                              current.map(vehicle => {
+                                            %>  
+                                            <tr>  
+                                                <td><%= vehicle.owner %></td> 
+                                                <td align="center"><button class="btn btn-default btn-sm" style="font-size:20px"><%= vehicle.type %></button></td> 
+                                                <td><button class="btn btn-warning btn-sm "><%= vehicle.reg_no.toUpperCase() %></button></td> 
+                                                <td><%= vehicle.maker %></td> 
+                                                <td><%= vehicle.model %></td> 
+                                               <!--<td><%= vehicle.desc %></td> --> 
+                                                <td><%= vehicle.chassis_no %></td> 
+                                                <td><%= vehicle.engine_cc %></td> 
+                                                <td><%= vehicle.color %></td> 
+                                                <td><%= vehicle.reg_date %></td> 
+                                                
+                                                <td>                                                      
+                                                    <div class="group group-lg" style="width:180px;">  
+                                                        <a class="btn btn-primary btn-sm  btn-icon btn-left" title="View vehicle" href="<%= vehicle.id %>" title="View Vehicle"><i class="icon fa fa-car"></i></a>
+                                                        <a class="btn btn-default btn-sm" href="/hrm/editvehicle/<%= vehicle.id%>" title="Edit Vehicle" onclick="return confirm('Edit Vehicle?')"><i class="fa fa-edit"></i></a>
+                                                       <!-- ON ACCESS # <a class="btn btn-default btn-sm" href="/hrm/delvehicle/<%= vehicle.id%>" title="Delete Vehicle" onclick="return confirm('Delete Vehicle?')"><i class="fa fa-trash"></i></a> -->
+                                                    </div>
+                                                </td>                                                                                                                          
+                                            </tr>     
+                                            <% }) %>                                       
+                                        </tbody>
+                                    </table>
+                                </div>
+                             </div>                        
+                        </div>
+
+
+
+
+
+                        <!-- VEHICLE HISTORY -->
+                        <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                                <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                      
+                                       <!-- TITLE -->
+                                       <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                           <div class="col-md-6"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">VEHICLES HISTORY </h3></div>
+                                           <div class="col-md-6"></div>
+                                       </div>
+                                  
+                                       <!-- VEHICLE HISTORY CONTENT -->
+                                       <div class="table-responsive clearfix">
+                                          <table class="table table-bordered  dataTable" id="dynamic2"> 
+                                              <thead>
+                                                  <tr>
+                                                      <th>OWNER</th>
+                                                      <th>TYPE</th>
+                                                      <th>REGISTRATION NO.</th>
+                                                      <th>MAKER</th>
+                                                      <th>MODEL</th>
+                                                     <!-- <th>DESCRIPTION</th>-->
+                                                      <th>CHASSIS NO.</th>
+                                                      <th>COLOUR</th>
+                                                      <th>REGISTRATION DATE</th>
+                                                      <th>&nbsp;</th>                                        
+                                                  </tr> 
+                                              </thead>   
+                                              <tbody> 
+                                                  <% 
+                                                    history.map(vehicle => {
+                                                  %>  
+                                                  <tr>  
+                                                      <td><%= vehicle.owner %></td> 
+                                                      <td align="center"><button class="btn btn-default btn-sm" style="font-size:20px"><%= vehicle.type %></button></td> 
+                                                      <td><button class="btn btn-warning btn-sm "><%= vehicle.reg_no.toUpperCase() %></button></td> 
+                                                      <td><%= vehicle.maker %></td> 
+                                                      <td><%= vehicle.model %></td> 
+                                                     <!--<td><%= vehicle.desc %></td> --> 
+                                                      <td><%= vehicle.chassis_no %></td> 
+                                                      <td><%= vehicle.color %></td> 
+                                                      <td><%= vehicle.reg_date %></td> 
+                                                      <td>                                                      
+                                                          <div class="group group-lg" style="width:100px;">  
+                                                              <a class="btn btn-primary btn-sm  btn-icon btn-left" title="View vehicle" href="<%= vehicle.id %>" title="View Vehicle"><i class="icon fa fa-car"></i></a>
+                                                            <!-- ACCESS #  <a class="btn btn-default btn-sm" href="/hrm/editvehicle/<%= vehicle.id%>" title="Edit Vehicle" onclick="return confirm('Edit Vehicle?')"><i class="fa fa-edit"></i></a>
+                                                              <a class="btn btn-default btn-sm" href="/hrm/delvehicle/<%= vehicle.id%>" title="Delete Vehicle" onclick="return confirm('Delete Vehicle?')"><i class="fa fa-trash"></i></a> -->
+                                                          </div>
+                                                      </td>                                                                                                                          
+                                                  </tr>     
+                                                  <% }) %>                                       
+                                              </tbody>
+                                          </table>
+                                      </div>
+                                   </div>                        
+                              </div>
+
+
+                       
+
+                      </div>
+                    </div>
+                  </div>
+              
+            </div>
+          </div>
+        </section>
+        <section class="offset-top-110">
+          
+          </div>
+        </section>
+      </main>

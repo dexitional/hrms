@@ -1,0 +1,49 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold">STAFF CONFIRMATION : <%= row.fname+' '+row.mname+' '+row.lname+' ('+row.staff_no+')' %></h6>
+                      <div class="text-subline"></div><br>
+                      <form method="post" action="/hrm/postconfirm" enctype="application/x-www-form-urlencoded">                         
+
+                        <div class="data2">                            
+                                <!-- Line 2 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">
+                                            <div class="cell-sm-4">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-outside rd-input-label" for="title">STAFF NO</label>
+                                                    <input class="form-control form-control-has-validation form-control-last-child" id="title" type="text" name="staff_no" readonly="readonly" value="<%= row.staff_no %>" data-constraints="@Required"><span class="form-validation"></span>
+                                                </div>
+                                            </div>                                        
+                                            <div class="cell-sm-4">
+                                                    <div class="form-group">
+                                                        <label class="form-label form-label-outside rd-input-label" for="title">DATE OF CONFIRMATION</label>
+                                                        <input class="form-control form-control-has-validation form-control-last-child" id="title" type="date" name="confirm_date" value="<%= row.confirm_date %>" data-constraints="@Required"><span class="form-validation"></span>
+                                                    </div>
+                                            </div>
+                                            <div class="cell-sm-4">
+                                                <div class="offset-top-25">
+                                                    <button class="btn btn-primary btn-2x" type="submit">SAVE</button>
+                                                    <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>  
+                                                    <input type="hidden" name="id" value="<%= row.id || 0 %>"/>  
+                                                </div>
+                                            </div>
+                                      </div>
+                                    </div>
+                                </div> <br><div class="text-subline"></div><br>
+                                <hr/>
+                        </div>
+                       </form>
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

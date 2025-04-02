@@ -1,0 +1,83 @@
+
+      <main class="page-content section-70 section-md-70">   
+        
+         
+        <!-- vertical link Tabs-->
+        <section>
+          <div class="shell">
+            <div class="range range-xs-center">
+                <div class="cell-xs-10 cell-lg-12">                   
+                    <div class="">
+                      <!-- Responsive-tabs-->
+                      <div class="responsive-tabs responsive-tabs-boxed vertical resp-vtabs tabs-group-default"  id="page" data-type="horizontal" style="width: 100%;">
+                        <ul class="resp-tabs-list text-center tabs-group-default" data-group="tabs-group-default">                               
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> GRADES</li> 
+                        </ul>
+                        <hr style="border:1px dashed #0d2d62;"/>
+                        
+                        <!-- UNIT & SECTIONS -->
+                        <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                          <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                
+                                 <!-- TITLE -->
+                                 <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                     <div class="col-md-6"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">GRADES & NOTCH</h3></div>
+                                     <div class="col-md-6">
+                                            <a href="/hrm/addgrade" class="btn btn-primary btn-sm pull-right" style="margin:0px 5px">Add New Grade-Notch</a>&nbsp;&nbsp;
+                                     </div>
+                                 </div>
+                            
+                                 <!-- UNIT CONTENT -->
+                                 <div class="table-responsive clearfix">
+                                    <table class="table table-bordered  dataTable" id="dynamic2"> 
+                                        <thead>
+                                            <tr>
+                                                <th>GRADE</th>
+                                                <th>SCALE</th>
+                                                <th>LEVEL</th>
+                                                <th>NOTCH</th>
+                                                <th>YEARLY BASIC (GHC)</th>
+                                                <th>GROUP</th>
+                                                <th>&nbsp;</th>                                        
+                                            </tr> 
+                                        </thead>   
+                                        <tbody> 
+                                            <% 
+                                              grades.map(grade => {
+                                            %>  
+                                            <tr>   
+                                                <td align="center"><button class="btn btn-primary btn-sm" style="font-size:20px"><%= grade.grade+'-'+grade.notch %></button></td>
+                                                <td align="center"><button class="btn btn-default btn-sm" style="font-size:20px"><%= grade.grade_num %></button></td>  
+                                                <td><button class="btn btn-warning btn-sm "><%= grade.level %></button></td> 
+                                                <td><button class="btn btn-warning btn-sm "><%= grade.notch %></button></td> 
+                                                <td><%= 'GHC '+(grade.notch_amount == null ? 0 : grade.notch_amount); %></td>
+                                                <td><%= grade.staff_group %></td> 
+                                                <td>                                                      
+                                                    <div class="group group-xl">  
+                                                        <a class="btn btn-primary btn-sm  btn-icon btn-left" title="View Staff With Grade <%= grade.grade %>, Notch <%= grade.notch %>" href="/hrm/grade/list/<%= grade.id %>"><i class="icon fa fa-file-text-o "></i></a>
+                                                        <a class="btn btn-default btn-sm" href="/hrm/editgrade/<%= grade.id%>" title="Edit Grade" onclick="return confirm('Edit Grade & Notch?')"><i class="fa fa-edit"></i></a>
+                                                    </div>
+                                                </td>                                                                                                                          
+                                            </tr>     
+                                            <% }) %>                                       
+                                        </tbody>
+                                    </table>
+                                </div>
+                             </div>                        
+                        </div>
+
+
+                       
+
+                      </div>
+                    </div>
+                  </div>
+              
+            </div>
+          </div>
+        </section>
+        <section class="offset-top-110">
+          
+          </div>
+        </section>
+      </main>

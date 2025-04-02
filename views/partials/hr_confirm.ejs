@@ -1,0 +1,137 @@
+
+      <main class="page-content section-70 section-md-70">   
+        
+         
+        <!-- vertical link Tabs-->
+        <section>
+          <div class="shell">
+            <div class="range range-xs-center">
+                <div class="cell-xs-10 cell-lg-12">                   
+                    <div class="">
+                      <!-- Responsive-tabs-->
+                      <div class="responsive-tabs responsive-tabs-boxed vertical resp-vtabs tabs-group-default" id="page" data-type="horizontal" style="width: 100%;">
+                        <ul class="resp-tabs-list text-center tabs-group-default" data-group="tabs-group-default">                               
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> CONFIRMED APPOINTMENTS</li> 
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> UPCOMING CONFIRMATIONS</li> 
+                        </ul>
+                        <hr style="border:1px dashed #0d2d62;"/>
+                        
+                        <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                            <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                
+                              <!-- TITLE -->
+                              <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                  <div class="col-md-6"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">CONFIRMED STAFF APPOINTMENTS</h3></div>
+                              </div>
+                         
+                              <!-- JOB STATUS CONTENT -->
+                              <div class="table-responsive clearfix">
+                                 <table class="table table-bordered  dataTable confirm_cur">
+                                     <thead>
+                                         <tr>
+                                             <th>STAFF NO</th>
+                                             <th>FULL NAME</th>                                                                                    
+                                             <th>JOB TITLE</th>
+                                             <th>UNIT</th>
+                                             <th>CONFIRMATION DATE</th>                                               
+                                             <th>APPOINTMENT DATE</th>
+                                             <th>STAFF GROUP</th>
+                                            <!-- <th>&nbsp;</th>-->                                        
+                                         </tr>
+                                     </thead>  
+                                     <!--                                   
+                                     <tbody> 
+                                         <%  upcome.map(row => { %>
+                                          <tr>   
+                                                                                           
+                                               <td align="center"><%= row.staff_no%></td> 
+                                               <td><%= row.owner%></td>  
+                                               <td><%= row.jobtitle%></td> 
+                                               <td><%= row.unitname%></td> 
+                                               <td><%= row.appoint_date%></td>
+                                               <td><%= row.confirm_date%></td>
+                                               <td>                                                      
+                                                    <div class="group group-xl">                                                       
+                                                       <a class="btn btn-success btn-sm" href="#"><i class="fa fa-calendar-check-o fa-lg"></i></a>
+                                                    </div>
+                                                                                                 
+                                               </td>                                                                                                                          
+                                           </tr>  
+                                         <% }) %>                                          
+                                     </tbody>
+                                     -->   
+                                 </table>
+                             </div>
+                       </div>                        
+
+
+
+                       <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                
+                          <!-- TITLE -->
+                          <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                              <div class="col-md-6"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">NEW CONFIRMATIONS-UPCOMIMNG</h3></div>
+                              <div class="col-md-6"></div>
+                          </div>
+                     
+                          <!-- JOB STATUS CONTENT -->
+                          <div class="table-responsive clearfix">
+                             <table class="table table-bordered  dataTable" id="dynamic">
+                                        <thead>
+                                            <tr>
+                                                <th align="center">DAYS TO CONFIRMATION</th>
+                                                <th>STAFF NO</th>
+                                                <th>FULL NAME</th>                                                                                    
+                                                <th>JOB TITLE</th>
+                                                <th>UNIT</th>
+                                                <th>APPOINTMENT DATE</th>
+                                                <th>STAFF GROUP</th>
+                                                <th>&nbsp;</th>                                        
+                                            </tr>
+                                        </thead>                                        
+                                        <tbody> 
+                                          <%  upcome.map(row => { %>
+                                             <tr>   
+                                                  <td align="center"><a class="btn btn-warning btn-sm" href="#"><i class="mdi icon icon-madison mdi-av-timer"></i> <b style="font-size:25px;">   <%= row.days == 0 ? row.days+' (Due)': row.days;%></b></a></td>                                            
+                                                  <td><%= row.staff_no %></td> 
+                                                  <td><%= row.owner %></td>  
+                                                  <td><%= row.jobtitle %></td> 
+                                                  <td><%= row.unitname %></td> 
+                                                  <td><%= row.appoint_date.toUpperCase(); %></td>
+                                                  <td><%= row.staff_group == 'SM'? 'SENIOR MEMBER (SM)' : (row.staff_group == 'JS' ? 'JUNIOR STAFF (JS)':'SENIOR STAFF (SS)'); %></td>
+                                                  <td>                                                      
+                                                        <div class="group group-xl"> 
+                                                            <% if(row.days > 0){%>                                                      
+                                                            <a class="btn btn-warning btn-sm" href="/hrm/notifyconfirm/<%= row.staff_no %>"><i class="fa fa-bell fa-lg"></i> NOTIFY</a>
+                                                            <% }else{%> 
+                                                            <a class="btn btn-success btn-sm" href="/hrm/editconfirm/<%= row.id %>" onclick="return confirm('Update Confirmation Status of <%= row.owner %>?')"><i class="fa fa-bell fa-check-o"></i> Confirm</a>
+                                                            <% } %> 
+                                                        </div>
+                                                  </td>                                                                                                                          
+                                              </tr> 
+                                         <% }) %>                                              
+                                        </tbody>
+                             </table>
+                         </div>
+                   </div>                        
+
+
+
+                  
+
+
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              
+            </div>
+          </div>
+        </section>
+        <section class="offset-top-110">
+          
+          </div>
+        </section>
+      </main>

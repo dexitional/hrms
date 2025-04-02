@@ -1,0 +1,138 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                  
+                        <form name="" action="/hrm/postappoint" method="post" enctype="application/x-www-form-urlencoded">
+                        <br><br><h6 class="text-bold"><%= title %> FORM </h6>
+                        <div class="text-subline"></div>
+                            <div class="data2">                    
+                    
+                          <!-- Line 1 -->
+                          <div class="range offset-top-17">                          
+                              <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                <div class="range">  
+                                                                       
+                                  <div class="cell-sm-3">
+                                      <div class="form-group">
+                                        <label class="form-label form-label-outside rd-input-label" for="appoint_date">Staff Number</label>
+                                        <input class="form-control form-control-has-validation form-control-last-child get_staff" id="staff_no" type="text" name="staff_no" value="<%= row.staff_no %>"/>
+                                      </div>
+                                  </div>
+
+                                  <div class="cell-sm-3">
+                                    <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="appoint_date"><%= ((row.id > 0 && (row.apply_type == 'PROMOTION' || row.apply_type == 'UPGRADE')) ||(row.type &&  (row.type == 'promotion' || row.type == 'upgrade'))) ? 'Effective Date' : 'Assumption Date' %></label>
+                                      <input class="form-control form-control-has-validation form-control-last-child" id="appoint_date" type="date" name="appoint_date" value="<%= row.appoint_date %>"/>
+                                    </div>
+                                  </div>
+
+                                  <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                    <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="confirm_date"><%= ((row.id > 0 && (row.apply_type == 'PROMOTION' || row.apply_type == 'UPGRADE')) ||(row.type &&  (row.type == 'promotion' || row.type == 'upgrade'))) ? 'Letter Date' : 'Confirmation Date' %></label>
+                                      <input class="form-control form-control-has-validation form-control-last-child" id="confirm_date" type="date" name="confirm_date" value="<%= row.confirm_date %>" />
+                                    </div>
+                                  </div>
+                                
+                                  <% if((row.id > 0 && (row.apply_type == 'PROMOTION' || row.apply_type == 'UPGRADE')) ||(row.type &&  (row.type == 'promotion' || row.type == 'upgrade'))){ %>
+                                    <input name="probation" type="hidden" value="<%= row.probation %>" />
+                                 <% }else{ %>
+                                    <div class="cell-sm-3">
+                                       <div class="form-group">
+                                         <label class="form-label form-label-outside rd-input-label" for="probation">Probation Period (Years)</label>
+                                         <input class="form-control form-control-has-validation form-control-last-child" id="probation" type="text" name="probation" value="<%= row.probation %>"/>
+                                       </div>
+                                    </div>
+                                 <% } %>
+                                        <!-- Line 2 -->
+                                                <div class="range offset-top-17">                          
+                                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                                      <div class="range">                                        
+                                                        <div class="cell-sm-3">
+                                                          <div class="form-group">
+                                                            <label class="form-label form-label-outside rd-input-label" for="job_id">Job Title / Designation</label>
+                                                            <select name="job_id" class="form-control">
+                                                                <option value="">Select Job Title</option>
+                                                                <%  data.jobs.map((job,i) =>{ %>
+                                                                <option value="<%= job.id%>" <%- job.id == row.job_id ? 'selected="selected"': '' %>>
+                                                                  <%= job.title%>
+                                                                </option>
+                                                                <%   }); %>
+                                                            </select>
+                                                          </div>
+                                                        </div>
+
+                                                        <% if(type == 'appointment'){ %>
+                                                        <div class="cell-sm-3">
+                                                          <div class="form-group">
+                                                            <label class="form-label form-label-outside rd-input-label" for="unit_id">Section / Unit</label>
+                                                            <select name="unit_id" class="form-control">
+                                                              <option value="">Select Section/Unit</option>
+                                                              <%  data.units.map((unit,i) =>{ %>
+                                                                <option value="<%= unit.id%>" <%- unit.id == row.unit_id ? 'selected="selected"': '' %>>
+                                                                  <%= unit.long_name%>
+                                                                </option>
+                                                                <%   }); %>
+                                                            </select>
+                                                          </div>
+                                                        </div>
+                                                        <% } %>
+
+                                                        <div class="cell-sm-3">
+                                                          <div class="form-group">
+                                                            <label class="form-label form-label-outside rd-input-label" for="scale_id">Grade / Scale</label>
+                                                            <select name="scale_id" id="scale_id" class="form-control">
+                                                              <option value="">Select Grade/Scale</option>
+                                                              <%  data.scales.map((scale,i) =>{ %>
+                                                                <option value="<%= scale.id%>" <%- scale.id == row.scale_id ? 'selected="selected"': '' %>>
+                                                                  <%= scale.grade +' STEP '+scale.notch%>
+                                                                </option>
+                                                                <%   }); %>
+                                                            </select>
+                                                          </div>
+                                                        </div>
+                                                        <div class="cell-sm-3">
+                                                          <div class="form-group">
+                                                            <label class="form-label form-label-outside rd-input-label" for="staff_group">Staff Category</label>
+                                                            <select name="staff_group" class="form-control" readonly="readonly">
+                                                              <option value="JS" <%- 'JS' == row.staff_group ? 'selected="selected"': '' %>>JUNIOR STAFF</option>
+                                                              <option value="SS" <%- 'SS' == row.staff_group ? 'selected="selected"': '' %>>SENIOR STAFF</option>
+                                                              <option value="SM" <%- 'SM' == row.staff_group ? 'selected="selected"': '' %>>SENIOR MEMBER</option>
+                                                            </select>
+                                                          </div>
+                                                        </div>
+                                                      
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                        </div>
+                                  
+
+                                </div>
+                              </div>
+                            </div>
+                           
+                            <br><div class="text-subline"></div><br>
+                        
+                            <div class="offset-top-25">
+                                <button class="btn btn-primary btn-2x" type="submit" onclick="return confirm('Do you want to Submit?');">SAVE</button>
+                                <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>
+                                <input name="exist" type="hidden" value="<%= row.exist ? '1' : '0' %>" />
+                                <input name="apply_type" type="hidden" value="<%= row.id && row.id > 0 ? row.apply_type : row.type.toUpperCase() %>" />
+                                <input name="id" type="hidden" value="<%= row.id || 0 %>" />
+                            </div>
+                       <hr/>
+
+                       </form>
+
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

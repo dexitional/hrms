@@ -1,0 +1,31 @@
+{
+    "apps" : [
+        {
+            "name": "hrms",
+            "script": "index.js",
+            "watch": false,
+            "ignore_watch" : ["node_modules", "public","config","views"],
+            "env": {
+                "appType": "local",
+                "PORT": 8080,
+                "NODE_ENV": "development",
+                "MYSQL_HOST" : "127.0.0.1",
+                "MYSQL_PORT" : 3306,
+                "MYSQL_USER" : "root",
+                "MYSQL_PASS" :"DHRCdodowa1",
+                "MYSQL_DB" : "hr"
+            },
+            "env_online": {
+                "appType": "online",
+                "PORT": 5004,
+                "NODE_ENV": "production",
+                "MYSQL_HOST" : "192.168.0.28",
+                "MYSQL_PORT" : 3306,
+                "MYSQL_USER" : "hrms",
+                "MYSQL_PASS" : "o$%^Ab$@c296O60dF42$C&e959*!dc$$&e1bD36@3o48!",
+                "MYSQL_DB"   : "hr"
+            }
+        }  
+    ]
+  }
+

@@ -1,0 +1,64 @@
+<%  if(data[2].length > 0){ %>
+        <div class="row">
+            <!-- STAFF OVERVIEW PAGE -->
+            <div class="col-lg-12">
+                   <div class="table-responsive">
+                        <table class="table table-bordered ">
+                            <thead>
+                                <tr class="btn-danger">                         
+                                    <!--<th>FULL NAME</th>-->
+                                    <th>TYPE</th>
+                                    <th>STATUS</th>
+                                    <th>PERIOD</th>
+                                    <th>RESUMPTION</th>
+                                    <th>ENTITLEMENT</th>
+                                    <th>APPROVED</th>
+                                    <th width="200px">NOTES</th>
+                                    <th width="150px">ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 <%  data[2].map((row,i) => {%>
+                                    <tr class="<%- (i+1)%2 == 2 ? 'even':'odd'%>">
+                                        <!--<td><img class="img-responsive" src="<%- row.photo != null ? row.photo : '/public/images/none.png';%>" style="height:40px;display:block;margin-right:10px;border-radius:50%;float:left;" onclick="window.open('<%- row.photo != null ? row.photo : '/public/images/none.png';%>')"/><small><b><%- row.fname+' '+row.mname+' '+row.lname %></b></small></td>-->
+                                        <td><small class="btn btn-sm btn-default" style="font-size:10px;"><b><%- row.title %></b></small></td>
+                                        <td><small class="btn btn-sm btn-default" style="font-size:10px;"><b ><%- row.status == 'GRANTED' ? '<span class="text-success">GRANTED</span>' : (row.status == 'HEAD-REJECTED' || row.status == 'HR-REJECTED' ? '<span class="text-danger">'+row.status+'</span>':'<span class="text-info">'+row.status+'</span>') %></b></small></td>
+                                        <td><small><em>
+                                            <b class="btn btn-sm btn-default text-success" style="font-size:10px;color:seagreen"><b>STARTS ON : </b><%- row.start != null ? row.start.toUpperCase() :''%></b><br>
+                                            <b class="btn btn-sm btn-default text-danger " style="font-size:10px;color:darkred"><b>ENDS AFTER : </b><%- row.end != null ? row.end.toUpperCase() :''%></b></em>
+                                        </small></td>
+                                        <td><small class="btn btn-sm btn-default" style="font-size:10px;"><b>REPORT ON : <%- row.resume != null ? row.resume.toUpperCase() :''%></b></small></td>
+                                        <td  align="center"><b class="btn btn-sm btn-default"><%- row.entitlement %></b> <br><small style="font-size:9px">DAYS</small><br></td>
+                                        <td align="center"><b class="btn btn-sm btn-default"><%- row.approved_days %> </b> <br><small style="font-size:9px">DAYS</small><br></td>
+                                        <td>
+                                            <% if(row.status == 'STAFF-PENDING' && row.head_remark != null){ %>
+                                                <small><em><b>Head Note</b> : <br><%- row.head_remark %> </em></small>
+                                            <% } %>
+                                            <% if(row.hr_remark != null){ %>
+                                                <br><br><small><em>( <b>DHR Note</b> : <br><%- row.hr_remark %> )</em></small>
+                                            <% } %>
+                                        </td>
+                                       <td>
+                                            <div class="group group-xl" style="width:230px">
+                                                <% if(row.status != 'HEAD-PENDING' && row.status != 'HR-PENDING' && row.status != 'HR-REJECTED' && row.status != 'HEAD-REJECTED' && row.status != 'GRANTED' && row.status != 'ENDED'){ %>
+                                                    <a class="btn btn-success btn-sm btn-left" data-toggle="modal" data-target="#addleave" title="Edit Leave Form" id="editleave" data-id="<%- row.lid %>"><i class=" fa fa-edit"></i></a>
+                                                <% }%>
+                                                <% if(row.status != 'HR-PENDING' && row.status != 'HR-REJECTED' && row.status != 'HEAD-REJECTED' && row.status != 'GRANTED' && row.status != 'ENDED'){ %>
+                                                    <a class="btn btn-danger btn-sm btn-left" onclick="return confirm('Delete leave Application?')" title="Delete Leave Form" href="/hrm/st/leavedel?id=<%- row.lid%>"><i class="fa fa-trash"></i></a>
+                                                <% }%>
+                                                <a class="btn btn-sm btn-default" title="View Leave Form" href="/hrm/st/leave/view?id=<%- row.lid%>"><small>VIEW FORM</small></a>                                                                                             
+                                                
+                                            </div>
+                                       </td>
+                                    </tr>
+                                <%   }) %> 
+                               
+                        </table>
+                   </div>
+            </div>    
+        </div>
+        <%  }else{ %> 
+            <div class="jumbotron">
+                <p class="text-center text-warning" style="font-weight:400;font-style:italic">No Records of Leave for Staff!</p>
+            </div>
+        <% } %>

@@ -1,0 +1,18 @@
+{
+    "ADEHYE":{"hallid":"ADEHYE","hall":"ADEHYE HALL"},
+    "ATLANTIC":{"hallid":"ATLANTIC","hall":"ATLANTIC HALL"},
+    "CASFORD":{"hallid":"CASFORD","hall":"CASELY HAYFORD HALL"},
+    "CTC":{"hallid":"CTC","hall":"CTC HALL"},
+    "GUSSS":{"hallid":"GUSSS","hall":"GUSSS HALL"},
+    "KNHALL":{"hallid":"KNHALL","hall":"KWAME NKRUMAH HALL"},
+    "NONE":{"hallid":"NONE","hall":"NO HALL ASSIGNED"},
+    "OGUAA":{"hallid":"OGUAA","hall":"OGUAA HALL"},
+    "PSI":{"hallid":"PSI","hall":"PSI HALL"},
+    "SASAKAWA":{"hallid":"SASAKAWA","hall":"SASAKAWA CENTRE"},
+    "SRC":{"hallid":"SRC","hall":"SRC HALL"},
+    "STPETERS":{"hallid":"STPETERS","hall":"ST. PETER'S SEMINARY"},
+    "UAHALL":{"hallid":"UAHALL","hall":"UNIVERSITY ALUMNI HALL"},
+    "UHALL":{"hallid":"UHALL","hall":"UNIVERSITY HALL"},
+    "VALCO":{"hallid":"VALCO","hall":"VALCO HALL"},
+    "VTRUST":{"hallid":"VTRUST","hall":"VALCO TRUST HALL"}
+}

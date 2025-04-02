@@ -1,0 +1,136 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold">LEAVE APPLICATION FORM</h6>
+                      <div class="text-subline"></div><br><br>                     
+                  <form name="formstaff" method="post" action="/hrm/postleave" enctype="multipart/form-data">
+                      <% if(row && row.id == 0){ %>
+                      <div class="range offset-top-7">
+                        <div class="cell-sm-12">
+                          <div class="form-group">
+                            <label class="form-label form-label-outside" for="type">LEAVE TYPE</label>
+                            <select class="form-control" id="type" name="type">
+                                <option>Choose Category</option>
+                                <%
+                                   types.map(type =>{
+                                %>
+                                <option value="<%- type.id %>" data-title="<%- type.title %>" <%= type.id == row.type_id ? 'selected="selected"':'' %>><%- type.desc %></option>
+                                <% }) %>
+                            </select>                                
+                          </div>
+                        </div>
+                      </div>
+                      <% }else{ %>
+                          <input name="type" id="type" type="hidden" value="<%= row.type_id %>" />
+                          <input name="old_amount" type="hidden" value="<%= row.approved_days %>" />
+                      <% } %>
+
+                      <div class="range offset-top-7">
+                        
+                        <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                          <div class="range" style="background-color:rgba(250, 191, 191,0.5);border:thin solid rgb(250, 191, 191);padding:20px 10px;border-radius:10px">                           
+                            <div class="cell-sm-3">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="staff_no">STAFF NUMBER</label>
+                                <input class="form-control form-control-has-validation form-control-last-child" id="staff_no" type="text" name="staff_no" value="<%= row.staff_no %>" <%- row.id > 0 ? 'readonly="readonly"':'' %>>
+                              </div>
+                            </div>
+                            <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="start_date">EXPECTED START DATE</label>
+                                  <input class="form-control " id="start_date" type="date" name="start_date" value="<%= row.start_date %>">
+                                </div>
+                            </div>   
+                            <!-- FOR SOME GROUPS -->                        
+                            <div class="cell-sm-3 offset-top-17 offset-sm-top-0 group1">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="entitlement">ENTITLEMENT</label>
+                                  <input class="form-control group1n entitlement" id="entitlement" readonly="readonly" type="text" name="entitlement" value="<%= row.entitlement %>">
+                                </div>
+                            </div> 
+                            <div class="cell-sm-3 offset-top-17 offset-sm-top-0 group1">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="approved_days">LEAVE AMOUNT</label>
+                                  <input class="form-control group1n approved_days" id="approved_days" type="text" name="approved_days" value="<%= row.approved_days %>">
+                                </div>
+                            </div>
+                            
+                            <!-- FOR OTHER GROUPS -->                        
+                            <div class="cell-sm-3 offset-top-17 offset-sm-top-0 group2">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="entitlement">LEAVE PERMIT CERT.</label>
+                                <input class="form-control group2n entitlement" id="entitlement" type="hidden" name="entitlement" value="<%= row.entitlement %>">
+                                <input class="form-control group2n" id="leave_cert"type="file" name="leave_cert">
+                              </div>
+                          </div> 
+                          <div class="cell-sm-3 offset-top-17 offset-sm-top-0 group2">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="approved_days">CERTIFIED LEAVE AMOUNT</label>
+                                <input class="form-control group2n approved_days" id="approved_days" type="text" name="approved_days" value="<%= row.approved_days %>">
+                              </div>
+                          </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Line 2 -->
+                      <div class="range offset-top-17">                          
+                          <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                            <div class="range">
+                              <div class="cell-sm-6">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="emergency_note">EMERGENCY CONTACT PERSON ( NAME & ADDRESS )</label>
+                                    <input class="form-control" id="emergency_note" type="text" name="emergency_note" value="<%= row.emergency_note %>">
+                                  </div>
+                              </div>
+                              
+                              <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="emergency_contact">EMERGENCY CONTACT</label>
+                                  <input class="form-control" id="emergency_contact" type="text" name="emergency_contact" value="<%= row.emergency_contact%>" maxlength="10">
+                                </div>
+                              </div>
+                              <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="relieved_by">RELIEVED BY ( STAFF NO )</label>
+                                    <input class="form-control" id="relieved_by" type="text" name="relieved_by" value="<%= row.relieved_by %>">
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <!-- Line 4 -->
+                        <div class="offset-top-17">
+                            <div class="form-group">
+                              <label class="form-label form-label-outside rd-input-label" for="apply_note">APPLICATION NOTE / LETTER ( OPTIONAL FOR ANNUAL LEAVE )</label>
+                              <textarea class="form-control" id="apply_note" name="apply_note" style="height: 100px;"><%= row.apply_note %></textarea>
+                            </div>
+                        </div>    
+                      
+                       
+                        <div class="offset-top-25">
+                             <button class="btn btn-primary btn-2x save" id="save" type="submit">SAVE</button>
+                             <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>
+                             <input name="staff" type="hidden" value="<%= row.staff_no %>" />
+                             <input name="id" type="hidden" value="<%= row.id || 0 %>" />
+                             <input name="staff_group" id="staff_group" type="hidden" value="<%= row.staff_group %>" />
+                        </div>
+                       <hr/>
+
+                       </form>
+
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

@@ -1,0 +1,104 @@
+      
+         <!-- Managers Dashboard -->
+        <div class="row hidden">
+                <div class="col-md-2">
+                    <ul class="nav nav-pills nav-stacked" style="">
+                            <li class="<%- data[1] == 'st_main_member' ? 'active':''%>" ><a href="/hrm/st/head/member">STAFF MEMBERS</a></li>
+                            <li class="<%- data[1] == 'st_main_leave' ? 'active':''%>"><a href="/hrm/st/head/leave">STAFF LEAVE</a></li>
+                          <!--  <li class="<%- data[1] == 'st_main_trans' ? 'active':''%>"><a href="#">STAFF TRANSFER</a></li> 
+                            <li class="<%- data[1] == 'st_main_appraise' ? 'active':''%>"><a href="#">STAFF APPRAISALS</a></li>  -->                
+                    </ul>
+                      
+                </div>
+                <div class="col-md-10">
+                      <div class="jumbotron">
+                            <h2 class="text-info"><i class="fa fa-user"></i> UNIT HEAD DASHBOARD</h2>
+                            <p>This is the control panel for managing staff under <b>Directorate of ICT Services</b> Unit.<br>
+                              <small><em class="text-danger">For Accuracy of HR Staff Unit data, Heads of the various units are entrusted to ensure that staff are properly placed in the correct unit or sub-unit as assigned by Directorate,School,College or Department's Head.</em></small>
+                            </p>
+                      </div>
+                </div>
+        </div>
+        
+        <div class="row">
+            <!-- STAFF OVERVIEW PAGE -->
+           <div class="col-md-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading" style="">
+                        <h3 class="panel-title"><i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp; <%- data[0].toUpperCase();%></h3>
+                    </div>
+                    <div class="panel-body">
+                               <!-- Page Content -->
+                               <%- include('../partials/'+data[1]) %>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STAFF NOTIFICATIONS
+            <div class="col-lg-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-envelope"></i> System Notifications</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div id="shieldui-grid1"></div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    
+
+
+
+
+
+    <!--Modal Form -->
+    <div class="modal fade" id="approveleave" tabindex="-2" role="dialog" aria-labelledby="approveleave" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-info" id="approveleavehead">LEAVE APPROVAL FORM</h5>
+              <button type="button" class="close hidden" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body bg-danger">
+                  <form name="formstaff" method="post" action="/hrm/posthapprove" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="form-label form-label-outside rd-input-label" for="start_date">EXPECTED START DATE</label>
+                            <input class="form-control " id="start_date" type="text" name="start_date" value="" />
+                        </div>
+                        <div class="form-group group1">
+                            <label class="form-label form-label-outside rd-input-label" for="approved_days" id="labelamnt">LEAVE AMOUNT</label>
+                            <input class="form-control form-control-has-validation form-control-last-child group1n" id="approved_days" type="number" name="approved_days" value="">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label form-label-outside" for="relieved_by">RELIEVED BY ( STAFF NO )</label>
+                            <select class="form-control" id="relieved_by" name="relieved_by"></select>                                
+                        </div>
+                        <!--
+                        <div class="form-group">
+                            <label class="form-label form-label-outside rd-input-label" for="relieved_by">RELIEVED BY ( STAFF NO )</label>
+                            <input class="form-control form-control-has-validation form-control-last-child" id="relieved_by" type="text" name="relieved_by" value="">
+                        </div>
+                        -->
+
+                       <input id="staff_no" type="hidden" name="staff_no" value="">
+                      <!--<input name="staff" type="hidden" value="" />--> 
+                       <input id="urlto" name="urlto" type="hidden" value="ad" />
+                       <input id="type" name="type" type="hidden" value="" />
+                       <input id="id" name="id" type="hidden" value="" />
+                       <input id="staff_group" name="staff_group" type="hidden" value="<%- user.staff_group %>" />
+                       <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                            <button type="submit" class="btn btn-primary" id="save">ENDORSE</button>
+                       </div>
+
+                   </form>
+            </div>
+
+            
+          </div>
+        </div>
+    </div>
+   

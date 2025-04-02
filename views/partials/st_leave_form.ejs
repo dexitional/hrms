@@ -1,0 +1,134 @@
+     <% let types = data[3];let row = data[4]; %>   
+     <style type="text/css">
+            input,textarea,select,option {
+               background-color: rgba(250, 191, 191,0.3) !important;
+               padding: 15px 10px !important;
+            }
+
+            label{
+                font-family:Arial,Verdana, Geneva, Tahoma, sans-serif;
+                font-size: 16px;
+                /*font-style:italic;*/
+                font-weight:600;
+                margin:10px auto 5px;
+            }
+     </style>
+     <script src="/public/js/core.min.js"></script>
+     
+     <main class="page-content">     
+            <section class="section-30 section-md-50">
+              <div class="container">
+                  <h1 class="page-header text-info">LEAVE APPLICATION FOR STAFF : <%- row.staff_no != null ? row.staff_no : user.staff_no %></h1>
+                  <div class="col-md-12 col-sm-12">
+                      <section class="text-left">
+                        <form name="formstaff" method="post" action="/hrm/postleave" enctype="multipart/form-data">
+                         
+                          <div class="row ">
+                            <div class="col-sm-12">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside" for="type">LEAVE TYPE</label>
+                                <select class="form-control" id="type" name="type">
+                                    <option>Choose Category</option>
+                                    <% types.map(type =>{ %>
+                                    <option value="<%- type.id %>" <%- row.type_id == type.id ? 'selected="selected"':'' %>><%- type.desc %></option>
+                                    <% }) %>
+                                </select>                                
+                              </div>
+                            </div>
+                          </div><hr>
+    
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <div class="row" style="">                           
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="start_date">EXPECTED START DATE</label>
+                                      <input class="form-control " id="start_date" type="text" name="start_date" value="<%- row.start_date %>" data-constraints="@Required"><span class="form-validation"></span>
+                                    </div>
+                                </div>   
+                                <!-- FOR SOME GROUPS -->                        
+                                <div class="col-sm-3 group1">
+                                    <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="entitlement">ENTITLEMENT</label>
+                                      <input class="form-control form-control-has-validation form-control-last-child group1n" id="entitlement" readonly="readonly" type="text" name="entitlement" value="<%- row.entitlement %>" data-constraints="@Required"><span class="form-validation"></span>
+                                    </div>
+                                </div> 
+                                <div class="col-sm-3 group1">
+                                    <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="approved_days">LEAVE AMOUNT</label>
+                                      <input class="form-control form-control-has-validation form-control-last-child group1n" id="approved_days" type="text" name="approved_days" value="<%- row.approved_days %>" data-constraints="@Required"><span class="form-validation"></span>
+                                    </div>
+                                </div>
+                                
+                                <!-- FOR OTHER GROUPS -->                        
+                                <div class="col-sm-3 group2">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="entitlement">LEAVE PERMIT CERT.</label>
+                                    <input class="form-control form-control-has-validation form-control-last-child  group2n" id="entitlement" type="hidden" name="entitlement" value="" data-constraints="@Required"><span class="form-validation"></span>
+                                    <input class="form-control form-control-has-validation group2n" id="leave_cert"type="file" name="leave_cert">
+                                  </div>
+                                </div> 
+                                <div class="col-sm-3 group2">
+                                    <div class="form-group">
+                                        <label class="form-label form-label-outside rd-input-label" for="approved_days">CERTIFIED LEAVE AMOUNT</label>
+                                        <input class="form-control form-control-has-validation form-control-last-child group2n" id="approved_days" type="text" name="approved_days" value="<%- row.approved_days %>" data-constraints="@Required"><span class="form-validation"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 ">
+                                    <div class="form-group">
+                                        <label class="form-label form-label-outside rd-input-label" for="relieved_by">RELIEVED BY ( STAFF NO )</label>
+                                        <input class="form-control form-control-has-validation form-control-last-child" id="relieved_by" type="text" name="relieved_by" value="<%- row.relieved_by %>" data-constraints="@Required"><span class="form-validation"></span>
+                                    </div>
+                                </div>
+    
+                              </div>
+                            </div>
+                          </div><hr>
+    
+                          <!-- Line 2 -->
+                          <div class="row">                          
+                            
+                               
+                                  <div class="col-sm-8">
+                                      <div class="form-group">
+                                        <label class="form-label form-label-outside rd-input-label" for="emergency_note">EMERGENCY CONTACT PERSON ( NAME & ADDRESS )</label>
+                                        <input class="form-control form-control-has-validation form-control-last-child" id="emergency_note" type="text" name="emergency_note" value="<%- row.emergency_note %>" data-constraints="@Required"><span class="form-validation"></span>
+                                      </div>
+                                  </div>
+                                  
+                                  <div class="col-sm-4 ">
+                                    <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="emergency_contact">EMERGENCY CONTACT</label>
+                                      <input class="form-control form-control-has-validation form-control-last-child" id="emergency_contact" type="text" name="emergency_contact" value="<%- row.emergency_contact %>" data-constraints="@Required"><span class="form-validation"></span>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-12">
+                                        <div class="form-group">
+                                          <label class="form-label form-label-outside rd-input-label" for="apply_note">APPLICATION NOTE / LETTER ( OPTIONAL FOR ANNUAL LEAVE )</label>
+                                          <textarea class="form-control form-control-has-validation form-control-last-child" id="apply_note" name="apply_note" data-constraints="@Required" style="height: 100px;"><%- row.apply_note %></textarea><span class="form-validation"></span>
+                                        </div>
+                                  </div>  
+                               
+                            </div><hr>
+    
+                           
+                            <div class="row">
+                                 <button class="btn btn-primary btn-2x btn-full save" id="save" type="submit">SAVE</button>
+                                 <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>
+                                 <input id="staff_no" type="hidden" name="staff_no" value="<%- row.staff_no != null ? row.staff_no : user.staff_no %>">
+                                <!--<input name="staff" type="hidden" value="" />--> 
+                                 <input name="urlto" type="hidden" value="<%- data[5] %>" />
+                                 <input name="id" type="hidden" value="<%- row.id || 0 %>" />
+                                 <input name="staff_group" id="staff_group" type="hidden" value="<%- user.staff_group %>" />
+                            </div>
+                           <hr/>
+    
+                           </form>
+    
+                        </section>
+                  </div>
+              </div>
+            </section>
+            
+          </main>
+          

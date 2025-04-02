@@ -1,0 +1,89 @@
+      
+         <!-- Managers Dashboard -->
+         <div class="row">
+              <div class="col-md-12 col-sm-12">
+                    <div class="jumbotron">
+                        <h2 class="text-info">
+                          <i class="fa fa-user"></i> STAFF TRANSFERS
+                          <% if(data[1] == 'st_transfer_request' && data[2].length == 0){ %>
+                              <a class="btn-sm btn btn-danger pull-right" data-toggle="modal" data-target="#addtransfer">APPLY FOR TRANSFER</a>
+                          <% } %>
+                        </h2>
+                       <% if(data[1] == 'st_transfer_request' && data[2].length > 0){ %>
+                          <hr><p> Your current request to be transferred from <u><b><%= user.long_name%></b></u> is <b><%= data[2][0]['transfer_status'] %></b> at DHR. Till further notices, you are still attached to your current unit and any other duties assigned.</p>
+                       <% }else{ %>
+                          <p> Your current unit is <u><b><%= user.long_name%></b></u>.
+                       <% } %>
+                       
+                       
+                    </div>
+              </div>
+         </div>
+         
+        
+        <div class="row">
+            <!-- STAFF OVERVIEW PAGE -->
+           <div class="col-lg-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-user-circle"></i> <%- data[0].toUpperCase();%>
+                           
+                            <% 
+                                var mdata = data[1] == 'st_transfer_request' ? data[2].filter(row => row.transfer_status == 'PENDING') : null;
+                                if(data[1] == 'st_transfer_request' && data[2].length == 0){ 
+                              
+                              %>
+                              <a class="btn-sm btn btn-primary pull-right" style="margin:0 5px" data-toggle="modal" data-target="#addtransfer">APPLY FOR <span class="hidden-xs">TRANSFER</span></a>
+                            <% } %>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                          <!-- Page Content -->
+                          <%- include('../partials/'+data[1]); %>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+  
+
+    <!--Modal Form -->
+          <div class="modal fade" id="addtransfer" tabindex="-1" role="dialog" aria-labelledby="addtransfer" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-info" id="addtransfer">TRANSFER REQUEST FORM</h5>
+                  <button type="button" class="close hidden" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body bg-danger">
+                 
+                  <form name="formtransfereq" method="post" action="/hrm/postransfereq" enctype="application/x-www-form-urlencoded">
+                       <div class="main_cover">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="start_date">EXPECTED START DATE *</label>
+                                <input class="form-control " id="start_date" type="text" name="start_date" value="" placeholder="YYYY-MM-DD">
+                              </div>
+                              <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="to_unit">PREFFERED UNIT FOR TRANSFER <small><em>( NB: Unit may change if transfer is granted! )</em></small></label>
+                                  <select name="to_unit" id="to_unit" class="form-control">
+                                    <option value="">-- SELECT UNIT/SECTION --</option>
+                                  </select>
+                              </div>
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="reason">REASON FOR TRANSFER <small><em>( NB: State clearly the your concerns and reasons for a transfer! )</em></small></label>
+                                <textarea class="form-control" id="reason" name="reason" data-constraints="@Required" style="height: 100px;"></textarea><span class="form-validation"></span>
+                              </div>
+                              <input id="id" name="id" type="hidden" value="0" />
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                                <button type="submit" class="btn btn-info" id="transfer_save">SAVE</button>
+                              </div>
+                       </div>
+                 </form>
+                </div>
+              </div>
+            </div>
+          </div>
+         

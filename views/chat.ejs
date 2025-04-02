@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>HRMS - Live Chat!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="token" content="<%= user.staff_no %>:0">
+  <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/public/css/chat.css">
+  <!-- Font Awesome File -->
+  <link rel="stylesheet" href="/public/css/font-awesome.min.css">
+  <script src="/public/js/jquery/jquery.min.js"></script>
+  <script src="/public/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+  <div class="container app">
+    <div class="row app-one">
+
+      <div class="col-sm-4 col-xs-12 side">
+        <div class="side-one">
+          <!-- Heading -->
+          <div class="row heading">
+            <div class="col-sm-3 col-xs-3 heading-avatar">
+              <div class="heading-avatar-icon">
+                <img src="<%= user.photo %>" style="background-color:#fff;width:32px;">
+              </div>
+            </div>
+            <div class="col-sm-1 col-xs-1  hideside heading-dot  pull-right">
+              <i class="fa fa-chevron-left fa-2x  pull-right" aria-hidden="true"></i>
+            </div>
+           </div>
+          <!-- Heading End -->
+
+          <!-- SearchBox -->
+          <div class="row searchBox">
+            <div class="col-sm-12 searchBox-inner">
+              <div class="form-group has-feedback">
+                <input id="searchText" type="text" class="form-control" onkeyup="searchOnline()"  name="searchText" placeholder="Search">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Search Box End -->
+          <!-- sideBar Put in Online -->
+          <div class="inner"></div>
+         
+          <!-- Sidebar End -->
+        </div>
+        
+      </div>
+      <!-- New Message Sidebar End -->
+
+
+
+      <!-- Conversation Start -->
+      <div class="col-sm-8 col-xs-12 conversation">
+        <!-- Heading -->
+        <div class="row heading">
+          <div class="col-sm-2 col-md-1 col-xs-3 heading-avatar main-btn">
+            <div class="heading-avatar-icon">
+              <img src="/public/images/hrms.png" style="width:32px;" class="userphoto">
+            </div>
+          </div>
+         <div class="col-sm-8 col-xs-7 heading-name">
+            <a class="heading-name-meta usertitle">HRMS</a>
+            <span class="heading-online useronline" style="display:block;color:pink;">Welcome to DHR Livechat !<!--Online <em><b>15666 is typing a message ...</b></em>--></span>
+          </div>
+          <a class="col-sm-1 col-xs-1  heading-dot pull-right btn text-center logout">
+            <i class="fa fa-power-off fa-2x  pull-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        <!-- Heading End -->
+
+
+        <!-- Message Box -->
+        <div class="row message" id="conversation">
+          <div class="row message-previous" style="display:none">
+            <div class="col-sm-12 previous">
+              <button style="position:fixed;right:25%;margin-top:50px;padding:5px 10px;border-radius:15px;color:brown;background-color:pink;">
+                    <em><strong>HR Admin is currently offline ...</strong></em>
+              </button>
+            </div>
+          </div>
+          <!-- Put Content Here -->
+        </div>
+        <!-- Message Box End -->
+
+        <!-- Reply Box -->
+       
+        <form class="row reply" id="chatForm" name="chatForm">
+              <div class="col-sm-1 col-xs-1 reply-emojis">
+                <i class="fa fa-smile-o fa-2x"></i>
+              </div>
+              <div class="col-sm-8 col-xs-8 reply-main">
+                <textarea class="form-control" rows="2" id="comment" name="comment" placeholder=" Enter Message..." autocomplete="off" ></textarea>
+                <input type="hidden" name="photo" id="photo" value="<%= user.photo %>"/>
+                <input type="hidden" name="priv" id="priv" value="0"/>
+                <input type="hidden" name="receiver" id="receiver" value=""/>
+                <input type="hidden" name="sender" id="sender" value="<%= user.staff_no %>"/>
+              </div>
+              <button class="col-sm-3 col-xs-3 reply-send" id="send" style="border:none;margin-top:3px;padding:1px 3px;border-radius:3px;background-color:paleturquoise;" type="submit">
+                  <i class="fa fa-send fa-lg" aria-hidden="true"></i> <b> SEND</b>
+              </button>
+            </form>
+            <audio id="audible" src="/public/media/chat.mp3"></audio>
+        <!-- Reply Box End -->
+      </div>
+      <!-- Conversation End -->
+    </div>
+    <!-- App One End -->
+  </div>
+
+  <!-- App End -->
+      <script type="text/javascript" src="/public/js/socket.io.js"></script>
+      <script type="text/javascript" src="/public/js/chat.js"></script>
+      <script type="text/javascript">
+            $(".main-btn").click(function() {
+               $(".side").addClass('visible-xs').removeClass('hidden-xs');
+               $(".conversation").addClass('hidden-xs').removeClass('visible-xs');
+            });
+
+            $(".hideside").click(function() {
+               $(".side").removeClass('visible-xs').addClass('hidden-xs');
+               $(".conversation").removeClass('hidden-xs').addClass('visible-xs');
+            });	
+      </script>
+</body>
+</html>

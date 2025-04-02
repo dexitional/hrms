@@ -1,0 +1,437 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold">PERSONAL INFORMATION&nbsp;&nbsp;>&nbsp;&nbsp;<em style="color:brown"><%= data.bio.fname !== undefined ? (data.bio.fname+' '+data.bio.mname+' '+data.bio.lname).toUpperCase() : ''; %> <%= data.bio.staff_no !== undefined ? '( STAFF NUMBER : '+data.bio.staff_no+' ) - ':'' %><%- (data.bio.staff_group == 'SM'? ' SENIOR MEMBER ' : (data.bio.staff_group == 'SS' ? ' SENIOR STAFF ':' JUNIOR STAFF '))%></em></b></h6>
+                      <div class="text-subline"></div><br><br>                    
+                  <form name="formstaff" method="post" action="/hrm/poststaff" enctype="multipart/form-data">
+                      <div class="range offset-top-7">                       
+                        <div class="cell-sm-9 offset-top-17 offset-sm-top-0">
+                         <div class="range">
+                            <div class="cell-sm-2">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside" for="title">Title</label>
+                                <select class="form-control" id="title" name="title" required>
+                                  <option>-- Select --</option>
+                                  <option value="Prof." <%= data.bio.title == 'Prof.' ? 'selected="selected"':'' %>>Prof.</option>
+                                  <option value="Dr." <%= data.bio.title == 'Dr.' ? 'selected="selected"':'' %>>Dr.</option>
+                                  <option value="Mr." <%= data.bio.title == 'Mr.' ? 'selected="selected"':'' %>>Mr.</option>
+                                  <option value="Mrs." <%= data.bio.title == 'Mrs.' ? 'selected="selected"':'' %>>Mrs.</option>
+                                  <option value="Ms." <%= data.bio.title == 'Mr.' ? 'selected="selected"':'' %>>Ms.</option>
+                                </select>                                
+                              </div>
+                            </div>
+                            <div class="cell-sm-3">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="fname">First Name</label>
+                                <input class="form-control form-control-has-validation form-control-last-child" id="fname" type="text" name="fname" value="<%= data.bio.fname %>" data-constraints="@Required"><span class="form-validation"></span>
+                              </div>
+                            </div>
+                            <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="mname">Middle Name(s)</label>
+                                <input class="form-control form-control-has-validation form-control-last-child" id="mname" type="text" name="mname" value="<%= data.bio.mname %>" data-constraints="@Required"><span class="form-validation"></span>
+                              </div>
+                            </div>
+                            <div class="cell-sm-4 offset-top-17 offset-sm-top-0">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="lname">Last Name</label>
+                                  <input class="form-control form-control-has-validation form-control-last-child" id="lname" type="text" name="lname" value="<%= data.bio.lname %>" data-constraints="@Required"><span class="form-validation"></span>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cell-sm-3">
+                          <div class="form-group">
+                            <label class="form-label form-label-outside" for="gender">Gender</label>
+                            <select class="form-control" id="gender" name="gender" required>
+                                <option>Choose Gender</option>
+                              <option value="M" <%= data.bio.gender == 'M' ? 'selected="selected"':'' %>>MALE</option>
+                              <option value="F" <%= data.bio.gender == 'F' ? 'selected="selected"':'' %>>FEMALE</option>
+                            </select>                                
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Line 2 -->
+                      <div class="range offset-top-17">                          
+                          <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                            <div class="range">
+                              <div class="cell-sm-3">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="dob">Date of Birth</label>
+                                    <input class="form-control form-control-has-validation form-control-last-child" id="dob" type="date" name="dob" required value="<%= data.bio.dobx %>" data-constraints="@Required"><span class="form-validation"></span>
+                                  </div>
+                              </div>
+                              <div class="cell-sm-3">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="birth_place">Place of Birth</label>
+                                  <input class="form-control form-control-has-validation form-control-last-child" id="birth_place" type="text" name="birth_place" value="<%= data.bio.birth_place %>" data-constraints="@Required"><span class="form-validation"></span>
+                                </div>
+                              </div>
+                              <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="hometown">Home Town</label>
+                                  <input class="form-control form-control-has-validation form-control-last-child" id="hometown" type="text" name="hometown" value="<%= data.bio.hometown %>" data-constraints="@Required"><span class="form-validation"></span>
+                                </div>
+                              </div>
+                              <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="district">District</label>
+                                    <input class="form-control form-control-has-validation form-control-last-child" id="district" type="text" name="district" value="<%= data.bio.district %>" data-constraints="@Required"><span class="form-validation"></span>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+                         <!-- Line 3 -->
+                      <div class="range offset-top-17">                          
+                          <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                            <div class="range">
+                              <div class="cell-sm-3">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="region">Region</label>
+                                    <input class="form-control form-control-has-validation form-control-last-child" id="region" type="text" name="region" value="<%= data.bio.region %>" data-constraints="@Required"><span class="form-validation"></span>
+                                  </div>
+                              </div>
+                              <div class="cell-sm-3">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="country">Nationality</label>
+                                  <input class="form-control form-control-has-validation form-control-last-child" id="country" type="text" name="country" value="<%= data.bio.country %>"  data-constraints="@Required"><span class="form-validation"></span>
+                                </div>
+                              </div>
+                              <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="phone">Phone</label>
+                                  <input class="form-control form-control-has-validation form-control-last-child" id="phone" type="integer" name="phone" value="<%= data.bio.phone %>" data-constraints="@Required @IsNumeric"><span class="form-validation"></span>
+                                </div>
+                              </div>
+                              <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="email">E-mail Address</label>
+                                    <input class="form-control form-control-has-validation form-control-last-child" id="email" type="email" name="email" value="<%= data.bio.email %>" data-constraints="@Required @Email"><span class="form-validation"></span>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Line 4 -->
+                        <div class="offset-top-17">
+                            <div class="form-group">
+                              <label class="form-label form-label-outside rd-input-label" for="paddress">Permanent Address</label>
+                              <textarea class="form-control form-control-has-validation form-control-last-child" id="paddress" name="paddress" data-constraints="@Required" style="height: 100px;"><%= data.bio.paddress %></textarea><span class="form-validation"></span>
+                            </div>
+                        </div>
+
+
+                        <!-- Line 4 -->
+                        <div class="offset-top-17">
+                            <div class="form-group">
+                              <label class="form-label form-label-outside rd-input-label" for="address">Current Residential Address <em><b>( Please state House no, Area and landmark )</b></em></label>
+                              <textarea class="form-control form-control-has-validation form-control-last-child" id="address" name="address" data-constraints="@Required" style="height: 100px;"><%= data.bio.address %></textarea><span class="form-validation"></span>
+                            </div>
+                        </div>
+
+                         <!-- Line 4 -->
+                         <div class="offset-top-17">
+                            <div class="form-group">
+                              <label class="form-label form-label-outside rd-input-label" for="emergency_contact">Emergency contact <em><b>( Please state Full Name, Relation, Phone number and Contact address )</b></em></label>
+                              <textarea class="form-control form-control-has-validation form-control-last-child" id="emergency_contact" name="emergency_contact" data-constraints="@Required" style="height: 100px;"><%= data.bio.emergency_contact %></textarea><span class="form-validation"></span>
+                            </div>
+                        </div>
+
+
+                             <!-- Line 7 -->
+                           <div class="range offset-top-17">                          
+                              <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                <div class="range">
+                                  <div class="cell-sm-4">
+                                      <div class="form-group">
+                                        <label class="form-label form-label-outside" for="mstatus">Marital Status</label>
+                                        <select class="form-control" name="mstatus">
+                                            <option value="">Choose Marital Status</option>
+                                            <option value="SINGLE" <%= data.bio.mstatus == 'SINGLE' ? 'selected="selected"':'' %>>SINGLE</option>
+                                            <option value="MARRIED" <%= data.bio.mstatus == 'MARRIED' ? 'selected="selected"':'' %>>MARRIED</option>
+                                        </select>                                
+                                      </div>
+                                  </div>
+                                                           
+                                </div>
+                              </div>
+                            </div>
+                          
+
+                          <br><br><h6 class="text-bold">PERSONAL DOCUMENTS</h6>
+                          <div class="text-subline"></div>
+
+
+                           <!-- Line 10 -->
+                         <div class="range offset-top-17">                          
+                            <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                              <div class="range">
+                                 
+                                <div class="cell-sm-4">
+                                    <div class="form-group">
+                                        <!-- CERTIFICATES-->                                       
+                                        <label class="form-label form-label-outside rd-input-label" >Marriage Certificate(s) <em><small>( PDF only )</small></em></label>
+                                        <%  let cert = null,marital = null,birth = null, medical = null;
+                                        data.doc.map((cert,i) =>{ 
+                                             if(cert.category == 'MARITAL'){
+                                                   marital = '<i class="fa fa-check fa-lg" style="position:relative;bottom:-45px;color:green;"></i>';
+                                             }else if(cert.category == 'BIRTH'){
+                                                   birth = '<i class="fa fa-check fa-lg" style="position:relative;bottom:-45px;color:green;"></i>';
+                                             }else if(cert.category == 'MEDICAL'){
+                                                   medical = '<i class="fa fa-check fa-lg" style="position:relative;bottom:-45px;color:green;"></i>';
+                                             }
+                                        }); 
+                                       %>
+                                        <%- marital != null ? marital : ''%>
+                                        <input name="ma_cert" id="cert" type="file"  class="form-control form-control-has-validation form-control-last-child">                                         
+                                    </div>
+                                </div>
+                                <div class="cell-sm-4">
+                                    <div class="form-group">
+                                        <!-- BIRTH-->                                       
+                                        <label class="form-label form-label-outside rd-input-label" >Birth Certificate <em><small>( PDF only )</small></em></label>
+                                        <%- birth != null ? birth : ''%>
+                                        <input name="birth_cert" id="cert" type="file"  class="form-control form-control-has-validation form-control-last-child">                                         
+                                    </div>
+                                </div> 
+                                
+                                <div class="cell-sm-4">
+                                  <div class="form-group">
+                                    <!-- BIRTH-->
+                                    <label class="form-label form-label-outside rd-input-label" >Medical Reports<em><small>( One PDF File only )</small></em></label>
+                                      <%- medical != null ? medical : ''%>
+                                      <input name="medic_cert" id="cert" type="file"  class="form-control form-control-has-validation form-control-last-child">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+
+                        <br><br><h6 class="text-bold">UNIVERSITY INFORMATION</h6>
+                        <div class="text-subline"></div>
+                        <div class="data2">                    
+                          
+                                <!-- Line 1 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">                                       
+                                        <div class="cell-sm-3">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="ssnit">SSNIT Number</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="ssnit" type="text" name="ssnit" value="<%= data.bio.ssnit %>"/>
+                                            </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="ucc_mail">University E-Mail</label>
+                                            <input class="form-control form-control-has-validation form-control-last-child" id="ucc_mail" type="text" name="ucc_mail" value="<%= data.bio.ucc_mail %>" />
+                                          </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                              <% if(data.bio.exist) { %>
+                                              <label class="form-label form-label-outside rd-input-label" for="staff_no">Staff Number</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="staff_no" type="text" name="staff_no" value="<%= data.bio.staff_no %>"/>
+                                              <input name="ex" type="hidden" value="1" />
+                                              <% }else{ 
+                                                   if(data.bio.id && data.bio.id > 0){
+                                              %>
+                                                     <label class="form-label form-label-outside rd-input-label" for="staff_no">Staff Number</label>
+                                                     <input class="form-control form-control-has-validation form-control-last-child" id="staff_no" type="text" name="staff_no" value="<%= data.bio.staff_no %>"/>
+                                                <% } else{ %>
+                                                     <label class="form-label form-label-outside rd-input-label" for="staff_no">Provisional Staff Number</label>
+                                                     <span style="background:steelblue;color:white;padding:10px 15px;text-align: center;font-size:22px;"><%- data.sno || '' %></span>
+                                                <% } %>
+                                              <% } %>
+                                            </div>
+                                        </div>
+
+                                        <% if(data.bio.id == '' || user.adminrole == '07' || user.adminrole == '08'){ %>
+                                        <div class="cell-sm-3">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="staff_status">Staff Current Status</label>
+                                            <select name="staff_status" class="form-control">
+                                              <option value="TEMPORAL" <%- 'TEMPORAL' == data.bio.staff_status ? 'selected="selected"': '' %>>TEMPORAL</option>
+                                              <option value="PERMANENT" <%- 'PERMANENT' == data.bio.staff_status ? 'selected="selected"': '' %>>PERMANENT</option>
+                                              <option value="CASUAL" <%- 'CASUAL' == data.bio.staff_status ? 'selected="selected"': '' %>>CASUAL</option>
+                                              <option value="PART-TIME" <%- 'PART-TIME' == data.bio.staff_status ? 'selected="selected"': '' %>>PART-TIME</option>
+                                              <option value="CONTRACT" <%- 'CONTRACT' == data.bio.staff_status ? 'selected="selected"': '' %>>CONTRACT</option>
+                                              <option value="RETIRED" <%- 'RETIRED' == data.bio.staff_status ? 'selected="selected"': '' %>>RETIRED</option>
+                                              <option value="DEAD" <%- 'DEAD' == data.bio.staff_status ? 'selected="selected"': '' %>>DEAD</option>
+                                            </select>
+                                          </div>
+                                        </div>
+                                        <% } %>
+
+                                      </div>
+                                    </div>
+                                  </div>
+
+
+                               
+                        <% if(data.bio.id == '' || user.adminrole == '07' || user.adminrole == '08'){ %>
+
+                        <br><br><h6 class="text-bold">APPOINTMENT INFORMATION</h6>
+                          <div class="text-subline"></div>
+                          <div class="data2">                    
+                            
+                                  <!-- Line 1 -->
+                                  <div class="range offset-top-17">                          
+                                      <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                        <div class="range">                                       
+                                          <div class="cell-sm-3">
+                                              <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="appoint_date">Appointment Date</label>
+                                                <input class="form-control form-control-has-validation form-control-last-child" id="appoint_date" type="date" name="appoint_date" value="<%= data.bio.appoint_date %>"/>
+                                              </div>
+                                          </div>
+                                          <div class="cell-sm-3">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="assume_date">Assumption Date</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="assume_date" type="date" name="assume_date" value="<%= data.bio.assume_date %>"/>
+                                            </div>
+                                          </div>
+                                        <!-- <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="confirm_date">Confirmation Date</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="confirm_date" type="date" name="confirm_date" value="<%= data.bio.confirm_date %>" />
+                                            </div>
+                                          </div>
+                                        -->
+                                          <div class="cell-sm-3">
+                                              <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="probation">Probation Period (Years)</label>
+                                                <input class="form-control form-control-has-validation form-control-last-child" id="probation" type="text" name="probation" value="<%= data.bio.probation %>"/>
+                                              </div>
+                                          </div>
+                                          <div class="cell-sm-3">
+                                              <div class="form-group">
+                                                  <!-- CV-->                                       
+                                                  <label class="form-label form-label-outside rd-input-label">Curriculum Vitae (CV) <em><small>( PDF only )</small></em></label>
+                                                  <%  let cv = null
+                                                      data.doc.map((cert,i) =>{ 
+                                                            if(cert.category == 'CV'){
+                                                                  cv = '<i class="fa fa-check fa-lg" style="position:relative;bottom:-45px;color:green;"></i>';
+                                                            }
+                                                      }); 
+                                                  %>
+                                                  <%- cv != null ? cv : ''%>
+                                                  <input name="cv_cert" id="cert" type="file"  class="form-control form-control-has-validation form-control-last-child">                                  
+                                              </div>
+                                          </div>
+
+
+
+                                              <!-- Line 2 -->
+                                                        <div class="range offset-top-17">                          
+                                                            <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                                              <div class="range">                                        
+                                                                <div class="cell-sm-3">
+                                                                  <div class="form-group">
+                                                                    <label class="form-label form-label-outside rd-input-label" for="job_id">Job Title / Designation</label>
+                                                                    <select name="job_id" class="form-control">
+                                                                        <option value="">Select Job Title</option>
+                                                                        <%  data.jobs.map((job,i) =>{ %>
+                                                                        <option value="<%= job.id%>" <%- job.id == data.bio.job_id ? 'selected="selected"': '' %>>
+                                                                          <%= job.title%>
+                                                                        </option>
+                                                                        <%   }); %>
+                                                                    </select>
+                                                                  </div>
+                                                                </div>
+                                                                <div class="cell-sm-3">
+                                                                  <div class="form-group">
+                                                                    <label class="form-label form-label-outside rd-input-label" for="unit_id">Section / Unit</label>
+                                                                    <select name="unit_id" class="form-control">
+                                                                      <option value="">Select Section/Unit</option>
+                                                                      <%  data.units.map((unit,i) =>{ %>
+                                                                        <option value="<%= unit.id%>" <%- unit.id == data.bio.unit_id ? 'selected="selected"': '' %>>
+                                                                          <%= unit.long_name%>
+                                                                        </option>
+                                                                        <%   }); %>
+                                                                    </select>
+                                                                  </div>
+                                                                </div>
+                                                                <div class="cell-sm-3">
+                                                                  <div class="form-group">
+                                                                    <label class="form-label form-label-outside rd-input-label" for="scale_id">Grade / Scale</label>
+                                                                    <select name="scale_id" class="form-control">
+                                                                      <option value="">Select Grade/Scale</option>
+                                                                      <%  data.scales.map((scale,i) =>{ %>
+                                                                        <option value="<%= scale.id%>" <%- scale.id == data.bio.scale_id ? 'selected="selected"': '' %>>
+                                                                          <%= scale.grade +' , STEP '+scale.notch%>
+                                                                        </option>
+                                                                        <%   }); %>
+                                                                    </select>
+                                                                  </div>
+                                                                </div>
+                                                                <div class="cell-sm-3">
+                                                                  <div class="form-group">
+                                                                    <label class="form-label form-label-outside rd-input-label" for="staff_group">Staff Category</label>
+                                                                    <select name="staff_group" class="form-control" readonly="readonly">
+                                                                      <option value="JS" <%- 'JS' == data.bio.staff_group ? 'selected="selected"': '' %>>JUNIOR STAFF</option>
+                                                                      <option value="SS" <%- 'SS' == data.bio.staff_group ? 'selected="selected"': '' %>>SENIOR STAFF</option>
+                                                                      <option value="SM" <%- 'SM' == data.bio.staff_group ? 'selected="selected"': '' %>>SENIOR MEMBER</option>
+                                                                    </select>
+                                                                  </div>
+                                                                </div>
+                                                              
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                </div>
+                                          
+
+                                        </div>
+                                      </div>
+                          </div>
+                        <% } %>
+                        </div>
+
+
+                      
+
+                        
+
+                        <br><div class="text-subline"></div><br>
+
+                        <div class="offset-top-25">
+                             <button class="btn btn-primary btn-2x" type="submit" onclick="return confirm('Do you want to Submit?');">SAVE</button>
+                             <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>
+                             <input name="staff" type="hidden" value="<%= data.bio.staff_no || 0 %>" />
+                             <input name="id" type="hidden" value="<%= data.bio.id || 0 %>" />
+                             <input name="promo_id" type="hidden" value="<%= data.bio.pid || 0 %>" />
+
+                             <% if(user.adminrole != '07' && user.adminrole != '08' && data.bio.id != ''){ %>
+                                <input name="staff_status" type="hidden" value="<%= data.bio.staff_status %>" />
+                                <input name="appoint_date" type="hidden" value="<%= data.bio.appoint_date %>" />
+                                <input name="assume_date" type="hidden" value="<%= data.bio.assume_date %>" />
+                                <input name="staff_group" type="hidden" value="<%= data.bio.staff_group %>" />
+                                <input name="job_id" type="hidden" value="<%= data.bio.job_id %>" />
+                                <input name="unit_id" type="hidden" value="<%= data.bio.unit_id %>" />
+                                <input name="scale_id" type="hidden" value="<%= data.bio.scale_id %>" />
+                                <input name="probation" type="hidden" value="<%= data.bio.probation %>" />
+                             <% } %>
+                        </div>
+                       <hr/>
+
+                       </form>
+
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

@@ -1,0 +1,119 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                  
+                        <form name="" action="/hrm/postpaper" method="post" enctype="multipart/form-data">
+                        <br><br><h6 class="text-bold"><%= title %> FORM </h6>
+                        <div class="text-subline"></div>
+                            <div class="data2">                    
+                    
+                          <!-- Line 1 -->
+                          <div class="range offset-top-17">                          
+                              <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                <div class="range"> 
+                                  <div class="cell-sm-6">
+                                        <div class="form-group">
+                                          <label class="form-label form-label-outside rd-input-label" for="action_type">Paper Type</label>
+                                          <select name="type" class="form-control"> 
+                                            <option value="JOURNAL" <%- 'JOURNAL' == row.type ? 'selected="selected"': '' %>>JOURNAL</option>
+                                            <option value="MEMO" <%- 'MEMO' == row.type ? 'selected="selected"': '' %>>MEMO</option>
+                                          </select>
+                                        </div>
+                                  </div>                                      
+                                  <div class="cell-sm-6">
+                                      <div class="form-group">
+                                        <label class="form-label form-label-outside rd-input-label" for="staff_no">Publisher <em>(Staff No)</em></label>
+                                        <input class="form-control form-control-has-validation form-control-last-child" id="staff_no" type="text" name="staff_no" value="<%= row.staff_no %>"/>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="range"> 
+                                  <div class="cell-sm-6">
+                                    <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="issue_date">Paper Title</label>
+                                      <textarea class="form-control form-control-last-child" id="title" name="title"><%= row.title %></textarea>
+                                    </div>
+                                  </div>
+                                  <div class="cell-sm-6">
+                                    <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="reason">Paper Abstract / Description</label>
+                                      <textarea class="form-control form-control-last-child" id="description" name="description"><%= row.description %></textarea>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="range"> 
+                                    <div class="cell-sm-4">
+                                        <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="staff_no">Journal <em>(Publishing firm)</em></label>
+                                            <input class="form-control form-control-has-validation form-control-last-child" id="journal" type="text" name="journal" value="<%= row.journal %>"/>
+                                          </div>
+                                    </div>                                      
+                                    <div class="cell-sm-4">
+                                        <div class="form-group">
+                                          <label class="form-label form-label-outside rd-input-label" for="link">Resource URL <em>(Location)</em></label>
+                                          <input class="form-control form-control-has-validation form-control-last-child" id="link" type="url" name="link" value="<%= row.link %>"/>
+                                        </div>
+                                    </div>
+                                    <div class="cell-sm-3">
+                                        <div class="form-group">
+                                          <label class="form-label form-label-outside rd-input-label" for="attachment">Attachement <em>( PDF Doc only!)</em></label>
+                                          <input class="form-control form-control-has-validation form-control-last-child" id="attachment" type="file" name="attachment" value=""></input>
+                                        </div>
+                                    </div>
+                                    <div class="cell-sm-1">
+                                        <% if(row.attachment){ %>
+                                        <a href="<%= row.path %>" target="_blank">
+                                          <i class="fa fa-file-pdf-o fa-3x text-danger"></i><br>
+                                          <b style="color:brown">&nbsp;DOC</b>
+                                        </a>
+                                        <% }%>
+                                    </div>
+                                  </div>
+                              
+                              </div>
+                            </div>
+                            <div class="range"> 
+                                <div class="cell-sm-6">
+                                      <div class="form-group">
+                                        <label class="form-label form-label-outside rd-input-label" for="valid">AUTHENTICITY</label>
+                                        <select name="valid" class="form-control"> 
+                                          <option value="1" <%- '1' == row.valid ? 'selected="selected"': '' %>>VALID (ACCEPTED BY UCC)</option>
+                                          <option value="1" <%- '1' == row.valid ? 'selected="selected"': '' %>>INVALID</option>
+                                        </select>
+                                      </div>
+                                </div>                                      
+                                <div class="cell-sm-6">
+                                    <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="used">USAGE</label>
+                                      <select name="used" class="form-control"> 
+                                        <option value="1" <%- '1' == row.used ? 'selected="selected"': '' %>>USED ( WITHIN UCC )</option>
+                                        <option value="0" <%- '0' == row.used ? 'selected="selected"': '' %>>NONE</option>
+                                      </select>
+                                    </div>
+                              </div>       
+                            </div>
+                           
+                           
+                            <br><div class="text-subline"></div><br>
+                        
+                            <div class="offset-top-25">
+                                <button class="btn btn-primary btn-2x" type="submit" onclick="return confirm('Do you want to Submit?');">SAVE</button>
+                                <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>
+                                <input name="id" type="hidden" value="<%= row.id || 0 %>" />
+                            </div>
+                       <hr/>
+
+                       </form>
+
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

@@ -1,0 +1,74 @@
+{
+  "_args": [
+    [
+      "node-webodf@0.5.11",
+      "/var/www/html/hrms.ucc.edu.gh"
+    ]
+  ],
+  "_from": "node-webodf@0.5.11",
+  "_id": "node-webodf@0.5.11",
+  "_inBundle": false,
+  "_integrity": "sha512-xqTrruZp9d8aZ2RmzgACY15287LTrrT0BgUMh1e2LywoBG2wRe9+8h0e01db2QbLDnO6fSq3do1aG2K1ZXxBEA==",
+  "_location": "/node-webodf",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "node-webodf@0.5.11",
+    "name": "node-webodf",
+    "escapedName": "node-webodf",
+    "rawSpec": "0.5.11",
+    "saveSpec": null,
+    "fetchSpec": "0.5.11"
+  },
+  "_requiredBy": [
+    "/node-viewerjs"
+  ],
+  "_resolved": "https://registry.npmjs.org/node-webodf/-/node-webodf-0.5.11.tgz",
+  "_spec": "0.5.11",
+  "_where": "/var/www/html/hrms.ucc.edu.gh",
+  "author": {
+    "name": "KO GmbH",
+    "email": "http://www.kogmbh.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/vandernorth/WebODF/issues"
+  },
+  "contributors": [
+    {
+      "name": "KO GmbH"
+    },
+    {
+      "name": "Jeffrey van Norden",
+      "email": "jeffrey@grexx.net"
+    }
+  ],
+  "dependencies": {
+    "xmldom": "*"
+  },
+  "description": "WebODF - JavaScript Document Engine http://webodf.org/",
+  "homepage": "https://github.com/vandernorth/WebODF#readme",
+  "keywords": [
+    "OpenDocument",
+    "ODF",
+    "PDF",
+    "Text",
+    "Document",
+    "Slides",
+    "Presentation",
+    "ODT",
+    "OTT",
+    "FODT",
+    "ODP",
+    "OTP",
+    "FODP",
+    "Viewer"
+  ],
+  "license": "AGPL-3.0",
+  "name": "node-webodf",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vandernorth/WebODF.git"
+  },
+  "version": "0.5.11"
+}

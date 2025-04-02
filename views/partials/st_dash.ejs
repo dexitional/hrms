@@ -1,0 +1,241 @@
+
+        <div class="row hidden">
+            <div class="col-lg-12">                   
+                <div class="alert alert-danger alert-dismissable">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                    <h2><span style="padding:5px 10px;background:brown;color:white;margin-bottom:5px;display:inline-block;"><%= user.staff_no %></span> <%= (user.fname+' '+user.mname+' '+user.lname).toUpperCase() %></h2><hr>                       
+                                    <span>Current Appointment is <b><%= data.jobtitle != null ? data.jobtitle : 'none' %></b> and the assigned Unit is <b><%= data.long_name != null ? data.long_name : 'None' %></b> with a Salary Grade of <b><%= data.grade != null ? data.grade : 'None' %>, Step <%= data.notch != null ? data.notch : '0' %>.</b></span>
+                                    <span>Staff is currently <%- data.staff_status != null &&  data.staff_status == 'TEMPORAL' ? 'serving a <b>Probation</b> period after which he/she may be confirmed to be permanent staff' : (data.staff_status == null ? '' : '<b>'+data.staff_status.toUpperCase()+'</b>') %>.</span><hr>
+                                    <div class="row">
+                                        <% //if(notes.length > 0 ) { %>
+                                        <div class="col-xs-12 col-sm-4">
+                                            <a href="/hrm/st/notes/list" class="btn-mini btn btn-warning btn-block" style="background:rgb(248, 194, 45);color:black;border:4px solid rgb(245, 182, 9);"><i class="fa fa-bell"></i> &nbsp;NOTIFICATIONS&nbsp;&nbsp;&nbsp;<span class="badge"><%- notes.length > 0 ? notes.length : 0 %></span></a>
+                                        </div>
+                                        <% //} %>
+                                        <!--<a href="javascript:;" class="btn-mini btn btn-warning" style="background:rgb(248, 194, 45);color:black;border:4px solid rgb(245, 182, 9); margin:0 10px;" data-toggle="modal" data-target="#dhrnotice"><i class="fa fa-bell"></i> &nbsp;DHR NOTICE BOARD</a>
+                                        <a href="javascript:;" class="btn-mini btn btn-warning" style="background:rgb(248, 194, 45);color:black;border:4px solid rgb(245, 182, 9); margin:0 10px;" data-toggle="modal" data-target="#addticket"><i class="fa fa-pencil"></i> &nbsp;DHR - ADD TICKET</a>-->
+                                        <div class="col-xs-12 col-sm-4">
+                                            <a href="javascript:;" class="btn-mini btn btn-warning btn-block" style="background:rgb(248, 194, 45);color:black;border:4px solid rgb(245, 182, 9);" data-toggle="modal" data-target="#updatestaff" id="ckupdatestaff" data-id="<%- user.staff_no %>"><i class="fa fa-edit"></i> &nbsp;UPDATE STAFF PROFILE</a>
+                                        </div>
+                                   
+                                        <% if(user.roles.includes('04')) { %>
+                                        <div class="col-xs-12 col-sm-4">
+                                           <a href="/hrm/st/head" class="btn-mini btn btn-success btn-block"><i class="fa fa-tachometer"></i> &nbsp;<small><b>GOTO UNIT HEAD MENU&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></b></small></a>
+                                        </div>
+                                        <% } %>
+                                        <% if(user.adminrole != null) { %>
+                                        <div class="col-xs-12 col-sm-4">
+                                            <a href="/hrm/gotoadmin" class="btn-mini btn btn-danger btn-block" onclick="return confirm('Goto HR ADMIN DASHBOARD?')"><i class="fa fa-tachometer"></i> &nbsp;<small><b>GOTO HR DASHBOARD&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></b></small></a>
+                                        </div>
+                                        <% } %>
+                                    </div><hr>
+                            </div>
+                            <div class="col-lg-1"></div>
+                            <div class="col-lg-2">
+                                    <div class="well">
+                                            <img class="img-responsive" style="width:120px; padding:5px;border:1px solid #ddd;" alt="Staff Photo" src="<%- user.photo != null ? user.photo : '/public/images/none.png' %>">
+                                    </div>
+                                 <!-- <a href="/hrm/st/head" class="btn-mini btn btn-success"><i class="fa fa-tachometer"></i> <small><b>UNIT HEAD MENU  <i class="fa fa-chevron-right"></i></i></b></small></a>
+                                   <% if((user.roles.split(',')).length > 1 ) { %>
+                                       <br><br><a href="/hrm/gotoadmin" class="btn-mini btn btn-warning" onclick="return confirm('Goto HR ADMIN DASHBOARD?')"><i class="fa fa-tachometer"></i> <small><b>GOTO HR DASHBOARD  <i class="fa fa-chevron-right"></i></i></b></small></a>
+                                   <% } %>-->  
+                            </div>
+                        </div>                      
+                </div>
+            </div>
+        </div>
+        <div class="row hidden">
+            <div class="col-lg-3">
+                <div class="panel panel-default ">
+                    <div class="panel-body alert-info">
+                        <div class="col-xs-2">
+                            <i class="fa fa-list-ol fa-4x"></i>
+                        </div>
+                        <div class="col-xs-10 text-right">
+                            <b class="alerts-subheading">STAFF NUMBER</b>
+                            <b class="alerts-text" style="font-size:22px;font-style:italic;color:brown"><%= user.staff_no %></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="panel panel-default ">
+                    <div class="panel-body alert-info">
+                        <div class="col-xs-2">
+                            <i class="fa fa-users fa-4x"></i>
+                        </div>
+                        <div class="col-xs-10 text-right">
+                            <b class="alerts-subheading">CATEGORY</b>
+                            <b class="alerts-text" style="font-size:14px;font-style:italic;color:brown"><%= user.staff_group == 'SS' ? 'SENIOR STAFF' : (user.staff_group == 'SM' ? 'SENIOR MEMBER' :'JUNIOR STAFF') %></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="panel panel-default ">
+                    <div class="panel-body alert-info">
+                        <div class="col-xs-2">
+                            <i class="fa fa-users fa-4x"></i>
+                        </div>
+                        <div class="col-xs-10 text-right">
+                            <b class="alerts-subheading">STATUS</b>
+                            <b class="alerts-text" style="font-size:14px;font-style:italic;color:brown"><%= user.staff_status %></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="panel panel-default ">
+                    <div class="panel-body alert-info">                            
+                        <div class="col-xs-10 text-left">
+                            <b class="alerts-subheading" style="font-size:11px;text-decoration:underline">CURRENT DESIGNATION</b><br>
+                            <b class="alerts-text" style="font-size:14px;font-style:italic;color:brown"><%= data.jobtitle != null ? data.jobtitle.toUpperCase() : '' %></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="row">
+            <!-- STAFF OVERVIEW PAGE -->
+            <div class="col-lg-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading" style="background:rgb(26, 25, 93);">
+                        <h3 class="panel-title"><i class="fa fa-user-circle"></i> Profile Overview
+                            <a href="javascript:;" target="_blank" class="btn btn-danger pull-right btn-sm" onclick="window.frames['printf'].focus();window.frames['printf'].print();"><i class="fa fa-print"></i> Print</a>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                            <iframe id="printf" name="printf" src="/hrm/staff/view/<%= user.staff_no %>" style="width:100%;height:650px;margin:-10px auto 10px;border:2px solid brown;  transform: scale(1); transform-origin: 0 0;"></iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+   
+
+
+
+      <!--Modal Form | Update Staff Bio -->
+      <div class="modal fade" id="updatestaff" tabindex="-1" role="dialog" aria-labelledby="addleave" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-info" id="updatestaff">UPDATE STAFF BIO DATA</h5>
+              <button type="button" class="close hidden" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+           
+             <!--
+              <embed src="/public/upload/doc/1526467950875_Express.js Sessions – A Detailed Tutorial.pdf" frameborder="0" width="100%" height="400px">
+              <object type="application/pdf" data="/public/upload/doc/1526467950875_Express.js Sessions – A Detailed Tutorial.pdf" width="100%" height="500" style="height: 85vh;">No Support</object>  
+              -->
+              <div class="modal-body bg-danger">
+                    <form id="formbio" method="post" action="/hrm/postbiodata"> 
+               
+                          <div class="form-group">
+                            <label class="form-label form-label-outside rd-input-label" for="phone">PRIMARY PHONE NUMBER</label>
+                            <input class="form-control form-control-has-validation form-control-last-child" id="phone" type="text" name="phone">
+                          </div>
+                          <div class="form-group">
+                            <label class="form-label form-label-outside rd-input-label" for="address">RESIDENTIAL ADDRESS</label>
+                            <textarea class="form-control" id="address" name="address" data-constraints="@Required" style="height: 100px;"></textarea>
+                          </div>
+                          <div class="form-group">
+                            <label class="form-label form-label-outside rd-input-label" for="paddress">PERMANENT ADDRESS</label>
+                            <textarea class="form-control" id="paddress" name="paddress" data-constraints="@Required" style="height: 100px;"></textarea>
+                          </div>
+                          <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="email">ALTERNATIVE E-MAIL ADDRESS</label>
+                                <input class="form-control form-control-has-validation form-control-last-child" id="email" type="email" name="email">
+                          </div>
+                          <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="birth_place">PLACE OF BIRTH</label>
+                                <input class="form-control form-control-has-validation form-control-last-child" id="birth_place" type="text" name="birth_place" value="">
+                          </div>
+                          <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="hometown">HOMETOWN</label>
+                                <input class="form-control form-control-has-validation form-control-last-child" id="hometown" type="text" name="hometown" value="">
+                          </div>
+                     
+                          <div class="form-group">
+                            <label class="form-label form-label-outside rd-input-label" for="district">DISTRICT</label>
+                            <input class="form-control form-control-has-validation form-control-last-child" id="district" type="text" name="district" value="">
+                          </div>
+                          <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="region">REGION</label>
+                                <input class="form-control form-control-has-validation form-control-last-child" id="region" type="text" name="region" value="">
+                          </div>
+                          <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="country">NATIONALITY</label>
+                                <input class="form-control form-control-has-validation form-control-last-child" id="country" type="text" name="country" value="">
+                          </div>
+                          <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="religion">RELIGION</label>
+                                <input class="form-control form-control-has-validation form-control-last-child" id="religion" type="text" name="religion" value="">
+                          </div>
+                          <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="ssnit">SSNIT NUMBER</label>
+                                <input class="form-control form-control-has-validation form-control-last-child" id="ssnit" type="text" name="ssnit" value="">
+                          </div>
+                          <input id="staffno" name="staff_no" type="hidden" value="" /> 
+
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                            <button type="submit" class="btn btn-info" onclick="return confirm('Submit Data?')" id="savebios">SAVE</button>
+                          </div>
+               </form>         
+              </div> 
+         
+       
+         </div>
+        </div>
+       </div>
+      
+
+
+        <!--Modal Form | Ticketting
+        <div class="modal fade" id="addticket" tabindex="-2" role="dialog" aria-labelledby="addticket" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-info" id="addticket">TICKETTING SYSTEM</h5>
+                            <button type="button" class="close hidden" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                   
+                       
+                        <embed src="/public/upload/doc/1526467950875_Express.js Sessions – A Detailed Tutorial.pdf" frameborder="0" width="100%" height="400px">
+                        <object type="application/pdf" data="/public/upload/doc/1526467950875_Express.js Sessions – A Detailed Tutorial.pdf" width="100%" height="500" style="height: 85vh;">No Support</object>  
+                       
+                        <div class="modal-body bg-danger">
+                                <form id="formticket" method="post" action="/hrm/posticket"> 
+                        
+                                    <div class="form-group">
+                                        <label class="form-label form-label-outside rd-input-label" for="title">Ticket Title</label>
+                                        <input class="form-control form-control-has-validation form-control-last-child" id="title" type="text" name="title">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label form-label-outside rd-input-label" for="desc">Ticket Description</label>
+                                        <textarea class="form-control" id="desc" name="desc" data-constraints="@Required" style="height: 100px;"></textarea>
+                                    </div>
+                                    
+                                    <input id="staffno" name="staff_no" type="hidden" value="" /> 
+            
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                                        <button type="submit" class="btn btn-info" onclick="return confirm('Submit Data?')" id="savebios">SAVE</button>
+                                    </div>
+                                </form>         
+                        </div> 
+                 
+                    </div> 
+                </div>
+        </div>
+ -->
+

@@ -1,0 +1,316 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold">APPLICATION FOR PROMOTION &nbsp;&nbsp;>&nbsp;&nbsp;<em style="color:brown"></em></b></h6>
+                      <div class="text-subline"></div><br><br>                    
+                  <form name="formstaff" method="post" action="/hrm/postpromo" enctype="multipart/form-data">
+                      <div class="range offset-top-7">                       
+                        <div class="cell-sm-9 offset-top-17 offset-sm-top-0">
+                          <div class="range">
+                            <div class="cell-sm-4">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="staff_no">Staff Number of Applicant</label>
+                                <input class="form-control form-control-has-validation form-control-last-child" id="staff_no" type="text" name="staff_no" value="<%= row.staff_no %>" data-constraints="@Required"><span class="form-validation"></span>
+                              </div>
+                            </div>
+                            <div class="cell-sm-4">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="new_job_id">Application for Promotion To</label>
+                                  <select name="new_job_id" class="form-control">
+                                      <option value="">Select Job Title</option>
+                                       <%  data.jobs.map((job,i) =>{ %>
+                                      <option value="<%= job.id%>" <%- job.id == row.new_job_id ? 'selected="selected"': '' %>>
+                                        <%= job.title%>
+                                      </option>
+                                      <%   }); %>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="cell-sm-4">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="new_unit_id">Department/Section/Unit</label>
+                                  <select name="unit_id" class="form-control">
+                                    <option value="">Select Section/Unit</option>
+                                    <%  data.units.map((unit,i) =>{ %>
+                                      <option value="<%= unit.id%>" <%- unit.id == row.new_unit_id ? 'selected="selected"': '' %>>
+                                        <%= unit.long_name%>
+                                      </option>
+                                      <%   }); %>
+                                  </select>
+                                </div>
+                              </div>
+                          </div>
+                        </div>  
+                      </div>
+
+                      <!-- Areas of Specialization -->
+                      <div class="offset-top-17">
+                          <div class="form-group">
+                            <label class="form-label form-label-outside rd-input-label" for="speacial_areas">Areas of Specialization</label>
+                            <textarea class="form-control form-control-has-validation form-control-last-child" id="speacial_areas" name="speacial_areas" data-constraints="@Required" style="height: 100px;"><%= row.special_areas %></textarea><span class="form-validation"></span>
+                          </div>
+                      </div>
+
+                      <!-- Details of Teaching Experience -->
+                      <div class="offset-top-17">
+                          <div class="form-group">
+                            <label class="form-label form-label-outside rd-input-label" for="experience">Details of Teaching Experience in a University of equivalent level</label><!-- SM-T-->
+                            <label class="form-label form-label-outside rd-input-label" for="experience">Previous Posts and Duties held with Dates, before joining the University</label><!-- SM-N-->
+                            <textarea class="form-control form-control-has-validation form-control-last-child" id="experience" name="experience" data-constraints="@Required" style="height: 100px;"><%= row.experience %></textarea><span class="form-validation"></span>
+                          </div>
+                      </div>
+
+                       <!-- Conferences,Seminars,Symposia,Workshops, -->
+                       <div class="offset-top-17">
+                          <div class="form-group">
+                            <label class="form-label form-label-outside rd-input-label" for="papers">Conferences,Seminars,Symposia,Workshops, etc., attended by Applicant (give details of Papers presented)</label><!-- SM-T-->
+                            <label class="form-label form-label-outside rd-input-label" for="papers">Particulars of Conferences; Special Seminars, and Workshops in which you have participated. (Please list Papers you read (if any)</label><!-- SM-N-->
+                            <textarea class="form-control form-control-has-validation form-control-last-child" id="papers" name="papers" data-constraints="@Required" style="height: 100px;"><%= row.papers %></textarea><span class="form-validation"></span>
+                          </div>
+                      </div>
+
+                       <!-- Publications (Previous Promotions) -->
+                       <div class="offset-top-17">
+                          <div class="form-group">
+                            <label class="form-label form-label-outside rd-input-label" for="old_pubs">Publications submitted in support of Previous Application for Promotion. Give details of Books and Articles and state exact references). Copies of Articles and other Publication (where possible), should accompany the Application Form - <b><em>(NB : One PDF only)</em></b></label><!-- SM-T-->
+                            <label class="form-label form-label-outside rd-input-label" for="old_pubs">List of Publications in support of Previous Application for the current Post</label><!-- SM-N-->
+                            <textarea class="form-control form-control-has-validation form-control-last-child" id="old_pubs" name="old_pubs" data-constraints="@Required" style="height: 100px;"><%= row.old_pubs %></textarea><span class="form-validation"></span>
+                          </div>
+                      </div>
+
+                       <!-- Publications (New Promotions) -->
+                       <div class="offset-top-17">
+                          <div class="form-group">
+                            <label class="form-label form-label-outside rd-input-label" for="new_pubs">Publications submitted in support of Current Application for Promotion. Give details of Books and Articles and state exact references). Copies of Articles and other Publication (where possible), should accompany the Application Form - <b><em>(NB : One PDF only)</em></b></label><!-- SM-T-->
+                            <label class="form-label form-label-outside rd-input-label" for="new_pubs">Publications; (Give details of Books and Articles, also state exact References). Copies of Articles and Other Publication (where possible), should accompany the Application Form - <b><em>(NB : One PDF only)</em></b></label><!-- SM-N-->
+                            <textarea class="form-control form-control-has-validation form-control-last-child" id="new_pubs" name="new_pubs" data-constraints="@Required" style="height: 100px;"><%= row.new_pubs %></textarea><span class="form-validation"></span>
+                          </div>
+                      </div>
+
+
+                        <!-- Membership of Professional/Learned Bodies -->
+                        <div class="offset-top-17">
+                            <div class="form-group">
+                              <label class="form-label form-label-outside rd-input-label" for="memgroups">Membership of Professional/Learned Bodies</label><!-- SM-T-->
+                              <textarea class="form-control form-control-has-validation form-control-last-child" id="memgroups" name="memgroups" data-constraints="@Required" style="height: 100px;"><%= row.memgroups %></textarea><span class="form-validation"></span>
+                            </div>
+                        </div>
+
+
+                         <!-- Membership of Professional/Learned Bodies -->
+                        <div class="offset-top-17">
+                            <div class="form-group">
+                              <label class="form-label form-label-outside rd-input-label" for="extras">Any other relevant information (Public Service, College or National Committees, etc.,on which you have served) with dates:</label><!-- SM-T-->
+                              <textarea class="form-control form-control-has-validation form-control-last-child" id="extras" name="extras" data-constraints="@Required" style="height: 100px;"><%= row.extras %></textarea><span class="form-validation"></span>
+                            </div>
+                        </div>
+
+
+                         <!-- Duties performed in present grade -->
+                         <div class="offset-top-17">
+                            <div class="form-group">
+                              <label class="form-label form-label-outside rd-input-label" for="duties">Duties performed in present grade</label><!-- SM-T-->
+                              <textarea class="form-control form-control-has-validation form-control-last-child" id="duties" name="duties" data-constraints="@Required" style="height: 100px;"><%= row.duties %></textarea><span class="form-validation"></span>
+                            </div>
+                        </div>
+
+                         <!-- Duties performed in present grade -->
+                         <div class="offset-top-17">
+                            <div class="form-group">
+                              <label class="form-label form-label-outside rd-input-label" for="justification">Justification for Promotion</label><!-- SM-T-->
+                              <textarea class="form-control form-control-has-validation form-control-last-child" id="justification" name="justification" data-constraints="@Required" style="height: 100px;"><%= row.justification %></textarea><span class="form-validation"></span>
+                            </div>
+                        </div>
+  
+
+                           <!-- ASSESSMENT OF JOB/CONDUCT -->
+                           <br><br><h6 class="text-bold">ASSESSMENT OF JOB/CONDUCT</h6>
+                           <div class="range offset-top-17">                          
+                              <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                <div class="range">
+                                  <div class="cell-sm-3">
+                                      <div class="form-group">
+                                        <label class="form-label form-label-outside" for="assess_knowledge">Knowledge of Job <small>Theoretical/practical knowlege as related to present job</small></label>
+                                        <select class="form-control" name="assess_knowledge">
+                                            <option>-- Select One --</option>
+                                            <option value="UNSATISFACTORY" <%= row.assess_knowledge == 'UNSATISFACTORY' ? 'selected="selected"':'' %>>UNSATISFACTORY</option>
+                                            <option value="FAIR" <%= row.assess_knowledge == 'FAIR' ? 'selected="selected"':'' %>>FAIR</option>
+                                            <option value="GOOD" <%= row.assess_knowledge == 'GOOD' ? 'selected="selected"':'' %>>GOOD</option>
+                                            <option value="VERY_GOOD" <%= row.assess_knowledge == 'VERY_GOOD' ? 'selected="selected"':'' %>>VERY GOOD</option>
+                                            <option value="EXCELLENT" <%= row.assess_knowledge == 'EXCELLENT' ? 'selected="selected"':'' %>>EXCELLENT</option>
+                                        </select>                                
+                                      </div>
+                                  </div>
+                                  <div class="cell-sm-3">
+                                      <div class="form-group">
+                                        <label class="form-label form-label-outside" for="assess_ability">Ability to Organise <small>Effectiveness in Planning own work and that of subordinates/colleagues where applicable</small></label>
+                                        <select class="form-control" name="assess_ability">
+                                            <option>-- Select One --</option>
+                                            <option value="UNSATISFACTORY" <%= row.assess_ability == 'UNSATISFACTORY' ? 'selected="selected"':'' %>>UNSATISFACTORY</option>
+                                            <option value="FAIR" <%= row.assess_ability == 'FAIR' ? 'selected="selected"':'' %>>FAIR</option>
+                                            <option value="GOOD" <%= row.assess_ability == 'GOOD' ? 'selected="selected"':'' %>>GOOD</option>
+                                            <option value="VERY_GOOD" <%= row.assess_ability == 'VERY_GOOD' ? 'selected="selected"':'' %>>VERY GOOD</option>
+                                            <option value="EXCELLENT" <%= row.assess_ability == 'EXCELLENT' ? 'selected="selected"':'' %>>EXCELLENT</option>
+                                        </select>                                
+                                      </div>
+                                  </div>
+                                  <div class="cell-sm-3">
+                                      <div class="form-group">
+                                        <label class="form-label form-label-outside" for="assess_creativity">Creativity <small>Innovativeness and ability to adapt to new methods for doing work</small></label>
+                                        <select class="form-control" name="assess_knowledge">
+                                            <option value=""></option>
+                                            <option value="UNSATISFACTORY" <%= row.assess_creativity == 'UNSATISFACTORY' ? 'selected="selected"':'' %>>UNSATISFACTORY</option>
+                                            <option value="FAIR" <%= row.assess_creativity == 'FAIR' ? 'selected="selected"':'' %>>FAIR</option>
+                                            <option value="GOOD" <%= row.assess_creativity == 'GOOD' ? 'selected="selected"':'' %>>GOOD</option>
+                                            <option value="VERY_GOOD" <%= row.assess_creativity == 'VERY_GOOD' ? 'selected="selected"':'' %>>VERY GOOD</option>
+                                            <option value="EXCELLENT" <%= row.assess_creativity == 'EXCELLENT' ? 'selected="selected"':'' %>>EXCELLENT</option>
+                                        </select>                                
+                                      </div>
+                                  </div>
+                                  <div class="cell-sm-3">
+                                      <div class="form-group">
+                                        <label class="form-label form-label-outside" for="assess_leadership">Leadership Ability <small>Ability to simulate and motivate subordinates, where applicable, for efficient performance</small></label>
+                                        <select class="form-control" name="assess_leadership">
+                                            <option value=""></option>
+                                            <option value="UNSATISFACTORY" <%= row.assess_leadership == 'UNSATISFACTORY' ? 'selected="selected"':'' %>>UNSATISFACTORY</option>
+                                            <option value="FAIR" <%= row.assess_leadership == 'FAIR' ? 'selected="selected"':'' %>>FAIR</option>
+                                            <option value="GOOD" <%= row.assess_leadership == 'GOOD' ? 'selected="selected"':'' %>>GOOD</option>
+                                            <option value="VERY_GOOD" <%= row.assess_leadership == 'VERY_GOOD' ? 'selected="selected"':'' %>>VERY GOOD</option>
+                                            <option value="EXCELLENT" <%= row.assess_leadership == 'EXCELLENT' ? 'selected="selected"':'' %>>EXCELLENT</option>
+                                        </select>                                
+                                      </div>
+                                  </div>
+                                                           
+                                </div>
+                              </div>
+
+
+                              <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                  <div class="range">
+                                    <div class="cell-sm-3">
+                                        <div class="form-group">
+                                          <label class="form-label form-label-outside" for="assess_dependability">Dependabilty <small>Commitment in carrying out assignment</small></label>
+                                          <select class="form-control" name="assess_dependability">
+                                              <option>-- Select One --</option>
+                                              <option value="UNSATISFACTORY" <%= row.assess_dependability == 'UNSATISFACTORY' ? 'selected="selected"':'' %>>UNSATISFACTORY</option>
+                                              <option value="FAIR" <%= row.assess_dependability == 'FAIR' ? 'selected="selected"':'' %>>FAIR</option>
+                                              <option value="GOOD" <%= row.assess_dependability == 'GOOD' ? 'selected="selected"':'' %>>GOOD</option>
+                                              <option value="VERY_GOOD" <%= row.assess_dependability == 'VERY_GOOD' ? 'selected="selected"':'' %>>VERY GOOD</option>
+                                              <option value="EXCELLENT" <%= row.assess_dependability == 'EXCELLENT' ? 'selected="selected"':'' %>>EXCELLENT</option>
+                                          </select>                                
+                                        </div>
+                                    </div>
+                                    <div class="cell-sm-3">
+                                        <div class="form-group">
+                                          <label class="form-label form-label-outside" for="assess_punctuality">Punctuality at work</label>
+                                          <select class="form-control" name="assess_punctuality">
+                                              <option>-- Select One --</option>
+                                              <option value="UNSATISFACTORY" <%= row.assess_punctuality == 'UNSATISFACTORY' ? 'selected="selected"':'' %>>UNSATISFACTORY</option>
+                                              <option value="FAIR" <%= row.assess_punctuality == 'FAIR' ? 'selected="selected"':'' %>>FAIR</option>
+                                              <option value="GOOD" <%= row.assess_punctuality == 'GOOD' ? 'selected="selected"':'' %>>GOOD</option>
+                                              <option value="VERY_GOOD" <%= row.assess_punctuality == 'VERY_GOOD' ? 'selected="selected"':'' %>>VERY GOOD</option>
+                                              <option value="EXCELLENT" <%= row.assess_punctuality == 'EXCELLENT' ? 'selected="selected"':'' %>>EXCELLENT</option>
+                                          </select>                                
+                                        </div>
+                                    </div>
+                                    <div class="cell-sm-3">
+                                        <div class="form-group">
+                                          <label class="form-label form-label-outside" for="assess_skill">Skill and efficiency at work </label>
+                                          <select class="form-control" name="assess_skill">
+                                              <option value=""></option>
+                                              <option value="UNSATISFACTORY" <%= row.assess_skill == 'UNSATISFACTORY' ? 'selected="selected"':'' %>>UNSATISFACTORY</option>
+                                              <option value="FAIR" <%= row.assess_skill == 'FAIR' ? 'selected="selected"':'' %>>FAIR</option>
+                                              <option value="GOOD" <%= row.assess_skill == 'GOOD' ? 'selected="selected"':'' %>>GOOD</option>
+                                              <option value="VERY_GOOD" <%= row.assess_skill == 'VERY_GOOD' ? 'selected="selected"':'' %>>VERY GOOD</option>
+                                              <option value="EXCELLENT" <%= row.assess_skill == 'EXCELLENT' ? 'selected="selected"':'' %>>EXCELLENT</option>
+                                          </select>                                
+                                        </div>
+                                    </div>
+                                    <div class="cell-sm-3">
+                                        <div class="form-group">
+                                          <label class="form-label form-label-outside" for="assess_relation">Interpersonal Relations </label>
+                                          <select class="form-control" name="assess_relation">
+                                              <option value=""></option>
+                                              <option value="UNSATISFACTORY" <%= row.assess_relation == 'UNSATISFACTORY' ? 'selected="selected"':'' %>>UNSATISFACTORY</option>
+                                              <option value="FAIR" <%= row.assess_relation == 'FAIR' ? 'selected="selected"':'' %>>FAIR</option>
+                                              <option value="GOOD" <%= row.assess_relation == 'GOOD' ? 'selected="selected"':'' %>>GOOD</option>
+                                              <option value="VERY_GOOD" <%= row.assess_relation == 'VERY_GOOD' ? 'selected="selected"':'' %>>VERY GOOD</option>
+                                              <option value="EXCELLENT" <%= row.assess_relation == 'EXCELLENT' ? 'selected="selected"':'' %>>EXCELLENT</option>
+                                          </select>                                
+                                        </div>
+                                    </div>
+                                                             
+                                  </div>
+                                </div>
+                            </div>
+                          
+
+                          <br><br><h6 class="text-bold">GENERAL IMPRESSION</h6>
+                          <div class="text-subline"></div>
+                           <!-- General impression of the applicant -->
+                          <div class="offset-top-17">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="duties">Please state your general impression of the applicant e.g. His/her strong points and his/her weakness, personality, temperament and special talents.</label><!-- SM-T-->
+                                <textarea class="form-control form-control-has-validation form-control-last-child" id="head_impressions" name="head_impressions" data-constraints="@Required" style="height: 100px;"><%= row.head_impressions %></textarea><span class="form-validation"></span>
+                              </div>
+                          </div>
+
+                          <br><br><h6 class="text-bold">RECOMMENDATION</h6>
+                          <div class="text-subline"></div>
+                           <!-- General impression of the applicant -->
+                          <div class="offset-top-17">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="duties">Please state your general impression of the applicant e.g. His/her strong points and his/her weakness, personality, temperament and special talents.</label><!-- SM-T-->
+                                <textarea class="form-control form-control-has-validation form-control-last-child" id="head_impressions" name="head_impressions" data-constraints="@Required" style="height: 100px;"><%= row.head_impressions %></textarea><span class="form-validation"></span>
+                              </div>
+                          </div>
+
+                          <div class="range">
+                              <div class="cell-sm-4">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside" for="head_allow">Would you recommend applicant for promotion, i.e. to assume higher responsibility? <br><small><b>(Please, note that in considering applicants for promotion, much more emphasis is placed on quality of work and readiness to assume higher responsibility)</b></small></label>
+                                    <select class="form-control" name="head_allow">
+                                        <option>-- Select One --</option>
+                                        <option value="0" <%= row.head_allow == '0' ? 'selected="selected"':'' %>>NO</option>
+                                        <option value="1" <%= row.head_allow == '1' ? 'selected="selected"':'' %>>YES</option>
+                                    </select>                                
+                                  </div>
+                              </div>
+                              <div class="cell-sm-6">
+                                  <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="head_recommend">Please give reasons for your recommendation</label><!-- SM-T-->
+                                      <textarea class="form-control form-control-has-validation form-control-last-child" id="head_recommend" name="head_recommend" data-constraints="@Required" style="height: 100px;"><%= row.head_recommend %></textarea><span class="form-validation"></span>
+                                    </div>
+                              </div>
+                              <div class="cell-sm-2">
+                                  <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="head_staff_no">Staff Number of Head of Unit</label><!-- SM-T-->
+                                      <textarea class="form-control form-control-has-validation form-control-last-child" id="head_staff_no" name="head_staff_no" data-constraints="@Required" style="height: 100px;"><%= row.head_staff_no %></textarea><span class="form-validation"></span>
+                                    </div>
+                              </div>
+
+                        
+
+                        <br><div class="text-subline"></div><br>
+
+                        <div class="offset-top-25">
+                             <button class="btn btn-primary btn-2x" type="submit" onclick="return confirm('Do you want to Submit?');">SAVE</button>
+                             <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>
+                            <input name="id" type="hidden" value="<%= row.id || 0 %>" />
+                        </div>
+                       <hr/>
+
+                       </form>
+
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

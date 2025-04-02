@@ -1,0 +1,118 @@
+
+      <main class="page-content section-70 section-md-70">   
+        
+         
+        <!-- vertical link Tabs-->
+        <section>
+          <div class="shell">
+            <div class="range range-xs-center">
+                <div class="cell-xs-10 cell-lg-12">                   
+                    <div class="">
+                      <!-- Responsive-tabs-->
+                      <div class="responsive-tabs responsive-tabs-boxed vertical resp-vtabs tabs-group-default" id="page" data-type="horizontal" style="width: 100%;">
+                        <ul class="resp-tabs-list text-center tabs-group-default" data-group="tabs-group-default">                               
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> ADMIN ROLES</li> 
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> HEAD ROLES</li>
+                        </ul>
+                        <hr style="border:1px dashed #0d2d62;"/>
+                        
+                        <!-- USER ROLES -->
+                        <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                          <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                
+                                 <!-- TITLE -->
+                                 <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                     <div class="col-md-3"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">HR ROLES</h3></div>
+                                     <div class="col-md-9">
+                                         <div class="btn-group pull-right">
+                                            <a href="javascript:;" onclick="var p = prompt('Enter Staff Number!');if(p != undefined){window.location.href='/hrm/addsaccess/'+p;}else{return false;}" class="btn btn-primary btn-sm" style="margin:0px 2px">Add Access</a>&nbsp;&nbsp;
+                                            <a href="javascript:;" onclick="var p = prompt('Enter Staff Number!');if(p != undefined){window.location.href='/hrm/disaccess/'+p;}else{return false;}" class="btn btn-primary btn-sm " style="margin:0px 2px">Disable Access</a>&nbsp;&nbsp;
+                                            <a href="javascript:;" onclick="var p = prompt('Enter Staff Number!');if(p != undefined){window.location.href='/hrm/enbaccess/'+p;}else{return false;}" class="btn btn-primary btn-sm" style="margin:0px 2px">Enable Access</a>&nbsp;&nbsp;
+                                            <a href="javascript:;" onclick="var p = prompt('Enter Staff Number!');if(p != undefined){window.location.href='/hrm/resaccess/'+p;}else{return false;}" class="btn btn-primary btn-sm " style="margin:0px 2px">Reset Password</a>&nbsp;&nbsp;
+                                            <a href="/hrm/users/setup" onclick="return confirm('Setup user access?')" class="btn btn-success btn-sm " style="margin:0px 2px">Update Access</a>&nbsp;&nbsp;
+                                         </div>
+                                      </div>
+                                 </div>
+                            
+                                 <!-- USERS CONTENT -->
+                                 <div class="table-responsive clearfix">
+                                    <table class="table table-bordered  dataTable" id="dynamic"> 
+                                        <thead>
+                                            <tr>
+                                                <th>STAFF NO</th>
+                                                <th>FULL NAME</th>                                                                                    
+                                                <th>ROLE(S)</th>
+                                                <th>MOBILE</th>
+                                                <th>&nbsp;</th>                                        
+                                            </tr>
+                                        </thead>   
+                                        <tbody> 
+                                            <% 
+                                                users.map(user => {
+                                            %>  
+                                            <tr>   
+                                               
+                                                <td><button class="btn btn-sm"><%= user.staff_no %></button></td> 
+                                                <td><%= user.name %></td>  
+                                                <td><%- user.role %></td> 
+                                                <td><%= user.mobile %></td> 
+                                                <td>                                                      
+                                                    <div class="btn-group">                                                       
+                                                        <a class="btn btn-default btn-sm" href="/hrm/edituser/<%= user.staff_no %>" title="Update Staff Roles"><i class="fa fa-edit"></i> Access</a>
+                                                        <a class="btn btn-default btn-sm" href="/hrm/remaccess/<%= user.staff_no %>" title="Remove Staff Roles"><i class="fa fa-trash"></i> Access</a>
+                                                    </div>
+                                                </td>                                                                                                                          
+                                            </tr>     
+                                            <% }) %>                                       
+                                        </tbody>
+                                    </table>
+                                </div>
+                             </div>                        
+                        </div>
+
+
+
+                        <!-- UNIT HEAD ROLES -->
+                        <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                            <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                  
+                                   <!-- TITLE -->
+                                   <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                       <div class="col-md-6"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">UNIT HEAD ROLES</h3></div>
+                                       <div class="col-md-6">
+                                          <a href="javascript:;" onclick="var p = prompt('Enter Staff Number!');if(p != undefined){window.location.href='/hrm/addhaccess/'+p;}else{return false;}" class="btn btn-primary btn-sm pull-right" style="margin:0px 5px">Add Unit Head Access</a>&nbsp;&nbsp;
+                                       </div>
+                                   </div>
+                              
+                                   <!-- USERS CONTENT -->
+                                   <div class="table-responsive clearfix">
+                                      <table class="table table-bordered  dataTable userheads"> 
+                                          <thead>
+                                              <tr>
+                                                  <th>STAFF NO</th>
+                                                  <th>FULL NAME</th>                                                                                    
+                                                  <th>ROLE(S)</th>
+                                                  <th>MOBILE</th>
+                                                  <th>&nbsp;</th>                                        
+                                              </tr>
+                                          </thead>   
+                                         
+                                      </table>
+                                  </div>
+                               </div>                        
+                          </div>
+
+
+                       
+                      </div>
+                    </div>
+                  </div>
+              
+            </div>
+          </div>
+        </section>
+        <section class="offset-top-110">
+          
+          </div>
+        </section>
+      </main>

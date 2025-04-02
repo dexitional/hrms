@@ -1,0 +1,77 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                  
+                        <form name="" action="/hrm/postexit" method="post" enctype="application/x-www-form-urlencoded">
+                        <br><br><h6 class="text-bold"><%= title %> FORM </h6>
+                        <div class="text-subline"></div>
+                            <div class="data2">                    
+                    
+                          <!-- Line 1 -->
+                          <div class="range offset-top-17">                          
+                              <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                <div class="range">                                       
+                                  <div class="cell-sm-3">
+                                      <div class="form-group">
+                                        <label class="form-label form-label-outside rd-input-label" for="staff_no">Staff Number</label>
+                                        <input class="form-control form-control-has-validation form-control-last-child" id="staff_no" type="text" name="staff_no" value="<%= row.staff_no %>"/>
+                                      </div>
+                                  </div>
+                                  <div class="cell-sm-3">
+                                    <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="exit_date">Exit Date</label>
+                                      <input class="form-control form-control-has-validation form-control-last-child" id="exit_date" type="date" name="exit_date" value="<%= row.exit_date %>"/>
+                                    </div>
+                                  </div>
+                                  <div class="cell-sm-3">
+                                    <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="exit_remark">Exit Reason</label>
+                                      <input class="form-control form-control-has-validation form-control-last-child" id="exit_remark" type="text" name="exit_remark" value="<%= row.exit_remark %>"/>
+                                    </div>
+                                </div>
+                                  <div class="cell-sm-3">
+                                    <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="staff_status">Exit Type</label>
+                                      <select name="staff_status" class="form-control"> 
+                                        <option value="RETIRED" <%- 'RETIRED' == row.staff_status ? 'selected="selected"': '' %>>RETIREMENT</option>
+                                        <option value="ABSENCE" <%- 'ABSENCE' == row.staff_status ? 'selected="selected"': '' %>>LEAVE OF ABSENCE</option>
+                                        <option value="SECONDMENT" <%- 'SECONDMENT' == row.staff_status ? 'selected="selected"': '' %>>SECONDMENT</option>
+                                        <option value="RESIGNED" <%- 'RESIGNED' == row.staff_status ? 'selected="selected"': '' %>>RESIGNATION</option>
+                                        <option value="DISMISSED" <%- 'DISMISSED' == row.staff_status ? 'selected="selected"': '' %>>DISMISSAL</option>
+                                        <option value="DEAD" <%- 'DEAD' == row.staff_status ? 'selected="selected"': '' %>>DEATH</option>
+                                        <option value="CONTRACT" <%- 'CONTRACT' == row.staff_status ? 'selected="selected"': '' %>>POST-CONTRACT</option>
+                                        <option value="PERMANENT" <%- 'PERMANENT' == row.staff_status ? 'selected="selected"': '' %>>PERMANENT</option>
+                                        <option value="TEMPORAL" <%- 'TEMPORAL' == row.staff_status ? 'selected="selected"': '' %>>TEMPORAL</option>
+                                       
+                                      </select>
+                                    </div>
+                                  </div>
+                                
+                                </div>
+                              </div>
+                            </div>
+                           
+                           
+                            <br><div class="text-subline"></div><br>
+                        
+                            <div class="offset-top-25">
+                                <button class="btn btn-primary btn-2x" type="submit" onclick="return confirm('Do you want to Submit?');">SAVE</button>
+                                <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>
+                                <input name="id" type="hidden" value="<%= row.id || 0 %>" />
+                            </div>
+                       <hr/>
+
+                       </form>
+
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

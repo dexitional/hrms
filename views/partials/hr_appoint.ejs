@@ -1,0 +1,398 @@
+
+      <main class="page-content section-70 section-md-70">   
+        
+         
+        <!-- vertical link Tabs-->
+        <section>
+          <div class="shell">
+            <div class="range range-xs-center">
+                <div class="cell-xs-10 cell-lg-12">                   
+                    <div class="">
+                      <!-- Responsive-tabs-->
+                      <div class="responsive-tabs responsive-tabs-boxed vertical resp-vtabs tabs-group-default" id="page" data-type="horizontal" style="width: 100%;">
+                        <ul class="resp-tabs-list text-center tabs-group-default" data-group="tabs-group-default">                               
+                               <!-- <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i>APPOINTMENTS (JS&SS)</li> -->
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i>APPOINTMENTS & PROMOTIONS</li>
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i>CONFIRMATIONS</li> 
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i>RENEWALS</li> 
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i>POST-RETIREMENTS</li> 
+                                <li><i class="fa fa-bar-chart fa-2x"></i> REPORTS</li>
+                                  
+                        </ul>
+                        <hr style="border:1px dashed #0d2d62;"/>
+                        
+                        <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                              <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                
+                                <!-- TITLE -->
+                                <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                    <div class="col-md-6"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">APPOINTMENTS & PROMOTIONS</h3></div>
+                                    <div class="col-md-6">
+                                        
+                                        <div class="btn-group btn-inline pull-right">
+                                                <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-plus fa-lg"></i>  EXISTING FILE</a>
+                                                <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                   <li><a href="/hrm/appoint/add?ext&type=appointment"  onclick="return confirm('Add Existing Appointment Record?')" ><i class="fa fa-user-plus"></i> APPOINTMENT</a></li> 
+                                                   <li><a href="/hrm/appoint/add?ext&type=promotion"  onclick="return confirm('Add Existing Promotion Record?')"><i class="fa fa-user-plus"></i> PROMOTION</a></li> 
+                                                   <li><a href="/hrm/appoint/add?ext&type=upgrade"  onclick="return confirm('Add Existing Upgrade Record?')"><i class="fa fa-user-plus"></i> UPGRADE</a></li> 
+                                                </ul>
+                                        </div>&nbsp;
+
+                                        <div class="btn-group btn-inline pull-right">
+                                                <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-plus fa-lg"></i>  NEW FILE</a>
+                                                <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                   <li><a href="/hrm/appoint/add?type=appointment"  onclick="return confirm('Add New Appointment Record?')" ><i class="fa fa-user-plus"></i> APPOINTMENT</a></li> 
+                                                   <li><a href="/hrm/appoint/add?type=promotion"  onclick="return confirm('Add New Promotion Record?')"><i class="fa fa-user-plus"></i> PROMOTION</a></li> 
+                                                   <li><a href="/hrm/appoint/add?type=upgrade"  onclick="return confirm('Add New Upgrade Record?')"><i class="fa fa-user-plus"></i> UPGRADE</a></li> 
+                                                </ul>
+                                        </div>&nbsp;
+
+                                        <div class="btn-group btn-inline pull-right">
+                                            <a href="#" class="btn btn-sm btn-primary">STAFF INCREMENT</a>
+                                            <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span></button>
+                                            <ul class="dropdown-menu">
+                                            <li><a href="#" onclick="if(confirm('Do you want to Upgrade Staff Scale?')){var p = prompt('Enter Staff Number!');if(p != undefined){ var n = prompt('Please Enter Number of Steps for Upgrade!');if(n != undefined){ location.href='/hrm/newscale/'+p+'/'+n;}else{return false;}}else{return false;}}"><i class="fa fa-user-plus"></i> Upgrade Staff Scale By 'N' Steps</a></li> 
+                                            <!-- <li><a href="#" onclick="if(confirm('Do you want to Upgrade Staff Scale?')){var n = prompt('Please Enter Number of Steps for Upgrade!');if(n != undefined){ location.href='/hrm/newscaleall/'+n;}else{return false;}}"><i class="fa fa-user-plus"></i> Upgrade All Scales By 'N' Steps</a></li> -->
+                                            <li> <a href="/hrm/addincrement?action=job"><i class="fa fa-user-plus"></i> Upgrade By Designations</a></li>
+                                            <!-- <li> <a href="/hrm/addincrement?action=range"><i class="fa fa-user-plus"></i> Upgrade By Period Range</a></li>-->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                           
+                                <!-- JOB STATUS CONTENT -->
+                                <div class="table-responsive clearfix">
+                                   <table class="table table-bordered  dataTable appoint">
+                                       <thead>
+                                           <tr>
+                                               <th>STAFF NO</th>
+                                               <th>FULL NAME</th> 
+                                               <th>ASSUMPTION DATE</th>
+                                               <th>CONFIRMATION DATE</th>
+                                               <th>DESIGNATION</th>
+                                               <th>GRADE/NOTCH</th>
+                                               <th>STATUS</th>                         
+                                           </tr>
+                                       </thead>  
+                                      
+                                       
+                                   </table>
+                               </div>
+                              </div>     
+                              
+                              <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                
+                                    <!-- TITLE -->
+                                    <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                        <div class="col-md-7"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">CONFIRMATIONS</h3></div>
+                                        <div class="col-md-5">
+                                           
+                                        </div>
+                                    </div>
+                               
+                                    <!-- JOB STATUS CONTENT -->
+                                    <div class="table-responsive clearfix">
+                                       <table class="table table-bordered  dataTable confirm_tbl">
+                                           <thead>
+                                               <tr>
+                                                   <th>STAFF NO</th>
+                                                   <th>FULL NAME</th> 
+                                                   <th>CURRENT POST</th>
+                                                   <th>ASSUMPTION DATE</th>
+                                                   <th>PROBATION YEARS</th>
+                                                   <th>STAFF CATEGORY</th>
+                                                   <th>REMARKS</th>                         
+                                               </tr>
+                                           </thead>  
+                                          
+                                         
+                                       </table>
+                                   </div>
+                                  </div>     
+
+
+                                  <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                
+                                        <!-- TITLE -->
+                                        <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                            <div class="col-md-6"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">SENIOR MEMBERSHIP RENEWALS</h3></div>
+                                            <div class="col-md-6">
+                                                    <div class="btn-group btn-block pull-right">
+                                                      <a href="/hrm/addrenewal?ext" onclick="return confirm('Add Existing Renewal Record?')" class="btn btn-sm btn-danger"><i class="fa fa-plus fa-lg"></i>  EXISTING FILE</a>
+                                                      <a href="/hrm/addrenewal" onclick="return confirm('Add New Renewal Record?')" class="btn btn-sm btn-primary"><i class="fa fa-plus fa-lg"></i>  NEW FILE</a>
+                                                      <a href="/hrm/renewexpiry" onclick="return confirm('View expired contracts?')" class="btn btn-sm btn-warning"><i class="fa fa-plus fa-lg"></i>  EXPIRED CONTRACTS</a>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                   
+                                        <!-- RENEWAL CONTENT -->
+                                        <div class="table-responsive clearfix">
+                                           <table class="table table-bordered  dataTable renewal_tbl">
+                                               <thead>
+                                                   <tr>
+                                                       <th>STAFF NO</th>
+                                                       <th>FULL NAME</th> 
+                                                       <th>START DATE</th>
+                                                       <th>PERIOD IN YEARS</th>
+                                                       <th>CURRENT POST</th>
+                                                       <th>REMARKS</th>                         
+                                                   </tr>
+                                               </thead>  
+                                           </table>
+                                       </div>
+                                      </div>     
+
+
+                                   
+                                      <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                
+                                            <!-- TITLE -->
+                                            <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                                <div class="col-md-9"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">POST-RETIREMENTS</h3></div>
+                                                <div class="col-md-3">
+                                                        <div class="btn-group btn-block pull-right">
+                                                            <a href="/hrm/addpostretire?ext" onclick="return confirm('Add Existing Appointment or Promotion Record?')" class="btn btn-sm btn-danger"><i class="fa fa-plus fa-lg"></i>  EXISTING FILE</a>
+                                                          <a href="/hrm/addpostretire" onclick="return confirm('Add New Appointment or Promotion Record?')" class="btn btn-sm btn-primary"><i class="fa fa-plus fa-lg"></i>  NEW FILE</a>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                       
+                                            <!-- JOB STATUS CONTENT -->
+                                            <div class="table-responsive clearfix">
+                                               <table class="table table-bordered  dataTable postretire_tbl">
+                                                   <thead>
+                                                       <tr>
+                                                           <th>STAFF NO</th>
+                                                           <th>FULL NAME</th> 
+                                                           <th>CONTRACT START DATE</th>
+                                                           <th>SERVICE YEARS</th>
+                                                           <th>CURRENT POST</th>
+                                                           <th>REMARKS</th>                         
+                                                       </tr>
+                                                   </thead>  
+                                                  
+                                                   
+                                               </table>
+                                           </div>
+                                      </div>     
+
+
+
+
+                                    
+                                      <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                
+                                            <!-- TITLE -->
+                                            <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                                <div class="col-md-7"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">REPORTS</h3></div>
+                                                <div class="col-md-5">
+                                                 
+                                                </div>
+                                            </div>
+                                       
+                                            <!-- JOB STATUS CONTENT -->
+                                            <div class="shell">
+                                                    <div class="cell-md-12">
+                                                            <!-- Promotions & Appointment Reports -->
+                                                             <div class="product col-md-6">
+                                                                <div class="product-body">
+                                                                    <center class="offset-top-20"><button class="btn btn-default" href="/hrm/appoints/#page6"><span>Promotions & Appointments</span></button></center><br><br>
+                                                                    <center class="product-meta-info" style="display:block;padding-bottom:20px;">
+                                                                            <form class="list-inline list-inline-dark list-inline-lg offset-bottom-20" action="/hrm/reports/promo" method="get"> 
+                                                                              <li style="width:250px">
+                                                                                    <select name="action" class="form-control">
+                                                                                        <option value="rep1"> APPOINTMENTS </option>
+                                                                                        <option value="rep2"> PROMOTIONS OFFERED </option>
+                                                                                        <option value="rep3"> PROMOTIONS DUE </option>
+                                                                                        <!--<option value="rep4"> PROMO REQUESTS </option>-->
+                                                                                        <option value="rep4"> UPGRADES OFFERED </option>
+                                                                                        <option value="rep5"> UPGRADES DUE </option>
+                                                                                       <!-- <option value="rep7"> APPOINTMENT LETTERS </option>
+                                                                                        <option value="rep8"> PROMOTION LETTERS </option>
+                                                                                        <option value="rep9"> UPGRADE LETTERS </option>-->
+                                                                                       
+                                                                                    </select>
+                                                                              </li>   
+                                                                              <li style="width:120px">
+                                                                                  <select name="type" >
+                                                                                     <option value="all">TYPE</option>
+                                                                                     <option value="all">ALL</option>
+                                                                                      <option value="SM">SM</option>
+                                                                                      <option value="SS">SS</option>
+                                                                                      <option value="JS">JS</option>
+                                                                                  </select>
+                                                                              </li>   
+                                                                                                                  
+                                                                              <li><input type="hidden" name="output" value="pdf" id="output"/>
+                                                                                  <button class="btn btn-sm"id="excel" style="margin-top:-5px;margin-bottom:5px;"><i class="fa fa-2x fa-file-excel-o alert-success"></i></button>
+                                                                                  <button class="btn btn-sm" id="pdf" type="submit" style="margin-top:-5px;margin-bottom:5px;"><i class="fa fa-2x fa-print text-danger"></i></button>
+                                                                              </li>
+                                                                             </form>
+                                                                        </center>
+                                                                </div>
+                                                             </div>
+
+
+                                                             <!-- Promotions & Confirmation Reports -->
+                                                             <div class="product col-md-6">
+                                                                    <div class="product-body">
+                                                                        <center class="offset-top-20"><button class="btn btn-default" href="/hrm/staff"><span>Confirmations</span></button></center><br><br>
+                                                                        <center class="product-meta-info" style="display:block;padding-bottom:20px;">
+                                                                                <form class="list-inline list-inline-dark list-inline-lg offset-bottom-20" action="/hrm/transfer/list" method="get"> 
+                                                                                    <li style="width:250px">
+                                                                                            <select name="action" class="form-control">
+                                                                                                <option value="rep1">CONFIRMED (THIS YEAR)</option>
+                                                                                                <option value="rep2"> CONFIRMING (THIS YEAR)</option>
+                                                                                            </select>
+                                                                                      </li>   
+                                                                                      <li style="width:120px">
+                                                                                          <select name="type" >
+                                                                                             <option value="all">TYPE</option>
+                                                                                             <option value="all">ALL</option>
+                                                                                              <option value="SM">SM</option>
+                                                                                              <option value="SS">SS</option>
+                                                                                              <option value="JS">JS</option>
+                                                                                          </select>
+                                                                                      </li>                                      
+                                                                                      <li><input type="hidden" name="output" value="pdf" id="output"/>
+                                                                                        <button class="btn btn-sm"id="excel" style="margin-top:-5px;margin-bottom:5px;"><i class="fa fa-2x fa-file-excel-o alert-success"></i></button>
+                                                                                        <button class="btn btn-sm" id="pdf" type="submit" style="margin-top:-5px;margin-bottom:5px;"><i class="fa fa-2x fa-print text-danger"></i></button>
+                                                                                    </li>
+                                                                                </form>
+                                                                            </center>
+                                                                    </div>
+                                                                 </div>
+
+                                                                 <!-- Renewal Reports -->
+                                                             <div class="product col-md-6">
+                                                                    <div class="product-body">
+                                                                        <center class="offset-top-20"><button class="btn btn-default" href="/hrm/staff"><span>Membership Renewals</span></button></center><br><br>
+                                                                        <center class="product-meta-info" style="display:block;padding-bottom:20px;">
+                                                                                <form class="list-inline list-inline-dark list-inline-lg offset-bottom-20" action="/hrm/transfer/list" method="get"> 
+                                                                                    <li style="width:400px">
+                                                                                            <select name="action" class="form-control">
+                                                                                                <option value="all">RENEWALS OFFERED </option>
+                                                                                                <option value="all"> RENEWALS DUE </option>
+                                                                                            </select>
+                                                                                      </li>   
+                                                                                      <li><input type="hidden" name="output" value="pdf" id="output"/>
+                                                                                        <button class="btn btn-sm"id="excel" style="margin-top:-5px;margin-bottom:5px;"><i class="fa fa-2x fa-file-excel-o alert-success"></i></button>
+                                                                                        <button class="btn btn-sm" id="pdf" type="submit" style="margin-top:-5px;margin-bottom:5px;"><i class="fa fa-2x fa-print text-danger"></i></button>
+                                                                                    </li>
+                                                                                </form>
+                                                                            </center>
+                                                                    </div>
+                                                                 </div>
+
+
+
+                                                                  <!-- Post-Retirement Reports -->
+                                                             <div class="product col-md-6">
+                                                                    <div class="product-body">
+                                                                        <center class="offset-top-20"><button class="btn btn-default" href="/hrm/staff"><span>Post-Retirments</span></button></center><br><br>
+                                                                        <center class="product-meta-info" style="display:block;padding-bottom:20px;">
+                                                                                <form class="list-inline list-inline-dark list-inline-lg offset-bottom-20" action="/hrm/transfer/list" method="get"> 
+                                                                                    <li style="width:400px">
+                                                                                            <select name="action" class="form-control">
+                                                                                                <option value="all">POST-RETIREMENTS OFFERED </option>
+                                                                                                <option value="all"> POST-RETIREMENTS ENDING </option>
+                                                                                            </select>
+                                                                                      </li>   
+                                                                                     
+                                                                                      <li><input type="hidden" name="output" value="pdf" id="output"/>
+                                                                                        <button class="btn btn-sm"id="excel" style="margin-top:-5px;margin-bottom:5px;"><i class="fa fa-2x fa-file-excel-o alert-success"></i></button>
+                                                                                        <button class="btn btn-sm" id="pdf" type="submit" style="margin-top:-5px;margin-bottom:5px;"><i class="fa fa-2x fa-print text-danger"></i></button>
+                                                                                    </li>
+                                                                                </form>
+                                                                            </center>
+                                                                    </div>
+                                                                 </div>
+
+                                                                  <!-- Promotions & Appointment Reorts -->
+                                                             <div class="product col-md-6">
+                                                                    <div class="product-body">
+                                                                        <center class="offset-top-20"><button class="btn btn-default" href="/hrm/staff"><span>Increments & Scale upgrades</span></button></center><br><br>
+                                                                        <center class="product-meta-info" style="display:block;padding-bottom:20px;">
+                                                                                <form class="list-inline list-inline-dark list-inline-lg offset-bottom-20" action="/hrm/transfer/list" method="get"> 
+                                                                                    <li style="width:250px">
+                                                                                            <select name="action" class="form-control">
+                                                                                                <option value="all">INCREMENTS </option>
+                                                                                            </select>
+                                                                                      </li>   
+                                                                                      <li style="width:120px">
+                                                                                          <select name="type" >
+                                                                                             <option value="">TYPE</option>
+                                                                                             <option value="all">ALL</option>
+                                                                                              <option value="SM">SM</option>
+                                                                                              <option value="SS">SS</option>
+                                                                                              <option value="JS">JS</option>
+                                                                                          </select>
+                                                                                      </li>              
+                                                                                      <li><input type="hidden" name="output" value="pdf" id="output"/>
+                                                                                        <button class="btn btn-sm"id="excel" style="margin-top:-5px;margin-bottom:5px;"><i class="fa fa-2x fa-file-excel-o alert-success"></i></button>
+                                                                                        <button class="btn btn-sm" id="pdf" type="submit" style="margin-top:-5px;margin-bottom:5px;"><i class="fa fa-2x fa-print text-danger"></i></button>
+                                                                                    </li>
+                                                                                </form>
+                                                                            </center>
+                                                                    </div>
+                                                                 </div>
+
+
+                                                                  <!-- Promotions & Appointment Reorts -->
+                                                             <div class="product col-md-6">
+                                                                    <div class="product-body">
+                                                                        <center class="offset-top-20"><button class="btn btn-default" href="/hrm/staff"><span>End-of-Service</span></button></center><br><br>
+                                                                        <center class="product-meta-info" style="display:block;padding-bottom:20px;">
+                                                                                <form class="list-inline list-inline-dark list-inline-lg offset-bottom-20" action="/hrm/transfer/list" method="get"> 
+                                                                                    <li style="width:250px">
+                                                                                            <select name="action" class="form-control">
+                                                                                                <option value="all">RETIRING </option>
+                                                                                                <option value="all"> RETIRED </option>
+                                                                                                <option value="all">PERMANENT  </option>
+                                                                                                <option value="all"> TEMPORAL  </option>
+                                                                                                <option value="all"> SUSPENDED  </option>
+                                                                                                <option value="all"> DEAD </option>
+                                                                                            </select>
+                                                                                      </li>   
+                                                                                      <li style="width:120px">
+                                                                                          <select name="type" >
+                                                                                             <option value="">TYPE</option>
+                                                                                             <option value="all">ALL</option>
+                                                                                              <option value="SM">SM</option>
+                                                                                              <option value="SS">SS</option>
+                                                                                              <option value="JS">JS</option>
+                                                                                          </select>
+                                                                                      </li>                                     
+                                                                                      <li><input type="hidden" name="output" value="pdf" id="output"/>
+                                                                                        <button class="btn btn-sm"id="excel" style="margin-top:-5px;margin-bottom:5px;"><i class="fa fa-2x fa-file-excel-o alert-success"></i></button>
+                                                                                        <button class="btn btn-sm" id="pdf" type="submit" style="margin-top:-5px;margin-bottom:5px;"><i class="fa fa-2x fa-print text-danger"></i></button>
+                                                                                    </li>
+                                                                                </form>
+                                                                            </center>
+                                                                    </div>
+                                                                 </div>
+                                                           
+                                                    </div>
+                                               </div>
+                                      </div>     
+
+
+
+
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              
+            </div>
+          </div>
+        </section>
+        <section class="offset-top-110">
+          
+          </div>
+        </section>
+      </main>

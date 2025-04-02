@@ -1,0 +1,47 @@
+
+  <%  if(data[2].length > 0){ %>
+        <div class="row">
+            <!-- STAFF OVERVIEW PAGE -->
+            <div class="col-lg-12">
+                   <div class="table-responsive">
+                        <table class="table table-bordered ">
+                            <thead>
+                                <tr class="btn-danger">                         
+                                    <!--<th>FULL NAME</th>-->
+                                    <th>APPLY DATE</th>
+                                    <th>TRANSFER TO</th>
+                                    <th>REASON</th>
+                                    <th>DHR STATUS</th>
+                                    <th width="150px">ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 <%   data[2].map((row,i) => { %>
+                                    <tr class="<%- (i+1)%2 == 2 ? 'even':'odd'%>">
+                                        <!--<td><img class="img-responsive" src="<%- row.photo != null ? row.photo : '/public/images/none.png';%>" style="height:40px;display:block;margin-right:10px;border-radius:50%;float:left;" onclick="window.open('<%- row.photo != null ? row.photo : '/public/images/none.png';%>')"/><small><b><%- row.fname+' '+row.mname+' '+row.lname %></b></small></td>-->
+                                        <td><small><b><%- row.appliedate != null ? row.appliedate.toUpperCase() :'' %></b></small></td>
+                                        <td><small><em><b class="text-danger"><%- row.tounit != null ? row.tounit.toUpperCase() :''%></b></em></small></td>
+                                        <td><small><b><%- row.reason %></b></small></td>
+                                        <td><small><b><%- row.transfer_status %></b></small></td>
+                                        <td>
+                                            <div class="group group-xl" style="width:230px;text-align:center;">
+                                                <% if(row.status != 'APPROVED' && row.status != 'REJECTED'){ %>
+                                                    <a class="btn btn-success btn-sm btn-left" data-toggle="modal" data-target="#addtransfer" title="Edit Transfer Form" id="editransfer" data-id="<%- row.id %>"><i class=" fa fa-edit"></i></a>
+                                                <% }%>
+                                                <% if(row.status != 'APPROVED' && row.status != 'REJECTED'){ %>
+                                                    <a class="btn btn-danger btn-sm btn-left" onclick="return confirm('Delete transfer Application?')" title="Delete Leave Form" href="/hrm/st/transferdel/<%- row.id%>"><i class="fa fa-trash"></i></a>
+                                                <% }%>
+                                            </div>
+                                       </td>
+                                    </tr>
+                                <%   }) %> 
+                        </table>
+                   </div>
+            </div>    
+        </div>
+
+        <%  }else{ %> 
+            <div class="jumbotron">
+                <p class="text-center text-warning" style="font-weight:400;font-style:italic">No transfer requests found!</p>
+            </div>
+        <% } %>

@@ -1,0 +1,98 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold">GRADE-NOTCH REGISTRATION</h6>
+                      <div class="text-subline"></div><br>
+                  <form method="post" action="/hrm/postgrade" enctype="application/x-www-form-urlencoded">                         
+
+                        <div class="data2">                            
+                                                          
+                                   <!-- Line 2 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">
+                                          <div class="cell-sm-3">
+                                              <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="grade"> GRADE</label>
+                                                <input class="form-control form-control-has-validation form-control-last-child" id="grade" type="text" name="grade" value="<%= row.grade %>" data-constraints="@Required"><span class="form-validation"></span>
+                                              </div>
+                                          </div>  
+                                          <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                              <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="grade_range">GRADE NUMBER</label>
+                                                <input class="form-control form-control-has-validation form-control-last-child" id="grade_num" type="text" name="grade_num" value="<%= row.grade_num %>" data-constraints="@Required"><span class="form-validation"></span>
+                                              </div>
+                                          </div>                                      
+                                          <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="notch">NOTCH</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="notch" type="text" name="notch" value="<%= row.notch %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                          </div>
+                                          <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                              <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="notch_amount">NOTCH AMOUNT (GHC)</label>
+                                                <input class="form-control form-control-has-validation " id="notch_amount" type="text"  name="notch_amount" value="<%= row.notch_amount %>" data-constraints="@Required"><span class="form-validation"></span>
+                                              </div>
+                                          </div>
+                                          
+                                          <div class="cell-sm-3">                                          
+                                              <div class="form-group">
+                                                  <label class="form-label form-label-outside rd-input-label" for="level">LEVEL</label>
+                                                  <select name="level" id="level" class="form-control">
+                                                      <option value="L" <%= row.level == 'L' ? 'selected="selected"':'' %>>L</option> 
+                                                      <option value="H" <%= row.level == 'H' ? 'selected="selected"':'' %>>H</option> 
+                                                      <option value="AH" <%= row.level == 'AH' ? 'selected="selected"':'' %>>AH</option> 
+                                                </select>
+                                              </div>
+                                          </div>  
+                                          <div class="cell-sm-3">                                          
+                                              <div class="form-group">
+                                                  <label class="form-label form-label-outside rd-input-label" for="staff_group">STAFF GROUP</label>
+                                                  <select name="staff_group" id="staff_group" class="form-control">
+                                                      <option value="" <%= row.staff_group == '' ? 'selected="selected"':'' %>>-- NONE --</option> 
+                                                      <option value="JS" <%= row.staff_group == 'JS' ? 'selected="selected"':'' %>>JUNIOR STAFF</option> 
+                                                      <option value="SS" <%= row.staff_group == 'SS' ? 'selected="selected"':'' %>>SENIOR STAFF</option> 
+                                                      <option value="SM" <%= row.staff_group == 'SM' ? 'selected="selected"':'' %>>SENIOR MEMBER</option> 
+                                                </select>
+                                                </div>
+                                          </div>  
+
+                                          <div class="cell-sm-3">                                          
+                                              <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="active">ENABLED?</label>
+                                                <select name="active" class="form-control">
+                                                    <option value="0" <%= row.active == '0' ? 'selected="selected"':'' %>>NO</option> 
+                                                    <option value="1" <%= row.active == '1' ? 'selected="selected"':'' %>>YES</option>                                                  
+                                              </select>
+                                              </div>
+                                          </div>  
+                                 
+
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <br><br><div class="text-subline"></div><br>
+                                 
+                        </div>
+
+                        <div class="offset-top-25">
+                             <button class="btn btn-primary btn-2x" type="submit">SAVE</button>
+                             <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>  
+                             <input type="hidden" name="id" value="<%= row.id || 0 %>"/>  
+                        </div>
+                       <hr/>
+                       </form>
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

@@ -1,0 +1,142 @@
+
+        <div class="row">
+            <!-- STAFF OVERVIEW PAGE -->
+            <div class="col-lg-12">
+                   <div class="table-responsive">
+                        <table class="table table-bordered ">
+                            <thead>
+                                <tr class="btn-danger">                                    
+                                    <th>PHOTO</th>
+                                    <th>STAFF NUMBER</th>
+                                    <th>FULL NAME</th>
+                                    <th>JOB TITLE</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%  if(data[2] != null){
+                                      data[2].map((row,i) =>{
+                                            // Filter Approving Heads & Sub-Heads can't Approve Leave
+                                             if(row.nox != user.staff_no && row.unit_head != row.nox){
+                                         
+                                        %>
+                                    <tr class="<%- (i+1)%2 == 2 ? 'even':'odd'%>">                                    
+                                        <td><img class="img-responsive" src="<%- row.photo != null ? row.photo : '/public/images/none.png';%>" style="height:40px;display:block;margin:0 auto;border-radius:50%" onclick="window.open('<%- row.photo != null ? row.photo : '/public/images/none.png';%>')"/></td>
+                                        <td><b><%- row.nox %></b></td>
+                                        <td><small><b><%- row.fname+' '+row.mname+' '+row.lname %></b></small></td>
+                                        <td><small><b><%- row.jobtitle %></b></small></td>
+                                        <td>
+                                            <div class="btn-group btn-block">
+                                                <% if(row.onleave && row.status == 'HEAD-PENDING'){ %>
+                                                    <button type="button" class="btn btn-info appleave" data-id="<%- row.lid %>"  id="appleave" data-toggle="modal" data-target="#approveleave"><i class="fa fa-check"></i>&nbsp;&nbsp;APPROVE LEAVE</button>
+                                                <% } else if(row.onleave && row.status != 'HEAD-PENDING'){  %>
+                                                    <button type="button" class="btn btn-primary"><i class="fa fa-info"></i>&nbsp;&nbsp;<%- row.status%></button>
+                                                <% } else{  %>
+                                                   <a data-toggle="modal" data-target="#applyleave" class="clkapplyleave btn btn-danger" title="<%- row.nox %>"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;APPLY LEAVE</a>
+                                                <% } %>  
+                                            </div>
+                                            <!--  <div class="btn-group">
+                                                <button type="button" class="btn btn-default">Action</button>
+                                                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                 <!-- <li><a href="/hrm/st/editunit/<%- row.staff_no %>">Change unit</a></li> 
+                                                  <li><a href="/hrm/st/editunit/<%- row.staff_no %>">Transfer Staff</a></li> 
+                                                 <li><a data-toggle="modal" data-target="#applyleave" class="clkapplyleave" title="<%- row.nox %>">Place on Leave</a></li>                                            
+                                                </ul>
+                                            </div>-->  
+                                        </td>
+                                    </tr>
+                                <%        }
+                                       }) 
+                                 }
+                                %>
+                            </tbody>
+                        </table>
+                   </div>
+            </div>    
+        </div>
+    
+
+
+
+         <!--Modal Form | Leave Application By Head -->
+         <div class="modal fade" id="applyleave" tabindex="-1" role="dialog" aria-labelledby="applyleave" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title text-info" id="applyleavehead">LEAVE APPLICATION FORM | </h5>
+                      <button type="button" class="close hidden" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body bg-danger">
+                     
+                        <form name="formleave" method="post" action="/hrm/postleave" enctype="multipart/form-data">
+                         
+                            <div class="form-group">
+                                <label class="form-label form-label-outside" for="type">LEAVE TYPE *</label>
+                                <select class="form-control" id="type" name="type">
+                                    <option>Choose Category</option>
+                                </select>                                
+                            </div>
+                   
+                           
+                                <div class="main_cover">
+
+                                        <div class="form-group group1">
+                                        <label class="form-label form-label-outside rd-input-label" for="entitlement">LEAVE ENTITLEMENT</label>
+                                        <input class="form-control form-control-has-validation form-control-last-child group1n entitlement" id="entitlement" readonly="readonly" type="text" name="entitlement" value=""><span class="form-validation"></span>
+                                        </div>
+
+                                        <div class="form-group group1">
+                                        <label class="form-label form-label-outside rd-input-label" for="approved_days">LEAVE DAYS *</label>
+                                        <input class="form-control form-control-has-validation form-control-last-child group1n approved_days" id="approved_days" type="number" min="1" name="approved_days" value="" placeholder="Number of days for leave"><span class="form-validation"></span>
+                                        </div>
+
+                                        <div class="form-group">
+                                        <label class="form-label form-label-outside rd-input-label" for="start_date">EXPECTED START DATE *</label>
+                                        <input class="form-control " id="start_date" type="text" name="start_date" value="" placeholder="YYYY-MM-DD">
+                                        </div>
+                                
+                                    <div class="form-group group2">
+                                        <label class="form-label form-label-outside rd-input-label" for="entitlement">LEAVE PERMIT <em>( SCANNED CERTIFICATE OR PROOF )</em> *</label>
+                                        <input class="form-control form-control-has-validation form-control-last-child  group2n entitlement" id="entitlement" type="hidden" name="entitlement" value=""><span class="form-validation"></span>
+                                        <input class="form-control form-control-has-validation group2n" id="leave_cert"type="file" name="leave_cert" placeholder="Please upload leave permit">
+                                    </div>
+                                
+                                        <div class="form-group group2">
+                                            <label class="form-label form-label-outside rd-input-label" for="approved_days">CERTIFIED LEAVE DAYS *</label>
+                                            <input class="form-control form-control-has-validation form-control-last-child group2n approved_days" id="approved_days" type="number" min="1" name="approved_days" value="" placeholder="Number of days for leave"><span class="form-validation"></span>
+                                        </div>
+                                
+                                        <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="emergency_note">EMERGENCY CONTACT PERSON ( NAME & ADDRESS ) *</label>
+                                            <input class="form-control" id="emergency_note" type="text" name="emergency_note" value="" placeholder="Name of person to fall on and address" data-constraints="@Required"><span class="form-validation"></span>
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                        <label class="form-label form-label-outside rd-input-label" for="emergency_contact">EMERGENCY CONTACT (PHONE) *</label>
+                                        <input class="form-control" id="emergency_contact" type="tel" name="emergency_contact" value="" maxlength="10" placeholder="Phone number of person" data-constraints="@Required"><span class="form-validation"></span>
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                        <label class="form-label form-label-outside rd-input-label" for="apply_note">REMARKS ( OPTIONAL )</label>
+                                        <textarea class="form-control" id="apply_note" name="apply_note" data-constraints="@Required" style="height: 100px;"></textarea><span class="form-validation"></span>
+                                        </div>
+                                    
+                                        <input id="staff_no" type="hidden" name="staff_no" value="">
+                                        <!--<input name="staff" type="hidden" value="" />--> 
+                                        <input id="urlto" name="urlto" type="hidden" value="" />
+                                        <input id="id" name="id" type="hidden" value="" />
+                                        <input id="staff_group" name="staff_group" id="staff_group" type="hidden" value="" />
+                                
+
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                                        <button type="submit" class="btn btn-info" id="save">SAVE</button>
+                                        </div>
+                                </div>
+                        </form>
+                  </div>
+                </div>
+              </div>

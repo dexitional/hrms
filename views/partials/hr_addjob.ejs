@@ -1,0 +1,78 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold">JOB REGISTRATION</h6>
+                      <div class="text-subline"></div><br>
+                      <form method="post" action="/hrm/postjob" enctype="application/x-www-form-urlencoded">                         
+
+                        <div class="data2">                            
+                                <!-- Line 2 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">
+                                            <div class="cell-sm-3">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-outside rd-input-label" for="title">Designation</label>
+                                                    <input class="form-control form-control-has-validation form-control-last-child" id="title" type="text" name="title" value="<%= row.title %>" data-constraints="@Required"><span class="form-validation"></span>
+                                                </div>
+                                            </div>  
+                                            <div class="cell-sm-3">                                          
+                                                    <div class="form-group">
+                                                        <label class="form-label form-label-outside rd-input-label" for="type">Type</label>
+                                                        <select name="type"  id="utype" class="form-control type">
+                                                            <option value="NON-ACADEMIC" <%= row.type == 'NON-ACADEMIC' ? 'selected="selected"':'' %>>NON-ACADEMIC</option> 
+                                                            <option value="ACADEMIC" <%= row.type == 'ACADEMIC' ? 'selected="selected"':'' %>>ACADEMIC</option>                                                  
+                                                    </select>
+                                                    </div>
+                                                </div>   
+                                                    
+                                                <div class="cell-sm-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label form-label-outside rd-input-label" for="rank_years">Years To Next Rank</label>
+                                                        <input class="form-control form-control-has-validation form-control-last-child" id="rank_years" type="text" name="rank_years" value="<%= row.rank_years %>" data-constraints="@Required"><span class="form-validation"></span>
+                                                    </div>
+                                                </div>  
+
+                                                <div class="cell-sm-2">                                          
+                                                        <div class="form-group">
+                                                            <label class="form-label form-label-outside rd-input-label" for="active">Upgradable?</label>
+                                                            <select name="upgradable"  id="upgradable" class="form-control active">
+                                                                <option value="0" <%= row.upgradable == '0' ? 'selected="selected"':'' %>>NO</option> 
+                                                                <option value="1" <%= row.upgradable == '1' ? 'selected="selected"':'' %>>YES</option>                                                  
+                                                        </select>
+                                                        </div>
+                                                    </div>  
+                                            <div class="cell-sm-2">                                          
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-outside rd-input-label" for="active">Enabled</label>
+                                                    <select name="active"  id="active" class="form-control active">
+                                                        <option value="0" <%= row.active == '0' ? 'selected="selected"':'' %>>NO</option> 
+                                                        <option value="1" <%= row.active == '1' ? 'selected="selected"':'' %>>YES</option>                                                  
+                                                </select>
+                                                </div>
+                                            </div>  
+                                      </div>
+                                    </div>
+                                </div> <br><div class="text-subline"></div><br>
+
+                                <div class="offset-top-25">
+                                    <button class="btn btn-primary btn-2x" type="submit">SAVE</button>
+                                    <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>  
+                                    <input type="hidden" name="id" value="<%= row.id || 0 %>"/>  
+                                    <input type="hidden" name="ref" value="<%= ref || 1 %>"/>                       
+                                </div>
+                                <hr/>
+                        </div>
+                       </form>
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

@@ -1,0 +1,133 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-12 cell-sm-12">
+                  <section class="text-left">
+                      <h6 class="text-bold">APPOINTMENT &nbsp;&nbsp;>&nbsp;&nbsp;<em style="color:brown"></em></b></h6>
+                      <div class="text-subline"></div><br><br>                    
+                  <form name="formstaff" method="post" action="/hrm/postappoint" enctype="multipart/form-data">
+                      <div class="range offset-top-7">                       
+                        <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                          <div class="range">
+                            <div class="cell-sm-3">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="staff_no">Staff Number of Applicant</label>
+                                <input class="form-control form-control-has-validation form-control-last-child" id="staff_no" type="text" name="staff_no" value="<%= row.staff_no %>" data-constraints="@Required"><span class="form-validation"></span>
+                              </div>
+                            </div>
+                            <div class="cell-sm-3">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="appoint_date">Appointment Date</label>
+                                  <input class="form-control form-control-has-validation form-control-last-child" id="appoint_date" type="date" name="appoint_date" value="<%= row.appoint_date %>" data-constraints="@Required"><span class="form-validation"></span>
+                                </div>
+                            </div>
+                            <div class="cell-sm-3">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="staff_no">Probation Period (Years)</label>
+                                  <input class="form-control form-control-has-validation form-control-last-child" id="probation" type="text" name="probation" value="<%= row.probation %>" data-constraints="@Required"><span class="form-validation"></span>
+                                </div>
+                            </div>
+                            <div class="cell-sm-3">
+                                <div class="form-group">
+                                    <!-- CV-->                                       
+                                    <label class="form-label form-label-outside rd-input-label">Curriculum Vitae (CV) <em><small>( PDF only )</small></em></label>
+                                    <%  let cm = null;
+                                        if(cv != null){
+                                          cv.map((cert,i) =>{ 
+                                                if(cert.category == 'CV'){
+                                                      cm = '<i class="fa fa-check fa-lg" style="position:absolute;right:0;bottom:-45px;color:green;"></i>';
+                                                }
+                                          });
+                                        } 
+                                    %>
+                                    <%- cm != null ? cm : ''%>
+                                    <input name="cv_cert" id="cert" type="file"  class="form-control form-control-has-validation form-control-last-child">                                  
+                                </div>
+                            </div>
+                            <div class="cell-sm-3">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="job_id">Job Title / Designation</label>
+                                  <select name="job_id" class="form-control">
+                                      <option value="">Select Job Title</option>
+                                       <%  jobs.map((job,i) =>{ %>
+                                      <option value="<%= job.id%>" <%- job.id == row.job_id ? 'selected="selected"': '' %>>
+                                        <%= job.title%>
+                                      </option>
+                                      <%   }); %>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="cell-sm-3">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="unit_id">Section / Unit</label>
+                                  <select name="unit_id" class="form-control">
+                                    <option value="">Select Section/Unit</option>
+                                    <%  units.map((unit,i) =>{ %>
+                                      <option value="<%= unit.id%>" <%- unit.id == row.unit_id ? 'selected="selected"': '' %>>
+                                        <%= unit.long_name%>
+                                      </option>
+                                      <%   }); %>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="cell-sm-3">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="scale_id">Grade / Scale</label>
+                                    <select name="scale_id" class="form-control">
+                                      <option value="">Select Section/Unit</option>
+                                      <%  scales.map((scale,i) =>{ %>
+                                        <option value="<%= scale.id%>" <%- scale.id == row.scale_id ? 'selected="selected"': '' %>>
+                                          <%= scale.grade+', STEP '+scale.grade%>
+                                        </option>
+                                        <%   }); %>
+                                    </select>
+                                  </div>
+                              </div>
+                              <div class="cell-sm-3">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="staff_group">Staff Membership Group</label>
+                                    <select name="staff_group" class="form-control" readonly="readonly">
+                                      <option value="JS" <%- 'JS' == row.staff_group ? 'selected="selected"': '' %>>JUNIOR STAFF</option>
+                                      <option value="SS" <%- 'SS' == row.staff_group ? 'selected="selected"': '' %>>SENIOR STAFF</option>
+                                      <option value="SM" <%- 'SM' == row.staff_group ? 'selected="selected"': '' %>>SENIOR MEMBER</option>
+                                    </select>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>  
+                      </div>
+
+                   
+
+                         <!-- Duties performed in present grade -->
+                         <div class="offset-top-17">
+                            <div class="form-group">
+                              <label class="form-label form-label-outside rd-input-label" for="duties">Duties to perform on this appointment</label><!-- SM-T-->
+                              <textarea class="form-control form-control-has-validation form-control-last-child" id="duties" name="duties" data-constraints="@Required" style="height: 100px;"><%= row.duties %></textarea><span class="form-validation"></span>
+                            </div>
+                        </div>
+
+  
+
+
+                        <br><div class="text-subline"></div><br>
+
+                        <div class="offset-top-25">
+                             <button class="btn btn-primary btn-2x" type="submit" onclick="return confirm('Do you want to Submit?');">SAVE</button>
+                             <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>
+                            <input name="id" type="hidden" value="<%= row.id || 0 %>" />
+                        </div>
+                       <hr/>
+
+                       </form>
+
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

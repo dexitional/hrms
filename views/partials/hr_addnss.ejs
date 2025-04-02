@@ -1,0 +1,183 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold">NSS PERSONNEL FORM &nbsp;&nbsp;-&nbsp;&nbsp;<em style="color:brown"></em> <%= title %></b></h6>
+                      <div class="text-subline"></div><br><br>  
+
+                  <form name="formnss" method="post" action="/hrm/postnss" enctype="application/x-www-form-urlencoded">
+                      <div class="range offset-top-7">                       
+                        <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                          <div class="range">
+
+                            <div class="cell-sm-3">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="nss_no">NSS Number or PIN</label>
+                                <input class="form-control form-control-has-validation form-control-last-child" id="nss_no" type="text" name="nss_no" value="<%= data.nss_no %>" data-constraints="@Required"><span class="form-validation"></span>
+                              </div>
+                            </div>
+
+
+                            <div class="cell-sm-3">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="fname">First Name</label>
+                                  <input class="form-control form-control-has-validation form-control-last-child" id="fname" type="text" name="fname" value="<%= data.fname %>" data-constraints="@Required"><span class="form-validation"></span>
+                                </div>
+                            </div>
+
+                            <div class="cell-sm-3">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="mname">Middle Name(s)</label>
+                                  <input class="form-control form-control-has-validation form-control-last-child" id="mname" type="text" name="mname" value="<%= data.mname %>" data-constraints="@Required"><span class="form-validation"></span>
+                                </div>
+                            </div>
+
+                            <div class="cell-sm-3">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="lname">Last Name</label>
+                                  <input class="form-control form-control-has-validation form-control-last-child" id="lname" type="text" name="lname" value="<%= data.lname %>" data-constraints="@Required"><span class="form-validation"></span>
+                                </div>
+                            </div>
+                          </div>
+
+                          <div class="range">
+
+                              <div class="cell-sm-3">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="mobile">Mobile Contact</label>
+                                  <input class="form-control form-control-has-validation form-control-last-child" maxlength="11" id="mobile" type="tel" name="mobile" value="<%= data.mobile %>" data-constraints="@Required"><span class="form-validation"></span>
+                                </div>
+                              </div>
+  
+  
+                              <div class="cell-sm-3">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="email">E-mail Address</label>
+                                    <input class="form-control form-control-has-validation form-control-last-child" id="email" type="text" name="email" value="<%= data.email %>" data-constraints="@Required"><span class="form-validation"></span>
+                                  </div>
+                              </div>
+  
+                              <div class="cell-sm-3">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="gender">Gender</label>
+                                    <select name="gender" id="gender">
+                                       <option value="M" <%= data.gender == 'M'?'selected="selected"':'' %>>MALE</option>
+                                       <option value="F" <%= data.gender == 'F'?'selected="selected"':'' %>>FEMALE</option>
+                                    </select>
+                                 </div>
+                              </div>
+
+                            <div class="cell-sm-3">
+                                <div class="form-group">
+                                  <label class="form-label form-label-outside rd-input-label" for="dob">Date of Birth</label>
+                                  <input class="form-control form-control-has-validation form-control-last-child" id="dob" type="date" name="dob" value="<%= data.dob %>" data-constraints="@Required"><span class="form-validation"></span>
+                                </div>
+                            </div>
+                          </div>
+
+
+                          <div class="range">
+                              <div class="cell-sm-3">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="hometown">Hometown</label>
+                                    <input class="form-control form-control-has-validation form-control-last-child" id="hometown" type="text" name="hometown" value="<%= data.hometown %>" data-constraints="@Required"><span class="form-validation"></span>
+                                  </div>
+                              </div>
+
+                              <div class="cell-sm-3">
+                                  <div class="form-group">
+                                    <label class="form-label form-label-outside rd-input-label" for="from_unit">Assiged Unit</label>
+                                    <select name="unit_id" class="form-control">
+                                      <option value="">Select Section/Unit</option>
+                                      <%  units.map((unit,i) =>{ %>
+                                        <option value="<%= unit.id%>" <%- unit.id == data.unit_id ? 'selected="selected"': '' %>>
+                                          <%= unit.long_name %>
+                                        </option>
+                                        <%   }); %>
+                                    </select>
+                                  </div>
+                                </div>
+  
+                                <div class="cell-sm-3">
+                                    <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="nssphoto">Photo upload</label>
+                                      <input class="form-control form-control-has-validation form-control-last-child" id="nssphoto" type="file" name="nssphoto">
+                                    </div>
+                                </div>
+  
+                                <div class="cell-sm-3">
+                                    <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="nssform">NSS Form upload</label>
+                                      <input class="form-control form-control-has-validation form-control-last-child" id="nssform" type="file" name="nssform">
+                                    </div>
+                                </div>
+
+                           
+                          </div>
+
+                          <div class="range">
+ 
+                              <div class="cell-sm-6">
+                                  <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="address">Permanent Address of Personnel</label>
+                                      <textarea name="address" class="form-control"><%= data.address %></textarea>
+                                  </div>
+                              </div>
+  
+                              <div class="cell-sm-6">
+                                  <div class="form-group">
+                                      <label class="form-label form-label-outside rd-input-label" for="emergency_contact">Emergency Contact Address, Phone & Email</label>
+                                      <textarea name="emergency_contact" class="form-control"><%= data.emergency_contact %></textarea>
+                                  </div>
+                              </div>
+  
+                          </div>
+                        </div>
+                    </div>
+
+                             
+                  
+
+                    <div class="range offset-top-7">                       
+                         <div class="cell-sm-6 offset-top-17 offset-sm-top-0">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="start_date">Service Start Date</label>
+                                <input class="form-control" id="start_date" type="date" name="start_date" value="<%= data.start_date %>" data-constraints="@Required">
+                              </div>
+                          </div>
+
+                          <div class="cell-sm-6">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="end_date">Service End Date</label>
+                                <input class="form-control" id="end_date" type="date" name="end_date" value="<%= data.end_date %>" data-constraints="@Required">
+                              </div>
+                          </div>
+                    </div>
+
+
+                      
+
+                        
+
+                        <br><div class="text-subline"></div><br>
+
+                        <div class="offset-top-25">
+                             <button class="btn btn-primary btn-2x" type="submit" onclick="return confirm('Do you want to Submit?');">SAVE</button>
+                             <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>
+                             <input name="id" type="hidden" value="<%= data.id || 0 %>" />
+                        </div>
+                       <hr/>
+
+                       </form>
+
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

@@ -1,0 +1,58 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold">LEAVE HOLIDAY</h6>
+                      <div class="text-subline"></div><br>
+                  <form method="post" action="/hrm/postlexclude" enctype="application/x-www-form-urlencoded">                         
+
+                        <div class="data2">                            
+                                                          
+                                   <!-- Line 2 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">
+                                        <div class="cell-sm-4">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="holiday">Holiday</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="holiday" type="date" name="holiday" value="<%= row.holiday %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>                                        
+                                        <div class="cell-sm-4 offset-top-17 offset-sm-top-0">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="desc">Description</label>
+                                            <input class="form-control form-control-has-validation form-control-last-child" id="desc" type="text" name="desc" value="<%= row.desc %>" data-constraints="@Required"><span class="form-validation"></span>
+                                          </div>
+                                        </div>
+                                        <div class="cell-sm-4">                                          
+                                          <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="active">Enabled</label>
+                                              <select name="active" class="form-control">
+                                                  <option value="0" <%= row.active == '0' ? 'selected="selected"':'' %>>No</option> 
+                                                  <option value="1" <%= row.active == '1' ? 'selected="selected"':'' %>>Yes</option>                                                  
+                                             </select>
+                                            </div>
+                                        </div>                                                                           
+                                      </div>
+                                    </div>
+                                  </div>
+
+                               
+                        <div class="offset-top-25">
+                             <button class="btn btn-primary btn-2x" type="submit">SAVE</button>
+                             <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>                               
+                             <input type="hidden" name="id" value="<%= row.id || 0 %>"/>                       
+                        </div>
+                       <hr/>
+                       </form>
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

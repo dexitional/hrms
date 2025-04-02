@@ -1,0 +1,62 @@
+
+        <div class="row">
+            <!-- STAFF OVERVIEW PAGE -->
+            <div class="col-lg-12">
+                   <div class="table-responsive">
+                        <table class="table table-bordered ">
+                            <thead>
+                                <tr class="btn-danger">                         
+                                    <th>SNO.</th>
+                                    <th>FULL NAME</th>
+                                    <th>TYPE</th>
+                                    <th>PERIOD</th>
+                                    <th>RESUMPTION</th>
+                                    <th>DAYS</th>
+                                    <th>RELIEVED BY</th>
+                                    <th width="200px">STATUS</th>
+                                    <th width="150px">ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 <% if(data[2].length > 0){
+                                      data[2].map(row =>{ 
+                                     %>
+                                    <tr>
+                                        <td><b><%- row.staff_no %></b> </td>
+                                        <td><img class="img-responsive" src="<%- row.photo != null ? row.photo : '/public/images/none.png';%>" style="height:40px;display:block;margin-right:10px;border-radius:50%;float:left;" onclick="window.open('<%- row.photo != null ? row.photo : '/public/images/none.png';%>')"/><small><b><%- row.fname+' '+row.mname+' '+row.lname %></b></small></td>
+                                        <td><small><b><%- row.title %></b></small></td>
+                                        <td><small><em>
+                                            <b class="text-success"><%- row.start != null ? row.start.toUpperCase() :''%></b><br>
+                                            <b class="text-danger"><%- row.end != null ? row.end.toUpperCase() :''%></b></em>
+                                        </small></td>
+                                        <td><small><em><b class="text-warning"><%- row.resume != null ? row.resume.toUpperCase() :''%></b></em></small></td>
+                                        <td><b class="text-info">APR : <%- row.approved_days %> </b><br><em class="text-danger">ENT : <%- row.entitlement %></em></b></td>
+                                        <td><small><b><%- row.relieve %></b></small></td>
+                                        <td><small><b><%- row.status == 'GRANTED' ? '<span class="text-success">GRANTED</span>' : (row.status == 'REJECTED' ? '<span class="text-danger">REJECTED</span>':'<span class="text-info">'+row.status+'</span>') %></b></small>
+                                            <% if(row.status == 'STAFF-PENDING' && row.head_remark != null){ %>
+                                            <br><br><small><em>( <b>Head Note</b> : <br><%- row.head_remark %> )</em></small>
+                                            <% } %>
+                                            <% if(row.hr_remark != null){ %>
+                                                <br><br><small><em>( <b>DHR Note</b> : <br><%- row.hr_remark %> )</em></small>
+                                            <% } %>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group btn-block">
+                                            <% if(row.status == 'HEAD-PENDING'){ %>
+                                                <button type="button" class="btn btn-info appleave" data-id="<%- row.lid %>"  id="appleave" data-toggle="modal" data-target="#approveleave">APPROVE</button>
+                                            <% } else if(row.status == 'HR-PENDING'){  %>
+                                                <button type="button" class="btn btn-success"><i class="fa fa-check"></i>&nbsp;&nbsp;HEAD APPROVED</button>
+                                            <% } %>  
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <% });
+                                }else{ %> 
+                                <%- '<tr><td colspan="7" align="center"><strong><em>No Leave Records on Staff!</em></strong></td></tr>'%>
+                             <% } %>                          
+
+                        </table>
+                   </div>
+            </div>    
+        </div>
+    

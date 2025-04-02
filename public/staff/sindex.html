@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRMS</title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/local.css" />
+
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- you need to include the shieldui css and js assets in order for the charts to work -->
+    <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css" />
+    <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+    <script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/gridData.js"></script>
+</head>
+<body>
+       
+    
+    <div id="wrapper">        
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    <span>UCC-HRMS<sup>&reg;</sup></span>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li style="width:150px;margin-left:10%">                          
+                        <img src="logo-170x172.png" class="pull-right" style="display:block;height:60px;border-radius:15px;padding:5px;background:#fff;margin:15px 5px 20px 5px;"/>
+                        <img src="hrms.png" class="pull-right" style="display:block;height:60px;border-radius:15px;padding:5px;background:#fff;margin:15px 0 20px 0;"/>
+                    </li>
+                    <li class="active"><a href="index.html"><i class="fa fa-tachometer"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fa fa-list-ol"></i> Leave</a></li>
+                    <li><a href="#"><i class="fa fa-tasks"></i> Promotions</a></li>
+                    <li><a href="#"><i class="fa fa-globe"></i> Transfers</a></li>                    
+                    <li><a href="#"><i class="fa fa-bullseye "></i> Appraisal</a></li>
+                   
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-user">
+                   <!-- <li class="dropdown messages-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">2</span> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">2 New Messages</li>
+                            <li class="message-preview">
+                                <a href="#">
+                                    <span class="avatar"><i class="fa fa-bell"></i></span>
+                                    <span class="message">Security alert</span>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li class="message-preview">
+                                <a href="#">
+                                    <span class="avatar"><i class="fa fa-bell"></i></span>
+                                    <span class="message">Security alert</span>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#">Go to Inbox <span class="badge">2</span></a></li>
+                        </ul>
+                    </li>-->
+                     <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Ebenezer Kwabena Blay Ackah<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                            <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">                   
+                    <div class="alert alert-danger alert-dismissable">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                        <h2>EBENEZER KWABENA BLAY ACKAH</h2><hr>                       
+                                        <span>Current Appointment is <b>Senior ICT Assistant</b> and the assigned Unit is <b>Directorate of ICT Services</b> with a Salary Grade of <b>17 H, STEP 1</b></span>
+                                        <span>Staff is currently serving a <b>1-Year Probation</b> period.</span><hr>
+                                        <div class="btn-group">
+                                            <a href="javascript:;" classs="btn-mini btn">Apply for Leave</ a>
+                                            <a href="javascript:;" classs="btn-mini">Apply for Leave</a>
+                                        </div>
+                                </div>
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-2">
+                                        <div class="well">
+                                                <img class="img-responsive" style="height:120px; padding:5px;border:1px solid #ddd;" alt="Bootstrap template" src="http://www.prepbootstrap.com/Content/images/shared/houses/h9.jpg">
+                                        </div>
+                                </div>
+                            </div>                      
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="panel panel-default ">
+                        <div class="panel-body alert-info">
+                            <div class="col-xs-2">
+                                <i class="fa fa-list-ol fa-4x"></i>
+                            </div>
+                            <div class="col-xs-10 text-right">
+                                <b class="alerts-subheading">STAFF NUMBER</b>
+                                <b class="alerts-text" style="font-size:22px;font-style:italic">15666</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="panel panel-default ">
+                        <div class="panel-body alert-info">
+                            <div class="col-xs-2">
+                                <i class="fa fa-users fa-4x"></i>
+                            </div>
+                            <div class="col-xs-10 text-right">
+                                <b class="alerts-subheading">STAFF GROUP</b>
+                                <b class="alerts-text" style="font-size:14px;font-style:italic">SENIOR MEMBER</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="panel panel-default ">
+                        <div class="panel-body alert-info">
+                            <div class="col-xs-2">
+                                <i class="fa fa-users fa-4x"></i>
+                            </div>
+                            <div class="col-xs-10 text-right">
+                                <b class="alerts-subheading">STAFF STATUS</b>
+                                <b class="alerts-text" style="font-size:20px;font-style:italic">TEMPORAL</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="panel panel-default ">
+                        <div class="panel-body alert-info">                            
+                            <div class="col-xs-10 text-left">
+                                <b class="alerts-subheading" style="font-size:11px;text-decoration:underline">CURRENT APPOINTMENT</b><br>
+                                <b class="alerts-text" style="font-size:11px;font-style:italic">SENIOR ICT ASSISTANT</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="row">
+                <!-- STAFF OVERVIEW PAGE -->
+                <div class="col-lg-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-user-circle"></i> Profile Overview</h3>
+                        </div>
+                        <div class="panel-body">
+                                <iframe id="printf" name="printf" src="http://localhost:8080/hrm/staff/view/15666" style="width:100%;height:600px;margin:-10px auto 10px;border:2px solid brown;  transform: scale(1); transform-origin: 0 0;"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STAFF NOTIFICATIONS
+                <div class="col-lg-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-envelope"></i> System Notifications</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div id="shieldui-grid1"></div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+        </div>
+    </div>
+    <!-- /#wrapper -->
+
+    <script type="text/javascript">
+        jQuery(function ($) {
+            var performance = [12, 43, 34, 22, 12, 33, 4, 17, 22, 34, 54, 67],
+                visits = [123, 323, 143, 132, 274, 223, 143, 156, 223, 223],
+                budget = [23, 19, 11, 34, 42, 52, 35, 22, 37, 45, 55, 57],
+                sales = [11, 9, 31, 34, 42, 52, 35, 22, 37, 45, 55, 57],
+                targets = [17, 19, 5, 4, 62, 62, 75, 12, 47, 55, 65, 67],
+                avrg = [117, 119, 95, 114, 162, 162, 175, 112, 147, 155, 265, 167];
+
+            $("#shieldui-chart1").shieldChart({
+                primaryHeader: {
+                    text: "Visitors"
+                },
+                exportOptions: {
+                    image: false,
+                    print: false
+                },
+                dataSeries: [{
+                    seriesType: "area",
+                    collectionAlias: "Q Data",
+                    data: performance
+                }]
+            });
+
+            $("#shieldui-chart2").shieldChart({
+                primaryHeader: {
+                    text: "Login Data"
+                },
+                exportOptions: {
+                    image: false,
+                    print: false
+                },
+                dataSeries: [
+                    {
+                        seriesType: "polarbar",
+                        collectionAlias: "Logins",
+                        data: visits
+                    },
+                    {
+                        seriesType: "polarbar",
+                        collectionAlias: "Avg Visit Duration",
+                        data: avrg
+                    }
+                ]
+            });
+
+            $("#shieldui-chart3").shieldChart({
+                primaryHeader: {
+                    text: "Sales Data"
+                },
+                dataSeries: [
+                    {
+                        seriesType: "bar",
+                        collectionAlias: "Budget",
+                        data: budget
+                    },
+                    {
+                        seriesType: "bar",
+                        collectionAlias: "Sales",
+                        data: sales
+                    },
+                    {
+                        seriesType: "spline",
+                        collectionAlias: "Targets",
+                        data: targets
+                    }
+                ]
+            });
+
+            $("#shieldui-grid1").shieldGrid({
+                dataSource: {
+                    data: gridData
+                },
+                sorting: {
+                    multiple: true
+                },
+                paging: {
+                    pageSize: 7,
+                    pageLinksCount: 4
+                },
+                selection: {
+                    type: "row",
+                    multiple: true,
+                    toggle: false
+                },
+                columns: [
+                    { field: "id", width: "70px", title: "ID" },
+                    { field: "name", title: "Person Name" },
+                    { field: "company", title: "Company Name" },
+                    { field: "email", title: "Email Address", width: "270px" }
+                ]
+            });
+        });
+    </script>
+</body>
+</html>

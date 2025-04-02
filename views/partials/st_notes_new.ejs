@@ -1,0 +1,272 @@
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="/public/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="/public/css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+   
+</head>
+   
+<body>
+        <section id="content">
+
+            <!--start container-->
+          
+            <div id="mail-app" class="section">
+                <div class="row">
+                <div class="col s12">
+                    <nav class="light-blue darken-4">
+                    <div class="nav-wrapper">
+                        <div class="left col s12 m5 l5">
+                        <ul>
+                            <li><a href="#!" class="email-menu"><i class="mdi-navigation-menu"></i></a>
+                            </li>
+                            <li><a href="#!" class="email-type">NOTIFICATIONS & INBOX</a>
+                            </li>
+                            <li class="right hide"><a href="#!"><i class="mdi-action-search"></i></a>
+                            </li>
+                        </ul>
+                        </div>
+                        <div class="col s12 m7 l7 hide-on-med-and-down">
+                        <button class="btn btn-small right indigo lighten-3 light-blue-text text-darken-4 modal-trigger" href="#modal1"><b>Request for  DHR Assistance</b></button>
+                        <ul class="right hide">
+                            <li class="hide"><a href="#!"><i class="mdi-content-archive"></i></a>
+                            </li>
+                            <li><a href="#!"><i class="mdi-action-delete"></i></a>
+                            </li>
+                            <li class="hide"><a href="#!"><i class="mdi-content-mail"></i></a>
+                            </li>
+                            <li><a href="#!"><i class="mdi-navigation-more-vert"></i></a>
+                            </li>
+                        </ul>
+                        </div>
+
+                    </div>
+                    </nav>
+                </div>
+                <div class="col s12">
+                    <div id="email-sidebar" class="col s2 m1 s1 card-panel hide">
+                    <ul>
+                        <li>
+                        <img src="images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
+                        </li>
+                        <li>
+                        <a href="#!"><i class="mdi-content-archive active"></i></a>
+                        </li>
+                        <li>
+                        <a href="#!"><i class="mdi-social-group"></i></a>
+                        </li>
+                        <li>
+                        <a href="#!"><i class="mdi-maps-local-offer"></i></a>
+                        </li>
+                        <li>
+                        <a href="#!"><i class="mdi-alert-error"></i></a>
+                        </li>
+                    </ul>
+                    </div>
+
+                    <!-- Notification counts -->
+                    <div id="email-list" class="col s12 m4 l4 card-panel z-depth-1">
+                    <ul class="collection">
+                        <li class="collection-item avatar email-unread" href="?type=sys">
+                          <a href="?type=system">
+                                <i class="mdi-social-group icon light-blue-text text-darken-4"></i>
+                                <span class="email-title light-blue-text text-darken-4">SYSTEM NOTIFICATIONS</span>
+                                <p class="truncate grey-text ultra-small">Notifications and triggers from modules of the system.</p>
+                                <a href="#!" class="secondary-content"><span class="new badge blue "><%= no[0] %></span></a>
+                          </a>
+                        </li>
+                        <li class="collection-item avatar email-unread">
+                             <a href="?type=circular">
+                                <i class="mdi-maps-local-offer icon light-blue-text text-darken-4"></i>
+                                <span class="email-title light-blue-text text-darken-4">DHR CIRCULARS</span>
+                                <p class="truncate grey-text ultra-small">DHR Newsletters and general notices</p>
+                                <a href="#!" class="secondary-content"><span class="new badge green"><%= no[1] %></span></a>
+                            </a>
+                        </li>
+                        <li class="collection-item avatar email-unread">
+                            <a href="?type=inbox">
+                                <i class="mdi-alert-error icon light-blue-text text-darken-4"></i>
+                                <span class="email-title light-blue-text text-darken-4">HRMS INBOX</span>
+                                <p class="truncate grey-text ultra-small">Personal Inbox for DHR correspondences</p>
+                                <a href="#!" class="secondary-content"><span class="new badge yellow darken-3"><%= no[2] %></span></a>
+                            </a>
+                        </li>
+                    </ul>
+
+                     <!-- Notification List Most current -->
+                    <ul class="collection scroll">
+                        <li class="collection-item with-header light-blue darken-3">
+                                <h6 class="sub-title pink-text text-lighten-5"><%= type_name !== undefined ? type_name : 'SYSTEM NOTIFICATIONS' %></h6>
+                        </li>
+
+                        <%
+                             if(list !== undefined && list.length > 0){
+                                 list.map((l,i) => {
+                        %>
+                          <a href="?data=<%= l.id %>">
+                            <li class="collection-item avatar   <%= l.id == msg.id ? 'selected':'email-unread' %>">
+                                <span class="circle pink lighten-5 light-blue-text text-darken-3"><%= i+1 %></span>
+                                <span class="email-title"><%= l.title %></span>
+                                <p class="truncate grey-text ultra-small"><%= l.message %></p>
+                                <a href="#!" class="secondary-content email-time"><span class="light-blue-text text-darken-2 ultra-small"><%= l.datetime.toString().substr(0,15); %></span></a>
+                            </li>
+                          </a>
+                        <%   }) }%>
+
+                      <!-- <li class="collection-item avatar selected">
+                        <img src="images/avatar.jpg" alt="" class="circle">
+                        <span class="email-title">Andy Brown</span>
+                        <p class="truncate grey-text ultra-small">Hay Joe, we have next project for this summer.</p>
+                        <a href="#!" class="secondary-content email-time"><i class="mdi-editor-attach-file attach-file"></i> <span class="grey-text ultra-small">12:10 am</span></a>
+                        </li>
+                       -->
+                    </ul>
+                    </div>
+
+
+                    <div id="email-details" class="col s12 m8 l8 card-panel">
+                        <p class="email-subject truncate"><%= msg != undefined ? msg.title : '' %> <span class="email-tag grey lighten-3 hide">inbox</span> <small class="email-tag  light-blue lighten-4 right" style="font-size:10px;font-weight:bolder;border-radius:15px;padding:5px 10px 3px"><%= type_name != null ? type_name : 'SYSTEM NOTIFICATIONS' %></small></p>
+                        <hr class="grey-text text-lighten-2">
+                        <div class="email-content-wrap">
+                           <div class="email-content">
+                            <p class="grey-text ultra-small"><%= msg != undefined ? msg.datetime.toString().substr(0,21) : '' %></p>
+                            <p><%- msg != undefined ? msg.message : '<center><em>No notifications found!</em></center>' %></p>
+                           </div>
+                        </div>
+                        <hr>
+
+                    <!--
+                    <div class="email-content-wrap">
+                        <div class="row">
+                        <div class="col s10 m10 l10">
+                            <ul class="collection">
+                            <li class="collection-item avatar">
+                                <span class="circle light-blue">M</span>
+                                <span class="email-title">Mike Parker</span>
+                                <p class="truncate grey-text ultra-small">To Andy Brown</p>
+                                <p class="grey-text ultra-small">6:10 pm</p>
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="col s2 m2 l2 email-actions">
+                            <a href="#!"><span><i class="mdi-content-reply"></i></span></a>
+                            <a href="#!"><span><i class="mdi-navigation-more-vert"></i></span></a>
+                        </div>
+                        </div>
+                        <div class="email-content">
+                        <p>Hi Andy,</p>
+                        <p>We bundle our framework with the latest iteration of Roboto Google has released. It comes with 5 different font weights you can use: 200, 300, 400, 500, 600.</p>
+                        <p>Regards,
+                            <br>Mike Parker</p>
+                        </div>
+                    </div>
+                    -->    
+                    <div class="email-reply">
+                        <div class="row">
+                            <!--
+                            <div class="col s4 m4 l4 center-align">
+                                <a href="!#"><i class="mdi-content-reply"></i></a>
+                                <p class="ultra-small">Reply</p>
+                            </div>
+                            <div class="col s4 m4 l4 center-align">
+                                <a href="!#"><i class="mdi-content-reply-all"></i></a>
+                                <p class="ultra-small">Reply all</p>
+                            </div>-->
+                            <div class="col s4 m4 l4 center-align">
+                                <a href="!#"><i class="mdi-content-forward"></i></a>
+                                <p class="ultra-small">Next</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+                </div>
+
+                <!-- Compose Email Trigger -->
+                <div class="fixed-action-btn" style="bottom: 10px; right: 19px;">
+                <a class="btn-floating btn-large pink lighten-3 modal-trigger" href="#modal1">
+                    <i class="mdi-editor-border-color red-text text-darken-4"></i>
+                </a>
+                </div>
+
+
+
+                <!-- Compose Email Structure -->
+                <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <nav class="light-blue darken-4">
+                    <div class="nav-wrapper">
+                        <div class="left col s12 m5 l5">
+                        <ul>
+                            <li><a href="#!" class="email-menu"><i class="modal-action modal-close  mdi-hardware-keyboard-backspace"></i></a>
+                            </li>
+                            <li><a href="#!" class="email-type">DHR ASSISTANCE REQUEST FORM</a>
+                            </li>
+                        </ul>
+                        </div>
+                        <div class="col s12 m7 l7 hide-on-med-and-down">
+                        <ul class="right">
+                            <li><a href="#!"><i class="mdi-editor-attach-file"></i></a>
+                            </li>
+                            <li class="indigo lighten-3"><a href="#!"><i class="modal-action modal-close  mdi-content-send light-blue-text text-darken-4"></i></a>
+                            </li>
+                        </ul>
+                        </div>
+
+                    </div>
+                    </nav>
+                </div>
+                <div class="model-email-content">
+                    <div class="row">
+                    <form class="col s12">
+                        <!--<div class="row">
+                        <div class="input-field col s12">
+                            <input id="from_email" type="email" class="validate">
+                            <label for="from_email">From</label>
+                        </div>
+                        </div> -->
+                        <div class="row hide">
+                        <div class="input-field col s12">
+                            <input id="to_email" type="text" class="validate">
+                            <label for="to_email">To</label>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="input-field col s12">
+                            <input id="subject" type="text" class="validate">
+                            <label for="subject">Subject</label>
+                        </div>
+                        </div>
+                        <div class="row">
+                           <div class="input-field col s12">
+                            <textarea id="compose" class="materialize-textarea" length="500"></textarea>
+                            <label for="compose">Details or Description</label>
+                           </div>
+                        </div>
+                        <div class="input-field ">
+                            <label for="compose" class="col s5 ultra-text">Please upload letter for effect!</label>
+                            <input id="subject" type="file" id="upload" placeholder="upload the letter" class="col s5"> <br><br></div>
+                    </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+          
+        <!--end container-->
+
+        </section>
+
+        <script type="text/javascript" src="/public/js/plugins/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="/public/js/materialize.min.js"></script>
+        <script type="text/javascript" src="/public/js/plugins.min.js"></script>
+       
+    
+</body>
+</html>

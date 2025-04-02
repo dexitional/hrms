@@ -1,0 +1,467 @@
+
+      <main class="page-content section-70 section-md-70">   
+        
+         
+        <!-- vertical link Tabs-->
+        <section>
+          <div class="shell">
+            <div class="range range-xs-center">
+                <div class="cell-xs-10 cell-lg-12">                   
+                    <div class="">
+                      <!-- Responsive-tabs-->
+                      <div class="responsive-tabs responsive-tabs-boxed vertical resp-vtabs tabs-group-default" id="page" data-type="horizontal" style="width: 100%;">
+                        <ul class="resp-tabs-list text-center tabs-group-default" data-group="tabs-group-default">
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> HR PEND</li>  
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> HEAD PEND</li>  
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> DUMP</li>  
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> TYPES</li>
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> HOLIDAYS</li>
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> CONSTANTS</li> 
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> ENTITLEMENTS</li> 
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> BALANCES</li> 
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> DEFERRED</li>
+                               <!-- <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> REPORT</li>-->                                                                     
+                        </ul>
+                        <hr style="border:1px dashed #0d2d62;"/>
+                        
+                        <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                            <!-- HR-PENDING -->
+                            <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                              <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                    <div class="col-md-1">
+                                            <a href="/hrm/dash" class="btn btn-warning btn-sm pull-left" style="margin:0px"><i class="fa fa-home fa-lg"></i></a>&nbsp;&nbsp;
+                                    </div>
+                                     <div class="col-md-3"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">HR-PENDING</h3></div>
+                                     <div class="col-md-8">
+                                         <div class="btn-group pull-right" >
+                                                <a href="javascript:;" class="btn btn-primary btn-sm" onclick="var ins = prompt('Enter Staff Number of Reliever!'); if(ins != null){alert('Removing Reliever duties for Staff Number : '+ins);location.href='/hrm/leave/rmreliever/'+ins}"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;Remove Reliever</a>
+                                                <a href="javascript:;" class="btn btn-primary btn-sm" onclick="var ins = prompt('Enter Staff Number!'); if(ins != null){alert('Statistics for Staff Number : '+ins);location.href='/hrm/leave/stats/'+ins}"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;View Statistics</a>
+                                                <a href="/hrm/addleave" class="btn btn-warning btn-sm" onclick="return confirm('Apply Leave?')"><i class="fa fa-plus"></i>&nbsp;&nbsp;Apply leave</a>
+                                                <a onclick="document.querySelector('#manleave').click()" class="btn btn-primary btn-sm"><i class="fa fa-upload"></i>&nbsp;&nbsp;Upload Leave</a>
+                                                <a class="btn btn-success btn-sm" href="/public/leave_sample.xls"><b><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;<small>Leave Sample</small></b></a>
+                                                <form style="display:inline;margin:0" data-form="" action="/hrm/manleave" method="post" enctype="multipart/form-data" id="leaveform"><input type="file"  name="excel" id="manleave" style="display:none;" onchange="form.submit();"/></form>
+                                         </div>
+                                        
+                                    </div>
+                                 </div>
+                            
+                                 <!-- JOB STATUS CONTENT -->
+                                 <div class="table-responsive clearfix">
+                                    <table class="table table-bordered  dataTable leavehrpend">
+                                        <thead>
+                                            <tr>
+                                                <th>STAFF NO</th>
+                                                <th>FULL NAME</th>
+                                                <th>LEAVE TYPE</th>                                                                                    
+                                                <th>STATISTICS</th>  
+                                                <th>PERIOD</th>                                               
+                                                <th>RESUMPTION</th>
+                                                <th>STATUS</th>                                       
+                                           </tr>
+                                        </thead>                                        
+                                       
+                                    </table>
+                                </div>
+                          </div>                
+                          
+                          
+                          <!-- HEAD-PENDING --> 
+                          <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                
+                                <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                    <div class="col-md-1 cell-xs-12">
+                                        <a href="/hrm/dash" class="btn btn-warning btn-sm pull-left" style="margin:0px"><i class="fa fa-home fa-lg"></i></a>&nbsp;&nbsp;
+                                    </div>
+                                    <div class="col-md-11"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">HEAD-PENDING LEAVE APPROVALS</h3></div>
+                                </div>
+                           
+                                <!-- JOB STATUS CONTENT -->
+                                <div class="table-responsive clearfix">
+                                   <table class="table table-bordered  dataTable leaveheadpend">
+                                       <thead>
+                                            <tr>
+                                                    <th>STAFF NO</th>
+                                                    <th>FULL NAME</th>
+                                                    <th>LEAVE TYPE</th>                                                                                    
+                                                    <th>STATISTICS</th>  
+                                                    <th>PERIOD</th>                                               
+                                                    <th>RESUMPTION</th>
+                                                    <th>STATUS</th>                                       
+                                            </tr>
+                                       </thead>                                        
+                                      
+                                   </table>
+                               </div>
+                         </div>                
+
+                         
+                         <!-- LEAVE DUMP -->
+                         <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                
+                                <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                     <div class="col-md-1 cell-xs-12">
+                                        <a href="/hrm/dash" class="btn btn-warning btn-sm pull-left" style="margin:0px"><i class="fa fa-home fa-lg"></i></a>&nbsp;&nbsp;
+                                    </div>
+                                    <div class="col-md-11"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">LEAVE MODULE</h3></div>
+                                </div>
+                           
+                                <!-- JOB STATUS CONTENT -->
+                                <div class="table-responsive clearfix">
+                                   <table class="table table-bordered  dataTable leavedserver">
+                                       <thead>
+                                           <tr>
+                                               <th width="5">STAFF NO</th>
+                                               <th>FULL NAME</th>
+                                               <th>LEAVE TYPE</th>                                                                                    
+                                               <th>STATISTICS</th>  
+                                               <th>PERIOD</th>                                               
+                                               <th>RESUMPTION</th>
+                                               <th>STATUS</th>                                       
+                                          </tr>
+                                       </thead>                                        
+                                      
+                                   </table>
+                               </div>
+                         </div>                
+
+
+
+                          <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                  
+                                   <!-- TITLE -->
+                                   <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                       <div class="col-md-1 cell-xs-12">
+                                           <a href="/hrm/dash" class="btn btn-warning btn-sm pull-left" style="margin:0px"><i class="fa fa-home fa-lg"></i></a>&nbsp;&nbsp;
+                                       </div>
+                                       <div class="col-md-5"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">LEAVE CATEGORIES</h3></div>
+                                       <div class="col-md-6"><a href="/hrm/addltype" class="btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;ADD CATEGORY</a></div>
+                                   </div>
+                              
+                                   <!-- JOB STATUS CONTENT -->
+                                   <div class="table-responsive clearfix">
+                                      <table class="table table-bordered  dataTable">
+                                          <thead>
+                                              <tr>
+                                                  <th width="5">ID</th>
+                                                  <th>TYPE</th>
+                                                  <th>DESCRIPTION</th>                                                                                    
+                                                  <th>STATUS</th>                                                                                                 
+                                                  <th>&nbsp;</th>                                        
+                                              </tr>
+                                          </thead>                                        
+                                          <tbody> 
+                                            <% types.map(row => { %>
+                                               <tr>                                                                                             
+                                                    <td><button class="btn btn-sm btn-primary"><%- row.id %></button></td> 
+                                                    <td><button class="btn btn-sm"><b><small><%- row.title %></small></b></button></td>  
+                                                    <td><small><%- row.desc.toUpperCase() %></small></td> 
+                                                    <td><%- row.active == 1 ? 'ACTIVE':'INACTIVE' %></td>
+                                                    <td>                                                       
+                                                         <div class="btn-group group-xl">
+                                                            <a class="btn btn-success btn-sm" title="Edit Leave Type" href="/hrm/editltype/<%- row.id%>"><small><i class="fa fa-edit"></i></small></a> 
+                                                            <% if(user.adminrole == '07' || user.adminrole == '08'){ %>
+                                                            <a class="btn btn-primary btn-sm btn-left" onclick="return confirm('Delete Leave Category?')" title="Delete Leave Category" href="/hrm/delltype/<%- row.id%>"><small><i class="fa fa-trash"></i></small></a> 
+                                                            <% } %>
+                                                        </div>                                                                                                                                                              
+                                                    </td>                                                                                                                          
+                                                </tr> 
+                                             <% }) %>                                           
+                                          </tbody>
+                                      </table>
+                                  </div>
+                            </div>    
+
+
+
+                            <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                    
+                                     <!-- TITLE -->
+                                     <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                        <div class="col-md-1 cell-xs-12">
+                                            <a href="/hrm/dash" class="btn btn-warning btn-sm pull-left" style="margin:0px"><i class="fa fa-home fa-lg"></i></a>&nbsp;&nbsp;
+                                        </div>
+                                        <div class="col-md-5"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">HOLIDAYS</h3></div>
+                                        <div class="col-md-6"><a href="/hrm/addlexclude" class="btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;ADD HOLIDAY</a></div>
+                                     </div>
+                                
+                                     <!-- JOB STATUS CONTENT -->
+                                     <div class="table-responsive clearfix">
+                                        <table class="table table-bordered  dataTable" id="dynamic">
+                                            <thead>
+                                                <tr>
+                                                    <th>HOLIDAY</th>                                                   
+                                                    <th>DESCRIPTION</th>                                                                                    
+                                                    <th>YEAR</th>
+                                                    <th>STATUS</th>                                                                                                   
+                                                    <th width="100px" class="">&nbsp;
+                                                        <a href="javascript:;" onclick="alert('GENERAL PUBLIC HOLIDAYS\n\n1. New Year\'s Day\n2. Independece Day\n3. Good Friday\n4. Easter Monday\n5. May Day\n6. African Unity Day\n7. Eid Ul-Fitr\n8. Republic Day\n9. Eidul-Adhar\n10. Founder\'s Day\n11. Farmers\'s Day\n12. Christmas Day\n13. Boxing Day')" class="btn btn-sm btn-warning btn-inline"><i class="fa fa-info"></i></a>
+                                                       <!-- <a href="" class="btn btn-sm btn-warning">Stage Holidays</a> -->
+                                                    </th>                                        
+                                                </tr>
+                                            </thead>                                        
+                                            <tbody> 
+                                              <% holidays.map(row => { %>
+                                                 <tr>                                                                                             
+                                                      <td><button class="btn btn-sm"><%- row.day.toUpperCase() %></button></td>                                                      
+                                                      <td><small><%- row.desc.toUpperCase() %></small></td> 
+                                                      <td><%- row.year %></td> 
+                                                      <td><%- row.active == 1 ? 'ACTIVE':'INACTIVE' %></td>
+                                                      <td>                                                       
+                                                           <div class="btn-group">
+                                                              <a class="btn btn-success btn-sm btn-left" title="Edit Holiday" href="/hrm/editlexclude/<%- row.id%>"><small><i class="fa fa-edit"></i></small></a> 
+                                                              <% if(user.adminrole == '07' || user.adminrole == '08'){ %>
+                                                              <a class="btn btn-primary btn-sm btn-left" onclick="return confirm('Delete holiday?')" title="Delete Holiday" href="/hrm/dellexclude/<%- row.id%>"><small><i class="fa fa-trash"></i></small></a> 
+                                                             <% } %>
+                                                            </div>                                                                                                                                                        
+                                                      </td> 
+                                                  </tr> 
+                                                  <% }) %>                                           
+                                            </tbody>
+                                        </table>
+                                    </div>
+                              </div>    
+
+
+                              <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                      
+                                       <!-- TITLE -->
+                                       <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                           <div class="col-md-1">
+                                                 <a href="/hrm/dash" class="btn btn-warning btn-sm pull-left" style="margin:0px"><i class="fa fa-home fa-lg"></i></a>&nbsp;&nbsp;
+                                           </div>
+                                           <div class="col-md-5"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">LEAVE CONSTANTS</h3></div>
+                                           <div class="col-md-6"><a href="/hrm/addlconstant" class="btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;ADD CONSTANT</a></div>
+                                       </div>
+                                  
+                                       <!-- JOB STATUS CONTENT -->
+                                       <div class="table-responsive clearfix">
+                                          <table class="table table-bordered  dataTable" id="dynamic2">
+                                            <thead>
+                                                <tr>
+                                                    <th>DAYS</th>                                                                                    
+                                                    <th>DESCRIPTION</th>
+                                                    <th>TYPE</th>
+                                                    <th>CATEGORY</th>
+                                                    <th>EXCLUDED STAFF</th>
+                                                    <th>YEAR</th>
+                                                    <th>STATUS</th>                                                                                                   
+                                                    <th width="100px">&nbsp;</th>                                        
+                                                </tr>
+                                            </thead>                                        
+                                            <tbody> 
+                                              <% constants.map(row => { %>
+                                                 <tr>                                                                                             
+                                                      <td><button class="btn btn-lg" style="font-size:28px;"><%- row.weight %></button></td>
+                                                      <td><small><%- row.desc.toUpperCase() %></small></td> 
+                                                      <td><small><%- row.type == 'ADD' ? 'ADDITION':'DEDUCTION' %></small></td> 
+                                                      <td><button class="btn btn-sm"><b><%- row.category %></b></button></td> 
+                                                      <td><small><%- row.exclusion == null ? 'APPLIES TO ALL':row.exclusion %></small></td> 
+                                                      <td><small><%- row.year %></small></td> 
+                                                      <td><small><%- row.active == 1 ? 'ACTIVE':'INACTIVE' %></small></td>
+                                                      <td>                                                       
+                                                           <div class="btn-group">
+                                                              <a class="btn btn-success btn-sm btn-left" title="Edit Constant" href="/hrm/editlconstant/<%- row.id%>"><small><i class="fa fa-edit"></i></small></a> 
+                                                              <% if(user.adminrole == '07' || user.adminrole == '08'){ %>
+                                                              <a class="btn btn-primary btn-sm btn-left" onclick="return confirm('Delete constant?')" title="Delete Constant" href="/hrm/dellconstant/<%- row.id%>"><small><i class="fa fa-trash"></i></small></a> 
+                                                              <% } %>
+                                                           </div>                                                                                                                                                      
+                                                      </td> 
+                                                  </tr> 
+                                                  <% }) %>                                           
+                                            </tbody>
+                                          </table>
+                                      </div>
+                                </div>    
+
+
+                                <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                        
+                                         <!-- TITLE -->
+                                         <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                             <div class="col-md-1">
+                                                    <a href="/hrm/dash" class="btn btn-warning btn-sm pull-left" style="margin:0px"><i class="fa fa-home fa-lg"></i></a>&nbsp;&nbsp;
+                                             </div>
+                                             <div class="col-md-5"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">LEAVE ENTITLEMENTS</h3></div>
+                                             <div class="col-md-6"><a href="/hrm/addlweight" class="btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;ADD ENTITLEMENT</a></div>
+                                         </div>
+                                    
+                                         <!-- JOB STATUS CONTENT -->
+                                         <div class="table-responsive clearfix">
+                                            <table class="table table-bordered  dataTable" id="dynamic">
+                                                <thead>
+                                                    <tr>
+                                                        <th>LEAVE TYPE</th>
+                                                        <th>STAFF CATEGORY</th>
+                                                        <th>WEIGHT / DAYS</th>                                                                                    
+                                                        <th width="300px">DESIGNATIONS</th>                                                                                                      
+                                                        <th>&nbsp;</th>                                        
+                                                    </tr>
+                                                </thead>                                        
+                                                <tbody> 
+                                                  <% designs.map(row => { %>
+                                                     <tr>                                                                                             
+                                                          <td><button class="btn btn-sm btn-primary"><%- row.title %></button></td> 
+                                                          <td><small><%- (row.group == 'JS' ? 'JUNIOR STAFF': (row.group == 'SS' ? 'SENIOR STAFF':'SENIOR MEMBER')) %></small></td>  
+                                                          <td><button class="btn btn-lg" style="font-size:28px;"><%- row.weight %></button></td> 
+                                                          <td><small><%- row.jobs == null ? '<em style="font-size:9px;font-weight:bolder;border-radius:10px;background:pink;color:brown;padding:5px 10px;margin:5px;display:inline-block"><b>ALL STAFF GROUP MEMBERS</em></b>': row.outs %></small></td> 
+                                                          <td>                                                       
+                                                            <div class="btn-group">
+                                                                <a class="btn btn-success btn-sm btn-left" title="Edit Leave weight" href="/hrm/editlweight/<%- row.id%>"><small><i class="fa fa-edit"></i></small></a> 
+                                                                <% if(user.adminrole == '07' || user.adminrole == '08'){ %>
+                                                                <a class="btn btn-primary btn-sm btn-left" onclick="return confirm('Delete leave weight?')" title="Delete leave weight" href="/hrm/dellweight/<%- row.id%>"><small><i class="fa fa-trash"></i></small></a> 
+                                                                <% } %>
+                                                            </div>                                                                                                     
+                                                          </td>                                                                                                                          
+                                                      </tr> 
+                                                      <% }) %>                                           
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                  </div>  
+                                  
+                                  
+
+                                  <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                      
+                                        <!-- TITLE -->
+                                        <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                            <div class="col-md-1">
+                                                 <a href="/hrm/dash" class="btn btn-warning btn-sm pull-left" style="margin:0px"><i class="fa fa-home fa-lg"></i></a>&nbsp;&nbsp;
+                                            </div>
+                                            <div class="col-md-3"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">LEAVE BALANCE</h3></div>
+                                            <div class="col-md-8">
+                                                <div class="btn-group pull-right">
+                                                 <a href="javascript:;" onclick="var s = prompt('Please Enter Staff Number!');if(s != undefined){var p = prompt('Enter Outstanding Leave Amount in Days!');if(p != undefined){ window.location='/hrm/addlbalance/'+s+'?id='+p;}else{return false;}}else{return false;}"  class="btn btn-primary btn-sm"><b><i class="fa fa-plus"></i>&nbsp;&nbsp;<small>ADD BALANCE</small></b></a>
+                                                 <a href="javascript:;" onclick="var s = prompt('Please Enter Staff Number!');if(s != undefined){var p = prompt('Enter Outstanding Leave Amount in Days!');if(p != undefined){ window.location='/hrm/sublbalance/'+s+'?id='+p;}else{return false;}}else{return false;}" class="btn btn-warning btn-sm"><b><i class="fa fa-minus"></i>&nbsp;&nbsp;<small>SUBTRACT BALANCE</small></b></a>
+                                                 <a onclick="document.querySelector('#manbal').click()" class="btn btn-primary btn-sm"><i class="fa fa-upload"></i>&nbsp;&nbsp;<small>UPLOAD BALANCE</small></a>
+                                                 <a class="btn btn-success btn-sm" href="/public/balance_sample.xls"><b><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;<small>BALANCE SAMPLE</small></b></a>
+                                                 <form style="display:inline;margin:0" data-form="" action="/hrm/manbal" method="post" enctype="multipart/form-data" id="leaveform"><input type="file"  name="excel" id="manbal" style="display:none;" onchange="form.submit();"/></form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   
+                                        <!-- JOB STATUS CONTENT -->
+                                        <div class="table-responsive clearfix">
+                                           <table class="table table-bordered  dataTable" id="dynamic2">
+                                             <thead>
+                                                 <tr>
+                                                     <th>STAFF NO</th>                                                                                    
+                                                     <th>AMOUNT( IN DAYS )</th>
+                                                     <th>YEAR ADDED</th>                   
+                                                     <th>STATUS</th>                                                                                                   
+                                                     <th width="100px">&nbsp;</th>                                        
+                                                 </tr>
+                                             </thead>                                        
+                                             <tbody> 
+                                               <% balances.map(row => { %>
+                                                  <tr style="color:<%= (row.flag_used == '1' ? 'pink':'') %>">                                                                                             
+                                                       <td><button class="btn btn-sm btn-primary"><%- row.staff_no %></button></td>                                                      
+                                                       <td><button class="btn btn-lg" style="font-size:28px;"><%- row.weight %></button></td>
+                                                       <td><small style="font-size:16px;"><%- row.year %></small></td>
+                                                       <td><%- row.active == '1'? 'ACTIVE':'INACTIVE' %></td>
+                                                       <td>  
+                                                       <% if(row.flag_used == '0'){ %>                                                     
+                                                            <div class="btn-group" style="width:200px;">
+                                                               <a class="btn btn-<%- row.active == '1'? 'danger' : 'success'%> btn-sm btn-left" title="Enable Balance" href="/hrm/enablebalance/<%- row.staff_no%>?status=<%- row.active == '1'? '0' : '1'%>"><small><%- row.active == '1'? 'DISABLE' : 'ENABLE'%></small></a> 
+                                                               <% if(user.adminrole == '07' || user.adminrole == '08'){ %>
+                                                               <a class="btn btn-primary btn-sm btn-left" onclick="return confirm('Delete Balance?')" title="Delete Balance" href="/hrm/dellbalance/<%- row.staff_no%>"><small><i class="fa fa-trash"></i></small></a> 
+                                                               <% } %> 
+                                                            </div> 
+                                                       <% }%>                                                                                                                                                     
+                                                       </td> 
+                                                   </tr> 
+                                                   <% }) %>                                           
+                                             </tbody>
+                                           </table>
+                                       </div>
+                                  </div>  
+                                  
+                                  
+                                 
+                                  <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                      
+                                        <!-- TITLE -->
+                                        <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                            <div class="col-md-1">
+                                                  <a href="/hrm/dash" class="btn btn-warning btn-sm pull-left" style="margin:0px"><i class="fa fa-home fa-lg"></i></a>&nbsp;&nbsp;
+                                            </div>
+                                            <div class="col-md-5"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">LEAVE DEFERMENT</h3></div>
+                                            <div class="col-md-6">
+                                                <a href="/hrm/adddefer" style="margin-right:20px;margin-left:20px;" class="btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;DEFER LEAVE</a>
+                                            </div>
+                                        </div>
+                                   
+                                        <!-- JOB STATUS CONTENT -->
+                                        <div class="table-responsive clearfix">
+                                           <table class="table table-bordered  dataTable" id="dynamic2">
+                                             <thead>
+                                                 <tr>
+                                                     <th>STAFF NO</th>                                                                                    
+                                                     <th>WEIGHT</th>
+                                                     <th>YEAR</th>
+                                                     <th>REASON</th>                           
+                                                     <th>APPROVED BY</th>                                                                                                   
+                                                     <th width="100px">&nbsp;</th>                                        
+                                                 </tr>
+                                             </thead>                                        
+                                             <tbody> 
+                                               <% defer.map(row => { %>
+                                                  <tr style="color:<%= (row.flag_used == '1' ? 'pink':'') %>">                                                                                             
+                                                       <td><button class="btn btn-sm btn-primary"><%- row.staff_no %></button></td>                                                      
+                                                       <td><button class="btn btn-lg" style="font-size:28px;"><%- row.weight %></button></td>
+                                                       <td><button class="btn btn-lg" style="font-size:28px;"><%- row.year %></button></td>
+                                                       <td><button class="btn btn-lg" style="font-size:12px;"><b></b><small><%- row.reason %></small></button></td>
+                                                       <td><button class="btn btn-lg" style="font-size:28px;"><%- row.approved_by %></button></td>
+                                                       <td>  
+                                                       <% if(row.approved_status == '0'){ %>                                                     
+                                                            <div class="btn-group" style="width:200px;">
+                                                               <%- row.active == '0'?  '<a class="btn btn-danger btn-sm btn-left" title="Approve Deferment" href="/hrm/enabledefer/'+row.staff_no+'status=1"><small>APPROVE</small></a>' :'<button class="btn btn-sm btn-warning"><b><small>APPROVED</small></b></button>' %>
+                                                               <% if(user.adminrole == '07' || user.adminrole == '08'){ %>
+                                                               <a class="btn btn-primary btn-sm btn-left" onclick="return confirm('Delete Deferment?')" title="Delete Balance" href="/hrm/deldefer/<%- row.id%>"><small><i class="fa fa-trash"></i></small></a> 
+                                                               <% } %> 
+                                                            </div> 
+                                                       <% }%>                                                                                                                                                     
+                                                       </td> 
+                                                   </tr> 
+                                                   <% }) %>                                           
+                                             </tbody>
+                                           </table>
+                                       </div>
+                                  </div> 
+                                  
+                                  
+
+                                  <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                      
+                                        <!-- TITLE -->
+                                        <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                            <div class="col-md-1">
+                                                  <a href="/hrm/dash" class="btn btn-warning btn-sm pull-left" style="margin:0px"><i class="fa fa-home fa-lg"></i></a>&nbsp;&nbsp;
+                                            </div>
+                                            <div class="col-md-5"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">REPORTS</h3></div>
+                                            <div class="col-md-6">
+                                                <a href="/hrm/adddefer" style="margin-right:20px;margin-left:20px;" class="btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;DEFER LEAVE</a>
+                                            </div>
+                                        </div>
+                                   
+                                        <!--  LEAVE REPORTS -->
+                                        
+                                  </div> 
+ 
+ 
+
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              
+            </div>
+          </div>
+        </section>
+        <section class="offset-top-110">
+          
+          </div>
+        </section>
+      </main>

@@ -1,0 +1,169 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold">UNIT REGISTRATION</h6>
+                      <div class="text-subline"></div><br>
+                  <form method="post" action="/hrm/postunit" enctype="application/x-www-form-urlencoded">                         
+
+                        <div class="data2">                            
+                                                          
+                                   <!-- Line 2 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">
+                                        <div class="cell-sm-3">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="long_name">Unit Long Name</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="long_name" type="text" name="long_name" value="<%= row.long_name %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>                                        
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="account_no">Unit Short Name</label>
+                                            <input class="form-control form-control-has-validation form-control-last-child" id="short_name" type="text" name="short_name" value="<%= row.short_name %>" data-constraints="@Required"><span class="form-validation"></span>
+                                          </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="location">Unit Location</label>
+                                              <input class="form-control form-control-has-validation " id="location" type="text"  name="location" value="<%= row.location %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="unit_head">Unit Head Staff No.</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="unit_head" type="text" name="unit_head" value="<%= row.unit_head %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                                <div class="form-group">
+                                                  <label class="form-label form-label-outside rd-input-label" for="unit_subhead">Sub-divisional Heads (Staff No)</label>
+                                                  <input class="form-control form-control-has-validation form-control-last-child" id="unit_subhead" type="text" name="unit_subhead" value="<%= row.unit_subhead %>" data-constraints="@Required"><span class="form-validation"></span>
+                                                </div>
+                                            </div>
+
+                                        <div class="cell-sm-3">                                          
+                                            <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="type">Unit Type</label>
+                                                <select name="type"  id="type" class="form-control type">
+                                                    <option value="ACADEMIC" <%= row.type == 'ACADEMIC' ? 'selected="selected"':'' %>>ACADEMIC</option> 
+                                                    <option value="NON-ACADEMIC" <%= row.type == 'NON-ACADEMIC' ? 'selected="selected"':'' %>>NON-ACADEMIC</option>                                                  
+                                               </select>
+                                              </div>
+                                        </div>  
+
+                                        <div class="cell-sm-3">                                          
+                                            <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="level">Unit Level (Hierarchy)</label>
+                                                <select name="level" id="level" class="form-control">
+                                                    <option value="1" <%= row.level == '1' ? 'selected="selected"':'' %>>(1) Directorate | College</option> 
+                                                    <option value="2" <%= row.level == '2' ? 'selected="selected"':'' %>>(2) Division | Section | Faculty | School</option> 
+                                                    <option value="3" <%= row.level == '3' ? 'selected="selected"':'' %>>(3) Unit | Department</option> 
+                                              </select>
+                                              </div>
+                                        </div>  
+
+                                        <div class="cell-sm-3">                                          
+                                            <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="type">Mother Unit (Affiliated To)</label>
+                                                <select name="parent_id" class="form-control">
+                                                    <option value="" <%= row.parent_id == null ? 'selected="selected"':'' %>>--NONE--</option>                                                   
+                                                    <% if(row.id == 0){ %>
+                                                            <option value="self" <%= row.parent_id == null ? 'selected="selected"':'' %>>-- SELF --</option>
+                                                    <% } 
+                                                          parents.map(parent => { %>
+                                                            <option value="<%- parent.id %>" <%- row.parent_id == parent.id ? 'selected="selected"':'' %> data-title="<%- parent.long_name %>"><%- parent.long_name %></option> 
+                                                    <% }); %>                                                 
+                                                </select>
+                                            </div>
+                                        </div>  
+
+                                        <div class="cell-sm-3 ac">                                          
+                                            <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="type">Affliated College</label>
+                                                <select name="college_id" id="college_id" class="form-control">
+                                                    <option value="" <%= row.college_id == null ? 'selected="selected"':'' %>>--NONE--</option> 
+                                                    <% if(row.id == 0){ %>
+                                                      <option value="self" <%= row.college_id == null ? 'selected="selected"':'' %>>-- SELF --</option>
+                                                    <% } 
+                                                       colleges.map(college => { %>
+                                                            <option data-title="<%= college.long_name %>" value="<%= college.id %>" <%= row.college_id == college.id ? 'selected="selected"':'' %>><%= college.long_name %></option> 
+                                                    <% }); %>                                               
+                                                </select>
+                                            </div>
+                                        </div>  
+
+                                        <div class="cell-sm-3 ac">                                          
+                                            <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="type">Affliated Faculty</label>
+                                                <select name="faculty_id" id="faculty_id"class="form-control">
+                                                    <option value="" <%= row.faculty_id == null ? 'selected="selected"':'' %>>--NONE--</option> 
+                                                    <% if(row.id == 0){ %>
+                                                      <option value="self" <%= row.faculty_id == null ? 'selected="selected"':'' %>>-- SELF --</option>
+                                                    <% } 
+                                                       faculties.map(faculty => { %>
+                                                            <option value="<%= faculty.id %>" <%= row.faculty_id == faculty.id ? 'selected="selected"':'' %> data-title="<%= faculty.long_name %>" ><%= faculty.long_name %></option> 
+                                                    <% }); %>                                               
+                                                </select>
+                                            </div>
+                                        </div>  
+
+                                        <div class="cell-sm-3 ac">                                          
+                                            <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="type">Affliated Department</label>
+                                                <select name="dept_id" id="dept_id" class="form-control">
+                                                    <option value="" <%= row.dept_id == null ? 'selected="selected"':'' %>>--NONE--</option> 
+                                                    <% if(row.id == 0){ %>
+                                                      <option value="self" <%= row.dept_id == null ? 'selected="selected"':'' %>>-- SELF --</option>
+                                                    <% } 
+                                                       depts.map(dept => { %>
+                                                            <option value="<%= dept.id %>" <%= row.dept_id == dept.id ? 'selected="selected"':'' %> data-title="<%= dept.long_name %>"><%= dept.long_name %></option> 
+                                                    <% }); %>                                               
+                                                </select>
+                                            </div>
+                                        </div> 
+
+                                      
+                                        <div class="cell-sm-3">                                          
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="active">Enabled?</label>
+                                              <select name="active" class="form-control">
+                                                  <option value="0" <%= row.active == '0' ? 'selected="selected"':'' %>>NO</option> 
+                                                  <option value="1" <%= row.active == '1' ? 'selected="selected"':'' %>>YES</option>                                                  
+                                             </select>
+                                            </div>
+                                        </div>  
+                                 
+
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <br><br><div class="text-subline"></div><br>
+                                 
+                        </div>
+
+                        <div class="offset-top-25">
+                             <button class="btn btn-primary btn-2x" type="submit">SAVE</button>
+                             <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>  
+                             <input type="hidden" name="old_unit_subhead" value="<%= row.unit_subhead || null %>"/>  
+                             <input type="hidden" name="old_unit_head" value="<%= row.unit_head || null %>"/>  
+                             <input type="hidden" name="id" value="<%= row.id || 0 %>"/>  
+
+                             <input type="hidden" name="ref" value="<%= ref || 1 %>"/>                       
+                        </div>
+                       <hr/>
+                       </form>
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

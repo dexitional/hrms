@@ -1,0 +1,144 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold"><%- title %></h6>
+                      <div class="text-subline"></div><br>
+                       <form method="post" action="/hrm/postcircular" enctype="multipart/form-data">                         
+
+                        <div class="data2">                            
+                                                          
+                                   <!-- Line 2 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">
+                                        <div class="cell-sm-12">
+                                          <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="subject">Subject</label>
+                                              <textarea class="form-control form-control-has-validation form-control-last-child" id="subject" name="subject" data-constraints="@Required" style="height: 100px;"><%= row.subject %></textarea><span class="form-validation"></span>
+                                          </div>
+                                        </div>    
+                                        <div class="cell-sm-12 offset-top-17">
+                                          <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="subject">Message</label>
+                                              <textarea class="form-control form-control-has-validation form-control-last-child" id="message" name="message" data-constraints="@Required" style="height: 100px;"><%= row.message %></textarea><span class="form-validation"></span>
+                                          </div>
+                                        </div>  
+                                        <div class="cell-sm-12 offset-top-17">
+                                          <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="sms_note">SMS Notice - <em>(For text messages activated only )</em></label>
+                                              <textarea class="form-control form-control-has-validation form-control-last-child" id="sms_note" name="sms_note" data-constraints="@Required" style="height: 100px;"><%= row.sms_note %></textarea><span class="form-validation"></span>
+                                          </div>
+                                        </div>   
+                                        
+                                        <div class="cell-sm-12 offset-top-17">
+                                          <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="cat_staff_no">Targetted University Staff - <em>(Enter Staff No. separated by comma)</em></label>
+                                              <textarea class="form-control form-control-has-validation form-control-last-child" id="cat_staff_no" name="cat_staff_no" data-constraints="@Required" style="height: 100px;"><%= row.cat_staff_no %></textarea><span class="form-validation"></span>
+                                          </div>
+                                        </div>   
+
+                                        <div class="cell-sm-3 offset-top-17">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="cat_unit_id">Affected Section or Unit</label>
+                                            <select name="cat_unit_id" class="form-control" multiple>
+                                              <option value="">Select Sections/Units</option>
+                                              <%  units.map((unit,i) =>{ %>
+                                                <option value="<%= unit.id%>" <%- row.cat_unit_id && row.cat_unit_id.includes(unit.id) ? 'selected="selected"': '' %>>
+                                                  <%= unit.long_name%>
+                                                </option>
+                                                <%   }); %>
+                                            </select>
+                                          </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="cat_unit_status">Unit Staff Type</label>
+                                            <select name="cat_unit_status" class="form-control" readonly="readonly">
+                                              <option value="">Select Type</option>
+                                              <option value="HOD" <%- row.cat_unit_status == 'HOD' ? 'selected="selected"': '' %>>HOD</option>
+                                              <option value="ALL" <%- row.cat_unit_status = 'ALL' ? 'selected="selected"': '' %>>MEMBERS</option>
+                                            </select>
+                                          </div>
+                                        </div>
+
+                                        <div class="cell-sm-3 offset-top-17">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="cat_job_id">Affected Job Designations</label>
+                                            <select name="cat_job_id" class="form-control" multiple>
+                                              <option value="">Select Jobs/Designations</option>
+                                              <%  jobs.map((job,i) =>{ %>
+                                                <option value="<%= job.id%>" <%- row.cat_job_id && row.cat_job_id.includes(job.id) ? 'selected="selected"': '' %>>
+                                                  <%= job.title %>
+                                                </option>
+                                                <%   }); %>
+                                            </select>
+                                          </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="cat_staff_group">Affected Staff Category</label>
+                                            <select name="cat_staff_group" class="form-control" readonly="readonly" multiple>
+                                              <option value="JS" <%- row.cat_staff_group && row.cat_staff_group.includes('JS') ? 'selected="selected"': '' %>>JUNIOR STAFF</option>
+                                              <option value="SS" <%- row.cat_staff_group && row.cat_staff_group.includes('SS') ? 'selected="selected"': '' %>>SENIOR STAFF</option>
+                                              <option value="SM" <%- row.cat_staff_group && row.cat_staff_group.includes('SM') ? 'selected="selected"': '' %>>SENIOR MEMBER</option>
+                                            </select>
+                                          </div>
+                                        </div>
+
+                                        <div class="cell-sm-3 offset-top-17">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="dob">Circular/Letter No.</label>
+                                            <input class="form-control form-control-has-validation form-control-last-child" id="letter_no" type="text" name="letter_no" required value="<%= row.letter_no %>" data-constraints="@Required"><span class="form-validation"></span>
+                                          </div>
+                                        </div>
+
+                                        <div class="cell-sm-3 offset-top-17">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="dob">Circular Attachment <em>( PDF File Only)</em></label>
+                                            <input class="form-control form-control-has-validation form-control-last-child" id="attachment" type="file" name="circular"  value="<%= row.attachment %>" data-constraints="@Required"><span class="form-validation"></span>
+                                          </div>
+                                        </div>
+                                       
+                                        <div class="cell-sm-3 offset-top-17">                                          
+                                          <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="send_sms">Send Text Messages?</label>
+                                              <select name="send_sms" class="form-control">
+                                                  <option value="0" <%= row.send_sms == '0' ? 'selected="selected"':'' %>>No</option> 
+                                                  <option value="1" <%= row.send_sms == '1' ? 'selected="selected"':'' %>>Yes</option>                                                  
+                                             </select>
+                                            </div>
+                                        </div>   
+
+                                        <div class="cell-sm-3 offset-top-17">                                          
+                                          <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="status">Activate Circular?</label>
+                                              <select name="status" class="form-control">
+                                                  <option value="0" <%= row.status == '0' ? 'selected="selected"':'' %>>No</option> 
+                                                  <option value="1" <%= row.status == '1' ? 'selected="selected"':'' %>>Yes</option>                                                  
+                                             </select>
+                                            </div>
+                                        </div>                                                                           
+                                      </div>
+                                    </div>
+                                  </div>
+
+                               
+                            <div class="offset-top-25">
+                                <button class="btn btn-primary btn-2x" type="submit">SAVE</button>
+                                <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>                               
+                                <input type="hidden" name="id" value="<%= row.id || 0 %>"/>                       
+                            </div>
+                          <hr/>
+                       </form>
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

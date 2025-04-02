@@ -1,0 +1,98 @@
+    
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold">LEAVE ENTITLEMENT</h6>
+                      <div class="text-subline"></div><br>
+                  <form method="post" action="/hrm/postlweight" enctype="application/x-www-form-urlencoded">                         
+
+                        <div class="data2">                                                
+                                   <!-- Line 2 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">
+                                        <div class="cell-sm-4">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="weight">Days</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="weight" type="text" name="weight" value="<%= row.weight %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>                                        
+                                        
+                                        <div class="cell-sm-4">                                          
+                                          <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="type_id">Leave Type</label>
+                                              <select name="type_id" class="form-control" id="type_id">
+                                                    <option value="type_id">Select Leave Type</option>
+                                                      <%  types.map((type,i) =>{ %>
+                                                    <option value="<%= type.id%>" <%- type.id == row.type_id ? 'selected="selected"': '' %>>
+                                                      <%= type.title%>
+                                                    </option>
+                                                    <%   }); %>
+                                              </select>
+                                            </div>
+                                        </div> 
+                                        
+                                        <div class="cell-sm-4">                                          
+                                          <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="group">Group</label>
+                                              <select name="group" class="form-control" id="group">
+                                                  <option value="SM" <%= row.group == 'SM' ? 'selected="selected"':'' %>>SENIOR MEMBER</option> 
+                                                  <option value="SS" <%= row.group == 'SS' ? 'selected="selected"':'' %>>SENIOR STAFF</option> 
+                                                  <option value="JS" <%= row.group == 'JS' ? 'selected="selected"':'' %>>JUNIOR STAFF</option>                                                  
+                                             </select>
+                                            </div>
+                                        </div>   
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                 <!-- Line 2 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                         <div class="well jobs-cover">
+                                             <h4 >Designations<hr style="border:2px solid brown"></h4>
+                                             <div class="range">
+                                               <%
+                                                  let sel = row.jobs != null ? row.jobs.split(',') : null;
+                                                  jobs.map((job,i) =>{
+                                                      let jm = row.jobs != null ? sel.filter(jb => jb == job.id) : 0;
+                                                      if(jm.length > 0){
+                                                      //if(row.jobs != null && row.jobs.includes(job.id)){
+                                               %>
+                                                  <div class="cell-sm-4">
+                                                        <input type="checkbox" name="jobs" id="jobs<%= i%>" class="jobs" value="<%- job.id%>" checked/>
+                                                        <label for="jobs<%= i%>" class="text-warning text-bold"><small><%- job.title%></small></label>                                                        
+                                                  </div> 
+                                               <%     }else{  %>
+                                                  <div class="cell-sm-4">
+                                                      <input type="checkbox" name="jobs" id="jobs<%= i%>" class="jobs" value="<%- job.id%>"/>
+                                                      <label for="jobs<%= i%>" class="text-warning text-bold"><small><%- job.title%></small></label>                                                        
+                                                  </div> 
+                                               <%     }
+                                                 });
+                                               %>                                                
+                                             </div>
+                                         </div>
+                                      
+                                    </div>
+                                  </div>
+
+
+                        <div class="offset-top-25">
+                             <button class="btn btn-primary btn-2x" type="submit">SAVE</button>
+                             <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>                               
+                             <input type="hidden" name="id" value="<%= row.id || 0 %>"/>                       
+                        </div>
+                       <hr/>
+                       </form>
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+     

@@ -1,0 +1,237 @@
+
+      <main class="page-content section-70 section-md-70" >   
+           
+         
+        <!-- vertical link Tabs-->
+        <section>
+          <div class="shell">
+            <div class="range range-xs-center" style="position:relative;">
+                    <div style="position:absolute;left:0%;top:-65px;">
+                            <img src="<%= data.bio.photo != null ? data.bio.photo: '/public/images/none.png' %>" style="height:100px;box-shadow:0 0 3px #000;display:block;padding:3px;border-radius:10px;"/>
+                            <a href="/hrm/staff/view/<%= data.bio.staff_no %>" title="<% data.bio.fname+' '+data.bio.lname;%>" target="_blank" class="btn btn-sm btn-primary" style="font-size: 17px; padding:0px 5px;margin-top:10px;"><i class="fa fa-print"></i> <%= data.bio.staff_no %></a>
+                      </div>
+
+                <div class="cell-xs-10 cell-lg-12">                   
+                    <div class="">
+                      <!-- Responsive-tabs-->
+                      <div class="responsive-tabs responsive-tabs-boxed vertical resp-vtabs tabs-group-default" data-type="horizontal" id="page" style="width: 100%;">
+                        <ul class="resp-tabs-list text-center tabs-group-default" data-group="tabs-group-default" style="padding-left:120px">  
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> OVERVIEW</li>                                                            
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> FAMILY DATA</li> 
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> BANK DATA</li> 
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> QUALIFICATION</li>                                
+                                <a href="/hrm/editstaff/<%= data.bio.staff_no %>" style="margin-left:25px;"><li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> PERSONAL DATA</li></a>  
+                                <div class="dropdown" style="margin:-10px 25px;"> 
+                                    <button class="btn btn-warning btn-ellipse dropdown-toggle btn-lg " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        ACTIONS
+                                    </button>
+                                    <div class="dropdown-menu action-k" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Add/Enable/Disable Head Unit Access</a>
+                                        <a class="dropdown-item" href="#">Add/Enable/Disable Staff Access</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                       
+                                    </div>
+                                </div>                            
+                        </ul>
+                        <hr style="border:1px dashed #0d2d62;"/>
+                       
+                        
+                        <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default"> 
+                          
+                          <!-- PERSONAL DATA OVERVIEW / PRINTOUT -->
+                          <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0" style="margin-top:-50px;">
+                               <a href="javascript:;" target="_blank" class="btn btn-primary pull-right btn-sm" onclick="window.frames['printf'].focus();window.frames['printf'].print();"><i class="fa fa-print"></i> Print</a><br/>
+                               <iframe id="printf" name="printf" src="/hrm/staff/view/<%= data.bio.staff_no %>" rel="preload" as="document" style="width:100%;height:1200px;margin:-30px auto 10px;border:2px solid brown;  transform: scale(1); transform-origin: 0 0;"></iframe>
+                          </div>
+                         
+
+
+                          <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                
+                                 <!-- TITLE -->
+                                 <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                     <div class="col-md-6"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">FAMILY DATA</h3></div>
+                                     <div class="col-md-6"><a href="/hrm/addfamily/<%= data.bio.staff_no %>" class="btn btn-primary btn-sm pull-right">Add Relative</a></div>
+                                 </div>
+                            
+                                 <!-- JOB STATUS CONTENT -->
+                                 <div class="table-responsive clearfix">
+                                    <table class="table table-bordered  dataTable appoint_category">
+                                        <thead>
+                                            <tr>
+                                                <th width="50">RELATION</th>
+                                                <th>NAME</th>
+                                                <th>DOB</th>                                                                                    
+                                                <th>GENDER</th>
+                                                <th>CODE</th>
+                                                <th>NEXT OF KIN</th> 
+                                                <th>CONTACT</th>                                               
+                                                <th>ALIVE</th>
+                                                <th>&nbsp;</th>                                        
+                                            </tr>
+                                        </thead>                                        
+                                        <tbody> 
+                                             
+                                            <%  data.rel.map((row,i) => { %>
+                                                <tr>
+                                                    <td>
+                                                        <%= row.relation.toUpperCase() %> <br>
+                                                        <%- row.photo != null ? '<center><a href="'+row.photo+'" target="_blank"><img src="'+row.photo+'" title="View Full Photo" style="height:50px;border-radius:90%;margin-bottom:5px;"/></a></center>':''%>
+                                                        <%- row.path != null && row.relation == 'CHILD' ? '<small><a class="btn btn-primary btn-sm  btn-icon btn-left" target="_blank" title="View Birth Certificate " href="/viewer/#'+(row.path.toString().split('\\').join('/'))+'"><i class="icon fa fa-file-text-o "></i></a></small>':'' %>
+                                                    </td>
+                                                    <td><small><%- row.name.toUpperCase() %></small></td>
+                                                    <td><%- row.dob %></td>
+                                                    <td><%= row.gender == 'M' ? 'MALE' : 'FEMALE' %></td>
+                                                    <td><%= row.code %></td>
+                                                    <td><%= row.kin == '1' ? 'YES':'NO' %></td>
+                                                    <td><small><%= row.address != null ? row.address.toUpperCase() : '' %><%- (row.phone != null ? '<br>'+row.phone : '') %><%- row.address == null && row.phone == null ? '<b><em>NOT SET</em></b>' : '' %></small></td>
+                                                    <td><%= row.alive == '1' ? 'YES':'NO' %></td>                                                    
+                                                    <td width="190px">
+                                                        <div class="group">
+                                                            <a class="btn btn-default btn-sm pull-left" onclick="return confirm('Edit Relative?')" href="/hrm/editfamily/<%= row.id %>">
+                                                                <i class="fa fa-edit"></i>
+                                                            </a>
+                                                            <% if(user.adminrole == '07' || user.adminrole == '08'){ %>
+                                                            <a class="btn btn-default btn-sm pull-left" onclick="return confirm('Delete Relative?')" href="/hrm/delfamily/<%= row.id %>/<%= row.staff_no %>">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                            <% } %>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <% }); %>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                          </div>                        
+
+
+
+
+                          <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                
+                              <!-- TITLE -->
+                              <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                  <div class="col-md-6"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">BANK DATA</h3></div>
+                                  <div class="col-md-6"><a href="/hrm/addbank/<%= data.bio.staff_no %>" class="btn btn-primary btn-sm pull-right">Add New Bank</a></div>
+                              </div>
+                         
+                              <!-- JOB STATUS CONTENT -->
+                              <div class="table-responsive clearfix">
+                                 <table class="table table-bordered  dataTable appoint_category">
+                                     <thead>
+                                         <tr>
+                                             <th width="5">DEFAULT</th>
+                                             <th>BANK NAME</th>
+                                             <th>BANK ACCOUNT NUMBER</th>                                                                                    
+                                             <th>BANK BRANCH</th>
+                                             <th>DATE ADDED</th>                                            
+                                             <th width="250px">&nbsp;</th>                                        
+                                         </tr>
+                                     </thead>                                        
+                                     <tbody>                                           
+                                        <%  data.bank.map((row,i) => { %>
+                                            <tr>
+                                                <td><%= row.active == '1' ? 'YES' : '' %></td>
+                                                <td><%= row.bank_name.toUpperCase() %></td>
+                                                <td><%= row.account_no %></td>
+                                                <td><%= row.account_branch.toUpperCase() %></td>
+                                                <td><%= new Date(row.date_added).getDay() %>/<%= new Date(row.date_added).getMonth() %>/<%= new Date(row.date_added).getFullYear() %></td>
+                                                <td width="190px">
+                                                    <div class="group">
+                                                        <% if(row.active == '0'){%>
+                                                        <a class="btn btn-primary btn-sm pull-left" onclick="return confirm('Set as Default Bank Account?')" title="Set as Default?" href="/hrm/setbank/<%= row.id %>/<%= row.staff_no %>"><i class="fa fa-check"></i></a>
+                                                        <% }%>                                                        
+                                                        <a class="btn btn-default btn-sm pull-left" onclick="return confirm('Edit  Bank Account?')" href="/hrm/editbank/<%= row.id %>"><i class="fa fa-edit"></i></a>
+                                                        <% if(row.active == '0' && (user.adminrole == '07' || user.adminrole == '08')){%>
+                                                            <a class="btn btn-default btn-sm pull-left" onclick="return confirm('Delete Bank Account?')" href="/hrm/delbank/<%= row.id %>/<%= row.staff_no %>"><i class="fa fa-trash"></i></a>
+                                                        <% }%>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <% }); %>
+
+                                     </tbody>
+                                 </table>
+                             </div>
+                       </div>                        
+
+
+
+                       <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                
+                          <!-- TITLE -->
+                          <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                              <div class="col-md-6"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">QUALIFICATION</h3></div>
+                              <div class="col-md-6"><a href="/hrm/addcert/<%= data.bio.staff_no %>" class="btn btn-primary btn-sm pull-right">Add Academic Certificate</a></div>
+                          </div>
+                     
+                          <!-- JOB STATUS CONTENT -->
+                          <div class="table-responsive clearfix">
+                             <table class="table table-bordered  dataTable appoint_category">
+                                 <thead>
+                                     <tr>
+                                         <th width="50">QUALIFICATION</th>
+                                         <th>PROGRAM</th>
+                                         <th>SPECIALIZATION</th>                                                                                                                          
+                                         <th>DATE AWARDED</th>
+                                         <th>START DATE OF PROGRAM</th>
+                                         <th>END DATE OF PROGRAM</th> 
+                                         <th>VERIFICATION</th>                                                
+                                         <th>DOCUMENT</th>
+                                         <th>&nbsp;</th>                                        
+                                     </tr>
+                                 </thead>                                        
+                                 <tbody> 
+
+                                        <%  data.cert.map((row,i) => { %>
+                                            <tr>
+                                                <td><small><%= row.cert_rate ? row.cert_rate.toUpperCase(): '' %></small></td>
+                                                <td><small><%= row.program ? row.program.toUpperCase() : '' %></small></td>
+                                                <td><small><%= row.specialize ? row.specialize.toUpperCase() : ''%></small></td>
+                                                <td><%= row.grad_date ? `${new Date(row.grad_date).getDay()}/${new Date(row.grad_date).getMonth()}/${new Date(row.grad_date).getFullYear()}`:`NOT SET` %></td>
+                                                <td><%= row.start_date ? `${new Date(row.start_date).getDay()}/${new Date(row.start_date).getMonth()}/${new Date(row.start_date).getFullYear()}`:`NOT SET` %></td>
+                                                <td><%= row.start_date ? `${new Date(row.end_date).getDay()}/${new Date(row.end_date).getMonth()}/${new Date(row.end_date).getFullYear()}`:`NOT SET` %></td>
+                                                <td><%= (row.verified == '1'? 'Verified' : 'Non-verified').toUpperCase() %></td>
+                                                <td> <%- row.path != null ? '<small><a class="btn btn-primary btn-sm  btn-icon btn-left" target="_blank" title="View Academic Certificate " href="/viewer/#'+(row.path.toString().split('\\').join('/'))+'"><i class="icon fa fa-file-text-o "></i></a></small>':'' %></td>
+                                                <td width="190px">
+                                                    <div class="group">
+                                                        <a class="btn btn-default btn-sm pull-left" href="/hrm/editcert/<%= row.id %>">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a>
+                                                        <% if(user.adminrole == '07' || user.adminrole == '08'){ %>
+                                                        <a class="btn btn-default btn-sm pull-left" href="/hrm/delcert/<%= row.id %>">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                        <% } %>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <% }); %>
+
+                                 </tbody>
+                             </table>
+                         </div>
+                   </div>                        
+
+
+
+                              
+
+
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              
+            </div>
+          </div>
+        </section>
+        <section class="offset-top-110">
+          
+          </div>
+        </section>
+      </main>

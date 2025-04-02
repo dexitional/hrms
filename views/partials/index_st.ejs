@@ -1,0 +1,969 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRMS - <%= (user.fname+' '+user.mname+' '+user.lname).toUpperCase() %></title>
+   
+    <link rel="stylesheet" type="text/css" href="/public/staff/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/public/staff/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="/public/staff/css/local.css" />
+    <link rel="stylesheet" type="text/css" href="/public/css/pikaday.css">
+    <!-- Typeface: Unica One -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Unica One:regular" />
+   
+        <style>
+    /* Inner Page Navigation Styling */
+     .nav-stacked>li>a, .nav-stacked>li>a{
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+        font-size: 14px;
+        text-decoration: none;
+        background-color: pink;
+        color:steelblue
+      }
+
+      .nav-stacked>li>a:focus, .nav-stacked>li>a:hover {
+        text-decoration: none;
+        background-color: #eee ;
+      }
+
+      /* Increase height of Panel ( Cover of tables ) */
+      .table-responsive{
+          padding-bottom:200px !important;
+          background-color:#f1f2f3;
+      }
+
+      /* Style Form */
+      input,textarea,select{
+          background-color:pink;
+      }
+
+      /* Navigation Styling */
+      .main{
+          background-color:brown;
+          color:#fff;
+      }
+      .main-active{
+          background-color:#0e4371;
+          font-size:11px;
+          color:pink;
+      }
+      .sub{
+          /*background-color:#337ab7;*/
+          background:#044C92;
+          font-size:11px;
+          color:#eee;
+      }
+
+      /*  Disclaimer Styling */
+
+      /* The overlay effect with black background */
+    .overlay {
+        height: 100%;
+        width: 100%;
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        background-color: rgba(5, 8, 60, 1);
+        background-color: rgba(5, 8, 60, 0.9); /* Black with a little bit see-through */
+    }
+
+    /* The content */
+    .overlay-content {
+        position: relative;
+        top: 10%;
+        width: 80%;
+        text-align: center;
+        margin-top: 30px;
+        margin: auto;
+    }
+
+    /* Close button */
+    .overlay .closebtn {
+        position: absolute;
+        top: 20px;
+        right: 45px;
+        font-size: 60px;
+        cursor: pointer;
+        color: white;
+    }
+
+    .overlay .closebtn:hover {
+        color: #ccc;
+    }
+
+    /* Style the search field */
+    .overlay .msg-head {
+        padding:10px 20px;
+        color: #f1f1f1;
+        font-size:48px;
+        text-transform:uppercase;
+        border-radius:40px;
+        border:4px solid pink;
+    }
+    .overlay .msg-body {
+        font-family:arial;
+        font-size: 32px;
+        line-height:45px;
+        width: 100%;
+        margin:50px auto 5px;
+        color: pink;
+    }
+
+    .overlay .msg-logo {
+        display:inline-block;
+        height:60px;
+        border-radius:28px;
+        padding:5px;
+        background:#fff;
+        margin-top:-4px;
+        margin-right:5px;
+    }
+
+    .overlay .msg-btn {
+        font:bold 30px arial;
+        text-transform:uppercase;
+        display:inline-block;
+        width:50%;
+        border:none;
+        border-radius:28px;
+        padding:5px;
+        background:rgba(255,255,255,0.95);
+        color: rgba(5, 8, 60, 1);
+        margin:20px auto;
+    }
+
+   @media (max-width:767px){
+       /* The content */
+        .overlay-content {
+            position: relative;
+            top: 10%;
+            width: 80%;
+            height:auto;
+            text-align: center;
+            margin-top: 30px;
+            margin: auto;
+        }
+
+        /* Close button */
+        .overlay .closebtn {
+            padding:0 14px 3px;
+            position: absolute;
+            top: 20px;
+            right: 45px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #000;
+            background: white;
+            border-radius:50%;
+            
+        }
+
+        .overlay .msg-body {
+            font-family:arial;
+            font-size: 20px;
+            line-height:21px;
+            width: 100%;
+            margin:50px auto 5px;
+            color: pink;
+        }
+
+        .overlay .msg-head {
+            padding:3px 5px;
+            color: #f1f1f1;
+            font-size:23px;
+            text-transform:uppercase;
+            border-radius:20px;
+            border:2px solid pink;
+        }
+
+        .overlay .msg-logo {
+            display:inline-block;
+            height:25px;
+            border-radius:15px;
+            padding:5px;
+            background:#fff;
+            margin-top:0px;
+            margin-right:5px;
+        }
+
+   }
+
+      
+</style>
+</head>
+<body>
+     
+    <div id="wrapper">     
+        <!-- Disclaimer -->
+        <div id="myOverlay" class="overlay">
+                <span class="closebtn" onclick="closeSearch()" title="Close Overlay">x</span>
+                <div class="overlay-content">
+                    <h1 class="msg-head">
+                        <img src="/public/images/hrms.png" class="pull-left msg-logo"/>
+                      Disclaimer ! ! !
+                    </h1>
+                  <h2 class="msg-body">The information on this portal are confidential and exclusively for you ( an
+                        employee of the University of Cape Coast ) to access your personal records
+                        and for speedy management of HR issues. Kindly contact the Directorate
+                        by email on <em style="color:white">dhr.enquiries@ucc.edu.gh</em> or via <em style="color:white">live chat</em> on this portal for any
+                        concerns in your personal records for further action. An employee can also
+                        walk-in to the office ( HRIS Unit ) at the Directorate of Human Resource in
+                        the Central Administration Block, Old Site for your concerns to be
+                        addressed.</h2>
+                        <button onclick="closeSearch()" class="msg-btn">ENTER</button>
+                </div>
+        </div>
+        <!-- #End of Disclaimer --> 
+
+        <!-- Survey | Charlse Gawu -->
+        <div id="halloverlay" class="overlay">
+                <!--<span class="closebtn" onclick="closeSearch()" title="Close Overlay">x</span>-->
+                <div class="overlay-content">
+                    <h2 class="msg-head">
+                        <img src="/public/images/hrms.png" class="pull-left msg-logo"/>
+                        <small style="color:white;font-size:25px;font-weight:bolder;">ASSIGNMENT OF SENIOR MEMBERS TO HALLS OF RESIDENCE AS HALL FELLOWS</small>
+                    </h2>
+                    <p class="msg-body">Statute 49.2 of the University of Cape Coast Statutes, 2016, Stipulates that every Senior Member shall be assigned to a hall of residence as a Fellow.<br>
+                        In line with the above quoted Statute, We respectfully request that all Senior Members choose Halls of Residence as Fellows for approval by the Vice-Chancellor.</p><br>
+                    <form class="form" id="hallform" style="background:rgba(255,255,255,0.75);border-radius:25px;padding:15px 5px 3px;color:brown;font-size:25px;">
+                        <div class="form-group">
+                            <label class="form-label" for="hall_id">HALL TO AFFILIATE</label>
+                            <select name="hall_id" id="hall_id" class="hall_id">
+                                <option value="">-- Please Choose a Hall --</option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </select>
+                        </div>
+                    </form>
+                  <button id="hallsubmit" class="msg-btn">SAVE & CONTINUE >>></button>
+                </div>
+        </div>
+        <!-- Survey | Charlse Gawu --> 
+        
+        
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/hrm/dash">
+                    <div class="row">
+                        <div class="col-xs-7 col-sm-0">
+                            <img src="/public/images/hrms.png" class="pull-left visible-xs" style="display:inline-block;height:35px;border-radius:15px;padding:5px;background:#fff;margin-top:-5px;margin-right:5px;"/>
+                            <img src="<%- user.photo != null ? user.photo : '/public/images/logo-170x172.png' %>" class="pull-left visible-xs" style="display:inline-block;height:35px;border-radius:15px;padding:5px;background:#fff;margin-top:-5px;"/>
+                        </div>
+                        <div class="col-xs-5 col-sm-12">
+                            <span class="pull-center hidden-xs" style="font-family: cabin-sketch;font-size:28px;color:pink;font-weight:bolder;">UCC-HRMS<sup>&reg;</sup></span>
+                            <span class="center-block visible-xs inline-block" style="font-family: cabin-sketch;font-size:25px;color:pink;font-weight:bolder;">HRMS</span>
+                        </div>
+                     </div>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    
+
+                    <li class="hidden-xs">  
+                        <div style="margin:15px auto 35px;width:150px;">                      
+                           <img src="<%- user.photo != null ? user.photo : '/public/images/logo-170x172.png' %>" class="pull-right" style="display:inline-block;height:60px;border-radius:15px;padding:5px;background:#fff;"/>
+                           <img src="/public/images/hrms.png" class="pull-right" style="display:inline-block;height:60px;border-radius:15px;padding:5px;background:#fff;margin:0 5px"/>
+                        </div><br><br><br>
+                    </li>
+                    
+                    <!-- NAVIGATIONS 
+                    <li class="alert-danger "><a href="#" onclick="openSearch()"><span class="text-danger text-bold"><i class="fa fa-tachometer"></i>&nbsp;&nbsp;&nbsp;&nbsp;GOTO HR ADMIN &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></span></a></li>
+                    -->
+                    <% if(user.roles.includes('04') || user.role == '04') { %>
+                        <li class="<%= view == 'main'? 'active':'alert-danger' %>"><a href="/hrm/st/head"><b class="<%= view == 'main'? '':'text-danger text-bold';%>"><i class="fa <%= view == 'main'? 'fa-chevron-down text-info text-bold':'fa-plus' %>"></i>&nbsp;&nbsp;&nbsp;&nbsp;HEAD MENU</b></a></li>
+                            <% if(view == 'main' ) { %>
+                                <li class="<%= data[1] != undefined && data[1] == 'st_main_member' ? 'main-active':'sub' %>"><a href="/hrm/st/head/member"><b><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>&nbsp;&nbsp;STAFF MEMBERS</em></b></a></li>
+                                <li class="<%= data[1] != undefined && (data[1] == 'st_main_leave') ? 'main-active':'sub' %> hidden"><a href="/hrm/st/head/leave"><b><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>&nbsp;&nbsp;STAFF LEAVE</em></b></a></li>
+                                <li class="<%= data[1] != undefined && (data[1] == 'st_main_memleave') ? 'main-active':'sub' %>"><a href="/hrm/st/head/memleave"><b><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>&nbsp;&nbsp;STAFF LEAVE</em></b></a></li>
+                            <% } %>
+                    <% } %>
+                    <li class="<%= view == 'dash'? 'active':'' %>"><a href="/hrm/dash"><b><i class="fa <%= view == 'dash'? 'fa-tachometer text-info':'fa-tachometer' %>"></i>&nbsp;&nbsp;&nbsp;&nbsp;DASHBOARD</b></a></li>
+                    <li class="<%= view == 'notes'? 'active':'' %>"><a href="/hrm/st/notes"><b><i class="fa <%= view == 'notes'? 'fa-info text-info':'fa-info' %>"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NOTIFICATION</b></a></li>
+                   
+
+                    <!--<li><a href="/hrm/st/leave"><i class="fa fa-book"></i>&nbsp;&nbsp;NOTIFICATIONS</a></li>-->
+                   
+                    <% if((user.staff_group != 'SM') || (user.staff_type == 'NON-ACADEMIC' && user.staff_group == 'SM') ) { %>
+                    <li class="<%= view == 'leave'? 'active':'' %>"><a href="/hrm/st/leave"><b><i class="fa <%= view == 'leave'? 'fa-chevron-down text-info':'fa-plus' %>"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LEAVE</b></a></li>
+                        <% if(view == 'leave' ) { %>
+                            <li class="<%= data[1] != undefined && data[1] == 'st_leave_hist' ? 'main-active':'sub' %>"><a href="/hrm/st/leave/hist"><b><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>&nbsp;&nbsp;LEAVE HISTORY</em></b></a></li>
+                            <li class="<%= data[1] != undefined && (data[1] == 'st_leave_stat' || data[1] == 'st_leave_view') ? 'main-active':'sub' %> <%- data[3] != null && data[3].length <= 0 ? 'hidden':'' %>"><a href="/hrm/st/leave/stat"><b><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>&nbsp;&nbsp;LEAVE STATISTICS</em></b></a></li>
+                         <% } %>
+                    <% } %>
+
+                    <!-- Promotion -->
+                        <li class="<%= view == 'promotion'? 'active':'' %>"><a href="/hrm/st/promotion"><b><i class="fa <%= view == 'promotion'? 'fa-chevron-down text-info':'fa-plus' %>"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PROMOTION</b></a></li>
+                        <% if(view == 'promotion') { %>
+                            <li class="<%= data[1] != undefined && data[1] == 'st_promotion_request' ? 'main-active':'sub' %>"><a href="/hrm/st/promotion/request"><b><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>&nbsp;&nbsp;PROMOTION REQUESTS</em></b></a></li>
+                            <li class="<%= data[1] != undefined && data[1] == 'st_promotion_stat'  ? 'main-active':'sub' %>"><a href="/hrm/st/promotion/stat"><b><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>&nbsp;&nbsp;PROMOTION STATISTICS</em></b></a></li>
+                        <% } %>
+                  
+               
+                    <!-- Transfer -->
+                    <% if((user.staff_group != 'SM') || (user.staff_type == 'NON-ACADEMIC' && user.staff_group == 'SM') ) { %>
+                             <li class="<%= view == 'transfer'? 'active':'' %>"><a href="/hrm/st/transfer"><b><i class="fa <%= view == 'transfer'? 'fa-chevron-down text-info':'fa-plus' %>"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TRANSFER</b></a></li>
+                            <% if(view == 'transfer') { %>
+                                <li class="<%= data[1] != undefined && data[1] == 'st_transfer_request' ? 'main-active':'sub' %>"><a href="/hrm/st/transfer/request"><b><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>&nbsp;&nbsp;TRANSFER REQUESTS</em></b></a></li>
+                                <li class="<%= data[1] != undefined && data[1] == 'st_transfer_stat'  ? 'main-active':'sub' %>"><a href="/hrm/st/transfer/stat"><b><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>&nbsp;&nbsp;TRANSFER STATISTICS</em></b></a></li>
+                             <% } %>
+                    <% } %>
+                    
+                     <!-- Papers -->
+                    <% if(user.staff_group == 'SM') { %>
+                            <li class="<%= view == 'paper'? 'active':'' %>"><a href="/hrm/st/paper"><b><i class="fa <%= view == 'paper'? 'fa-briefcase text-info':'fa-briefcase' %>"></i>&nbsp;&nbsp;&nbsp;&nbsp; PAPERS</b></a></li>
+                    <% } %>
+                    <!-- Assets Management -->
+                    <li class="<%= view == 'mainreq'? 'active':'' %>"><a href="/hrm/st/mainreq"><b><i class="fa <%= view == 'mainreq'? 'fa-tachometer text-info':'fa-tachometer' %>"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SERVICE REQUEST</b></a></li>
+                    <!-- Document Management -->
+                    <li class="<%= view == 'docman'? 'active':'' %>"><a href="/hrm/st/docman"><b><i class="fa <%= view == 'docman'? 'fa-tachometer text-info':'fa-briefcase' %>"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOCUMENTS MGT</b></a></li>
+                    
+                    <!-- HR Admin -->
+                    <% if(user.adminrole != null) { %>
+                        <li class="alert-danger "><a href="/hrm/gotoadmin" onclick="return confirm('Goto HR ADMIN DASHBOARD?')"><span class="text-danger text-bold"><b><i class="fa fa-tachometer"></i>&nbsp;&nbsp;&nbsp;&nbsp;GOTO HR ADMIN &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></b></span></a></li>
+                    <% } %>
+                        
+                    
+                   <!-- <li><a href="/hrm/st/appoint"><i class="fa fa-tasks"></i> Promotions</a></li>
+                    <li><a href="/hrm/st/trans"><i class="fa fa-globe"></i> Transfers</a></li>                    
+                    <li><a href="/hrm/st/appraise"><i class="fa fa-bullseye "></i> Appraisal</a></li>-->
+                   
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-user">
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;<%= (user.fname+' '+user.mname+' '+user.lname).toUpperCase() %>&nbsp;&nbsp;&nbsp;<b class="caret"></b></b></a>
+                        <ul class="dropdown-menu">
+                            <% if(user.adminrole != null) { %>
+                            <li><a href="/hrm/gotoadmin"><b><i class="fa fa-gear"></i> GOTO HR ADMIN DASHBOARD</b></a></li>
+                            <% } %>
+                            <li class="divider"></li>
+                            <li><a href="javascript:;" onclick="var p = prompt('Please Enter New Password'); if(p != undefined){var m = prompt('Re-peat Password!');if(m != undefined){if(p != m){alert('Passwords mismatch! Try again!');}else{window.location='/hrm/st/chgpass/'+p}}else{return false;}}else{return false;}"><b><i class="fa fa-lock"></i> PASSWORD CHANGE</b></a></li>
+                            <li class="divider"></li>
+                            <li><a href="/logout" onclick="return confirm('Do you want to logout?')"><b><i class="fa fa-power-off"></i> LOGOUT</b></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-footer hidden-xs">
+                    <a data-placement="top" data-toggle="tooltip" title="Live Chat" href="/hrm/st/livechat" target="_blank"> 
+                        <span aria-hidden="true" class="fa fa-comment fa-lg"></span>
+                    </a>
+                    <a id="toggle-fullscreen" title="FullScreen" onclick="toggleFullScreen()">
+                        <span aria-hidden="true" class="glyphicon glyphicon-fullscreen"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Lock Dashboard" data-target="#screen-lock" class="disabled" data-original-title="Lock Disabled">
+                        <span aria-hidden="true" class="glyphicon glyphicon-lock"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="/logout" onclick="return confirm('Do you want to logout?')">
+                        <span aria-hidden="true" class="glyphicon glyphicon-off"></span>
+                    </a>
+            </div>
+        </nav>
+          <!-- Page Content -->
+          <div id="page-wrapper" style="background:#f9f9f9;margin: -20px 0 0;">
+               <%- include('partials/st_'+view) %>
+               <!-- Footer Nav 2 -->
+          </div>
+          <div class="sidebar-footer hidden-lg hidden-md pull-left" style="width:100%;margin:0;">
+                <a data-toggle="tooltip" data-placement="top" title="Dashboard" class="disabled" href="/hrm/dash">
+                    <span aria-hidden="true" class="glyphicon glyphicon-home"></span>
+                </a>
+                <a id="toggle-fullscreen" title="FullScreen" onclick="toggleFullScreen()">
+                    <span aria-hidden="true" class="glyphicon glyphicon-fullscreen"></span>
+                </a>
+                <a data-placement="top" data-toggle="tooltip" title="Live Chat" href="/hrm/st/livechat" target="_blank"> 
+                    <span aria-hidden="true" class="fa fa-comment fa-lg"></span>
+                </a>
+                <a data-toggle="tooltip" data-placement="top" title="Logout" class="disabled" href="/logout" onclick="return confirm('Do you want to logout?')">
+                    <span aria-hidden="true" class="glyphicon glyphicon-off"></span>
+                </a>
+           </div>
+              
+
+          <!-- Footer Content-->
+         
+    </div>
+    <!-- /#wrapper -->
+   
+     
+
+    <!-- Typeface: Cabin Sketch  -->
+    <script src="https://use.edgefonts.net/cabin-sketch:n4,n7.js"></script>
+    <script type="text/javascript" src="/public/staff/js/jquery-1.10.2.min.js"></script> 
+    <script type="text/javascript" src="/public/js/ie9.min.js"></script> 
+    <script type="text/javascript" src="/public/js/selectivizr-min.js"></script> 
+    <script type="text/javascript" src="/public/staff/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/modules/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="/public/js/pikaday.js"></script> 
+    <script type="text/javascript">  
+       $(function(){
+              
+                  // Hide Leave Form Basic Details
+                  $('.main_cover').hide();
+                  // UPDATE STAFF BIODATA | Modal Data 
+                  $('#updatestaff').on('show.bs.modal', function (e) {
+                        var id = $('#ckupdatestaff').data('id');
+                        // load Biodata
+                        $.ajax({
+                            url :'/hrm/st/biodata/'+id,
+                            dataType: "JSON",
+                            type: 'GET',                      
+                            success : function(msg){ 
+                                $('#phone').val(msg.row[0].phone);
+                                $('#address').val(msg.row[0].address);
+                                $('#paddress').val(msg.row[0].paddress);
+                                $('#email').val(msg.row[0].email);
+                                $('#birth_place').val(msg.row[0].birth_place);
+                                $('#hometown').val(msg.row[0].hometown);
+                                $('#district').val(msg.row[0].district);
+                                $('#region').val(msg.row[0].region);
+                                $('#country').val(msg.row[0].country);
+                                $('#religion').val(msg.row[0].religion);
+                                $('#ssnit').val(msg.row[0].ssnit);
+                                $('#staffno').val(msg.row[0].staff_no);
+                            }
+                        });  
+                });
+
+                
+              
+                 // Add Leave Application | Modal Data 
+                 $('#addleave').on('show.bs.modal', function (e) {
+                        $('.end_date').hide();
+                        $('.main_cover').hide();
+                        $('#approved_days').val('');
+                         //$('form[name=formleave]').reset();
+                        // Initialize View - CASUAL, ANNUAL, SPECIAL
+                          $('.group2').css("display","none");
+                          $('.group1').css("display","block");
+                          $('.group2n').attr("disabled","disabled");
+                          $('.group1n').removeAttr("disabled");
+                   
+                        // load leave types
+                        $.ajax({
+                            url :'/hrm/st/getltypes',
+                            dataType: "JSON",
+                            type: 'GET',                      
+                            success : function(msg){  
+                                $('#type').html('<option>Choose Category</option>');
+                                var out = '';
+                                msg.types.map(type => {
+                                  out += '<option value="'+type.id+'">'+type.desc+'</option>';
+                                });
+                                $('#type').append(out);
+                                $('#staff_no').val(msg.row[0].staff_no);
+                                $('#staff_group').val(msg.row[0].staff_group);
+                                $('#urlto').val(msg.row[0].urlto);
+                                $('#id').val(msg.row[0].id);
+                            },error: function(e){
+                                alert(JSON.stringify(e));
+                            }
+                        });  
+                 })
+
+
+                // Edit Leave Application | Modal Data 
+                $('#editleave').on('click', function (e) {
+                       var id = $('#editleave').data('id');
+                       // load leave types
+                       $.ajax({
+                           url :'/hrm/st/getltypes?id='+id,
+                           dataType: "JSON",
+                           type: 'GET',                      
+                           success : function(msg){ 
+                             $('#type').html('<option>Choose Category</option>');
+                               var out = '';
+                               msg.types.map(type => {
+                                 out += '<option value="'+type.id+'" '+(type.id == msg.row[0].type_id ? 'selected="selected"':'')+'>'+type.desc+'</option>';
+                               });
+                               $('#type').append(out);
+                               $('#staff_no').val(msg.row[0].staff_no);
+                               $('#staff_group').val(msg.row[0].staff_group);
+                               $('#urlto').val(msg.row[0].urlto);
+                               $('#id').val(msg.row[0].id);
+                               // Extra Data
+                               $('#entitlement').val(msg.row[0].entitlement);
+                               $('#approved_days').val(msg.row[0].approved_days);
+                               $('#start_date').val(msg.row[0].start_date);
+                               $('#emergency_note').val(msg.row[0].emergency_note);
+                               $('#emergency_contact').val(msg.row[0].emergency_contact);
+                               $('#apply_note').val(msg.row[0].apply_note);
+
+                               if(type.id == 1 || type.id == 2 || type.id == 6){
+                                    // CASUAL, ANNUAL, SPECIAL
+                                    $('.group2').css("display","none");
+                                    $('.group1').css("display","block");
+                                    $('.group2n').attr("disabled","disabled");
+                                    $('.group1n').removeAttr("disabled");
+                                    
+                                }else if(type.id == 3){
+                                    // MATERNITY
+                                    $('.group1').css("display","none");
+                                    $('.group2').css("display","block");
+                                    $('.group1n').attr("disabled","disabled");
+                                    $('.group2n').removeAttr("disabled");
+                                                    
+                                }else if(type.id == 4 || type.id == 5 || type.id == 7 || type.id == 8){
+                                    // SICK, EXAMS, STUDY, ABSENCE
+                                    $('.group1').css("display","none");
+                                    $('.group2').css("display","block");
+                                    $('.group1n').attr("disabled","disabled");
+                                    $('.group2n').removeAttr("disabled");
+                                    
+                                }   
+                           }
+                       });  
+                })
+
+
+                // Head Leave Approval Form | Modal Data 
+                $('.appleave').on('click', function (e) {
+                     $('#id').val($(this).data('id'));
+                });
+                $('#approveleave').on('show.bs.modal',function (e) {
+                   var id = $('#id').val();
+                   // load leave types
+                   $.ajax({
+                       url :'/hrm/st/getltypes?id='+id,
+                       dataType: "JSON",
+                       type: 'GET',                      
+                       success : function(msg){ 
+                            $('#approveleave #id').val(msg.row[0].lid);
+                            $('#approveleave #type').val(msg.row[0].type_id);
+                            $('#approveleave #staff_no').val(msg.row[0].staff_no);
+                            $('#approveleave #staff_group').val(msg.row[0].staff_group);
+                            $('#approveleave #urlto').val(msg.row[0].urlto);
+                            // Extra Data
+                            $('#approveleave #approved_days').val(msg.row[0].approved_days);
+                            $('#approveleave #approved_days').attr('max',msg.row[0].entitlement);
+                            $('#approveleave #labelamnt').html('LEAVE AMOUNT (<em> Amount should not exceed '+msg.row[0].entitlement+' days</em>)');
+                            $('#approveleave #start_date').val(msg.row[0].start_date);
+                            //$('#relieved_by').val(msg.row[0].relieved_by);
+
+                            $('#approveleave #relieved_by').html('<option value="0000">-- ( Allow For DHR Action ) -- </option>');
+                            var out = '';
+                            msg.relieves.map(relieve => {
+                                out += '<option value="'+relieve.staff_no+'" '+(relieve.staff_no == msg.row[0].relieved_by ? 'selected="selected"':'')+'>'+relieve.staff_no+' | '+relieve.name+'</option>';
+                            });
+                            $('#approveleave #relieved_by').append(out);
+                        
+                        }
+                    });  
+                })
+
+
+                
+                
+                 // Head Leave Application Form For Staff | Modal Data 
+                 $('.clkapplyleave').on('click', function (e) {
+                        $('#staff_no').val($(this).attr('title'));
+                        $('.main_cover').hide();
+                        $('#approved_days').val('');
+                 });
+                 $('#applyleave').on('show.bs.modal', function (e) {
+                        // Initialize View - CASUAL, ANNUAL, SPECIAL
+                        $('.group2').css("display","none");
+                        $('.group1').css("display","block");
+                        $('.group2n').attr("disabled","disabled");
+                        $('.group1n').removeAttr("disabled");
+                        $('.modal-title').html('');
+                        document.forms[0].reset();
+                        var st = $('#staff_no').val();
+                        
+                        // load leave types
+                        $.ajax({
+                            url :'/hrm/st/getltypes?staff='+st,
+                            dataType: "JSON",
+                            type: 'GET',                      
+                            success : function(msg){ 
+                                $('#type').html('<option>Choose Category</option>');
+                                var out = '';
+                                msg.types.map(type => {
+                                  out += '<option value="'+type.id+'">'+type.desc+'</option>';
+                                });
+                                $('.modal-title').html("LEAVE APPLICATION FORM | "+msg.row[0].name+` ( ${msg.row[0].staff_no} )`);
+                                $('#type').append(out);
+                                $('#staff_no').val(msg.row[0].staff_no);
+                                $('#staff_group').val(msg.row[0].staff_group);
+                                $('#urlto').val(msg.row[0].urlto);
+                                $('#id').val(msg.row[0].id);
+                            }
+                        });  
+                 });
+
+
+
+                // RELIEVER
+                $('#relieved_by').on('blur',function(){
+                    var relieve = $(this).val();
+                    if(relieve != ''){                     
+                        // Ajax Call for Entitlement
+                        $.ajax({
+                            url :'/hrm/canrelieve/'+relieve,
+                            dataType: "JSON",
+                            type: 'GET',                      
+                            success : function(msg){  
+                                if(!msg.canrelieve){
+                                   alert("STAFF : "+relieve+" ALREADY ON LEAVE OR OCCUPIED!");
+                                   $('#relieved_by').val('0000');
+                                }
+                            }
+                        });  
+                    }else{
+                        alert('PLEASE ENTER STAFF FOR RELIEF!'); 
+                        $('#relieved_by').focus();
+                    }
+                });
+
+
+
+                // ENTITLEMENT -- LIMIT
+                $('#approved_days').on('blur',function(){
+                    var due = $('#entitlement').val();
+                    var amount = $('#approved_days').val();
+                    // Alerts
+                    if(Number(amount) > Number(due)){
+                        alert("LEAVE ENTITLEMENT EXCEEDED!");
+                        $('#approved_days').val(0);
+                    }  
+                });
+
+
+
+                // ENTITLEMENT -- LIMIT
+                $('#save').on('click',function(){
+                   
+                    var sno = $('#staff_no').val();
+                    var amount = $('#approved_days').val();
+                    var startd = $('#start_date').val();
+                    var enote = $('#emergency_note').val();
+                    var ephone = $('#emergency_contact').val();
+                    var relieve = $('#relieved_by').val();
+                    var type = $('#type').val();
+                    // Alerts
+                    if(sno == ''){
+                    alert("STAFF NUMBER FIELD EMPTY!");
+                    $('#staff_no').focus();
+                    return false;
+                    }else if(amount == ''){
+                    alert("LEAVE AMOUNT FIELD EMPTY!");
+                    $('#approved_days').focus();
+                    return false;
+                    }else if(startd == ''){
+                    alert("EXPECTED START DATE FIELD EMPTY!");
+                    $('#start_date').focus();
+                    return false;
+                    }else if(enote == ''){
+                    alert("EMERGENCY DETAILS & ADDRESS FIELD EMPTY!");
+                    $('#emergency_note').focus();
+                    return false;
+                    }else if(ephone == ''){
+                    alert("EMERGENCY CONTACT FIELD EMPTY!");
+                    $('#emergency_contact').focus();
+                    return false;
+                    }else if(relieve == ''){
+                    alert("RELIEVED BY FIELD EMPTY!");
+                    $('#relieved_by').focus();
+                    return false;
+                    }else if(relieve == ''){
+                    alert("PLEASE CHOOSE LEAVE TYPE!");
+                    $('#type').focus();
+                    return false;
+                    }       
+                    
+                    var c = confirm('Submit ?');
+                    if(!c){
+                      return false;
+                    }
+                });
+            
+         
+                // LEAVE TYPE -- ONCHANGE
+                $('#type').on('change',function(){
+                    var type = $(this).val(); 
+                    var staff_no = $('#staff_no').val();
+                    $('.save').removeAttr("disabled");
+                    $('.main_cover').hide();
+
+                    if(type != '' && staff_no != ''){  
+                        if(type == 1 || type == 2 || type == 6){
+                            // CASUAL, ANNUAL, SPECIAL
+                            $('.group2').css("display","none");
+                            $('.group1').css("display","block");
+                            $('.group2n').attr("disabled","disabled");
+                            $('.group1n').removeAttr("disabled");
+                            
+                        }else if(type == 3){
+                            // MATERNITY
+                            $('.group1').css("display","none");
+                            $('.group2').css("display","block");
+                            $('.group1n').attr("disabled","disabled");
+                            $('.group2n').removeAttr("disabled");
+                            alert("Maternity Leave has 3 Months (90 Days) entitlement and should be accompanied by a certificate duly signed by a Medical Doctor!");
+                                            
+                        }else if(type == 4 || type == 5 || type == 7 || type == 8){
+                            // SICK, EXAMS, STUDY, ABSENCE
+                            $('.group1').css("display","none");
+                            $('.group2').css("display","block");
+                            $('.group1n').attr("disabled","disabled");
+                            $('.group2n').removeAttr("disabled");
+                            alert("LEAVE SHOULD BE ACCOMPANIED BY A SIGNED CERTIFICATE OR PROOF OF CLAIM!");
+                        }   
+
+                        // Ajax Call for Entitlement
+                        $.ajax({
+                            url :'/hrm/getleave/'+staff_no+'/'+type,
+                            dataType: "JSON",
+                            type: 'GET',                      
+                            success : function(msg){ 
+                                $('#staff_group').val(msg.staff.staff_group);                          
+                                $('.entitlement').val(msg.Due);
+                                $('.main_cover').show(); // Show Basic form details
+                                
+                                if(type == 3){
+                                  $('.approved_days').val(msg.Due);
+                                }
+                                
+                                // Alerts
+                                if(msg.canapply){  // STAFF IS ALREADY ON-LEAVE OR SERVING LEAVE - RELIEF DUITIES
+
+                                    if(msg.staff == null){
+                                        alert("Staff NO : "+staff_no+" IS NON-EXISTENT!");
+                                        $('.save').attr("disabled","disabled");
+                                    }else{
+                                        $('.save').removeAttr("disabled");
+                                        if(msg.Due == 0){
+                                            alert("STAFF NO : "+staff_no+" NOT QUALIFIED!");
+                                            $('.save').attr("disabled","disabled");
+                                        }
+                                    }
+
+                                }else{
+                                    alert('PLEASE YOU ARE NOT ALLOWED TO APPLY FOR ANOTHER LEAVE WHILES SERVING A LEAVE !\n\nOR NOT ALLOWED TO GO ON-LEAVE WHILES STANDING IN FOR A STAFF ON LEAVE!\n\nOR ANNUAL LEAVE MAY HAVE BEEN DEFERRED FOR THE YEAR!');
+                                    $('.save').attr("disabled","disabled");
+                                    // Close Modal
+                                    document.forms[0].reset();
+                                    $('#addleave').modal('hide');
+                                    $('#applyleave').modal('hide');
+                                }
+                            }
+                        });  
+                    }else if(type != '' && staff_no == ''){
+                        $('.save').attr("disabled","disabled");
+                        alert('PLEASE ENTER STAFF NUMBER OF RELIEVER'); 
+                        $('#staff_no').focus();
+                    }
+                });
+
+
+                // EXPECTED LEAVE END DATE
+                $('#start_date,#approved_days').on('blur',function(){
+                    var start = $('#start_date').val();
+                    var days = $('#approved_days').val();
+                    if(start != '' && days != ''){                     
+                        $.ajax({
+                            url :'/hrm/leavendate/'+start+'/'+days,
+                            dataType: "JSON",
+                            type: 'GET',                      
+                            success : function(msg){  
+                                if(msg.success){
+                                    var html = `
+                                      <small class="alert alert-warning alert-close" style="margin-top:10px;margin-bottom:30px;"><b>EXPECTED END DATE : ${msg.endate}</b></small><hr>
+                                    `;
+                                    $('.end_date').html(html);
+                                    $('.end_date').show();
+                                    setTimeout(function(){
+                                        $('.end_date').slideUp();
+                                    },10000);
+                                }
+                            }
+                        });  
+                    }
+                });
+                
+                $('.alert-close').on('blur',function(){
+                    setTimeout(function(){
+                        $(this).hide();
+                    },5000);
+                })
+
+
+
+                // TRANSFER MODULE
+
+                  // Add Leave Application | Modal Data 
+                  $('#addtransfer').on('show.bs.modal', function (e) {
+                        $.getJSON('/hrm/units/gson',function(data){
+                            if(data.success){
+                                var units = data.data;
+                                var output = units.map(unit => {
+                                   return `<option value="${unit.id}">${unit.long_name}</option>`;
+                                 }); $('#to_unit').append(output.join(''));
+                            }else{
+                                 console.log("Units not loaded!");
+                            }
+                            
+                        });
+                        $('.main_cover').show();
+                  })
+
+
+                // Edit Transfer Request Application | Modal Data 
+                $('#editransfer').on('click', function (e) {
+                    var id = $('#editransfer').data('id');
+                    $.ajax({
+                        url :'/hrm/st/getransfereq?id='+id,
+                        dataType: "JSON",
+                        type: 'GET',                      
+                        success : function(msg){ 
+                            if(msg.success){
+                                $('#id').val(msg.data[0]['id']);
+                                $('#start_date').val(msg.data[0]['start_date']);
+                                $('#reason').val(msg.data[0]['reason']);
+                                $.getJSON('/hrm/units/gson',function(data){
+                                    if(data.success){
+                                        var units = data.data;
+                                        var output = units.map(unit => {
+                                        return `<option value="${unit.id}" ${msg.data[0]['to_unit'] == unit.id ? 'selected="selected':''}>${unit.long_name}</option>`;
+                                        }); $('#to_unit').append(output.join(''));
+                                    }else{
+                                        console.log("Units not loaded!");
+                                    }
+                                });
+                            }
+                        }
+                    });  
+                })
+
+                 $('#transfer_save').on('click',function(){
+                        var startd = $('#start_date').val();
+                        var tounit = $('#to_unit').val();
+                        var reason = $('#reason').val();
+                        // Alerts
+                        if(startd == ''){
+                        alert("EXPECTED START DATE FIELD EMPTY!");
+                        $('#start_date').focus();
+                        return false;
+                        }else if(tounit == ''){
+                        alert("CHOOSE UNIT FOR TRANSFER!");
+                        $('#to_unit').focus();
+                        return false;
+                        }else if(reason == ''){
+                        alert("REASON FOR TRANSFER IS EMPTY!");
+                        $('#reason').focus();
+                        return false;
+                        }   
+                        
+                        var c = confirm('Submit ?');
+                        if(!c){
+                            return false;
+                        }
+               });
+           
+
+
+                // HALL AFFILIATION -- MODULE
+                <% var hall = hall || 0 %>
+                <% if(user.staff_group == 'SM' && ( hall.length <= 0)){ %>
+
+                    $('#halloverlay').show();
+                    $('#myOverlay').hide();
+                    $.getJSON('/hrm/hallapi',function(data){
+                        var output = data.map(row =>{
+                            return row.visible ? `<option value="${row.hallid}">${row.hall}</option>` : ``;
+                        }); $('#hall_id').append(output.join(''));
+                    });
+
+                    $(document).on('click','#hallsubmit',function(){
+                        if($(".hall_id").val() == ''){
+                            alert('PLEASE CHOOSE A HALL!'); return false;
+                        }else{
+                            var v = confirm("\tYOUR AFFILIATION IS "+$(".hall_id").val()+"!\n\n Click 'OK' to Confirm or 'Cancel' to Choose again !\n\n");
+                            if(v){
+                                $.post('/hrm/hallapi',$('#hallform').serialize(),function(data){
+                                    if(data.success){
+                                        $('#myOverlay').show();
+                                        $('#halloverlay').hide();
+                                    }
+                                },'json');
+                            }   return false;
+                        }
+                    });
+
+                <% }else if(user.disclaim){  %>
+                        //Initialize Disclaimer
+                        openSearch();
+                 <% } %>
+
+        
+
+        });
+
+
+        // Date Plugin
+        var picker = new Pikaday({ field: document.getElementById('start_date'), format: 'YYYY-MM-DD'});
+            picker.toString('YYYY-MM-DD');
+
+        // FullScreen function
+        function toggleFullScreen() {
+            if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
+            (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+                if (document.documentElement.requestFullScreen) {  
+                document.documentElement.requestFullScreen();  
+                } else if (document.documentElement.mozRequestFullScreen) {  
+                document.documentElement.mozRequestFullScreen();  
+                } else if (document.documentElement.webkitRequestFullScreen) {  
+                document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);  
+                }  
+            } else {  
+                if (document.cancelFullScreen) {  
+                document.cancelFullScreen();  
+                } else if (document.mozCancelFullScreen) {  
+                document.mozCancelFullScreen();  
+                } else if (document.webkitCancelFullScreen) {  
+                document.webkitCancelFullScreen();  
+                }  
+            }  
+        }
+
+    
+        // AJAX 2.0 VANILLA
+        function ajax(url, callback, data, x) {
+            try {
+                x = new(this.XMLHttpRequest || ActiveXObject)('MSXML2.XMLHTTP.3.0');
+                x.open(data ? 'POST' : 'GET', url, 1);
+                x.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                x.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                x.onreadystatechange = function () {
+                    x.readyState > 3 && callback && callback(x.responseText, x);
+                };
+                x.send(data)
+            } catch (e) {
+                window.console && console.log(e);
+            }
+        };
+
+
+        // DISCLAIMER 
+        function openSearch() {
+           document.getElementById("myOverlay").style.display = "block";
+        }
+
+        // Close the full screen search box
+        function closeSearch() {
+           document.getElementById("myOverlay").style.display = "none";
+        } 
+       
+       
+   </script>
+   </body>
+   </html>

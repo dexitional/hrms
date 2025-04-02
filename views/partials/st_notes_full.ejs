@@ -1,0 +1,16 @@
+
+
+        <%  if(data[2] != null){
+               let row = data[2];
+        %>
+        <div class="jumbotron">
+                <h2 class="text-info"><i class="fa fa-bell"></i> NOTIFICATION <a class="pull-right btn btn-info" href="/hrm/st/notes/list"> Go Back</a></h2>
+                <p><b><%- row.action %></b><br>
+                <small><em class="text-danger"><%- row.message %></em></small><br>
+                <small><em class="text-warning"><%- row.logtime.toUpperCase() %></em></small>
+                </p>
+        </div>
+
+        <% } %> 
+                   
+                               

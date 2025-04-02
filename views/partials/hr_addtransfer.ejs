@@ -1,0 +1,120 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold">TRANSFER FORM &nbsp;&nbsp;-&nbsp;&nbsp;<em style="color:brown"></em> <%= type != undefined && type == 'exst' ? 'ADD EXISTING TRANSFER RECORD' : (type != undefined && type == 'new' ? 'ADD NEW TRANSFER RECORD' : 'UPDATE TRANSFER' )%></b></h6>
+                      <div class="text-subline"></div><br><br>                    
+                  <form name="formtransfer" method="post" action="/hrm/postransfer" enctype="application/x-www-form-urlencoded">
+                      <div class="range offset-top-7">                       
+                        <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                          <div class="range">
+
+                            <div class="cell-sm-3">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="staff_no">Staff Number</label>
+                                <input class="form-control form-control-has-validation form-control-last-child get_staff" id="staff_no" type="text" name="staff_no" value="<%= data.staff_no %>" data-constraints="@Required"><span class="form-validation"></span>
+                              </div>
+                            </div>
+                        
+
+                            <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="transfer_date">Effective Transfer Date</label>
+                                <input class="form-control" id="transfer_date" type="date" name="transfer_date" value="<%= data.transfer_date %>" data-constraints="@Required"><span class="form-validation"></span>
+                              </div>
+                            </div>
+                           
+                            <div class="cell-sm-3">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="from_unit">Unit Transferred From</label>
+                                <select name="from_unit" class="form-control">
+                                  <option value="">Select Section/Unit</option>
+                                  <%  units.map((unit,i) =>{ %>
+                                    <option value="<%= unit.id%>" <%- unit.id == data.from_unit ? 'selected="selected"': '' %>>
+                                      <%= unit.long_name %>
+                                    </option>
+                                    <%   }); %>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="cell-sm-3">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="to_unit">Unit Transferred To</label>
+                                <select name="to_unit" class="form-control">
+                                  <option value="">Select Section/Unit</option>
+                                  <%  units.map((unit,i) =>{ %>
+                                    <option value="<%= unit.id%>" <%- unit.id == data.to_unit ? 'selected="selected"': '' %>>
+                                      <%= unit.long_name %>
+                                    </option>
+                                    <%   }); %>
+                                </select>
+                              </div>
+                            </div>
+
+                                
+                              
+                          </div>
+                        </div>
+                    </div>
+
+                             
+                    <div class="range offset-top-7">                       
+                        <div class="cell-sm-12 offset-top-17 offset-sm-top-10">
+                            <label class="form-label form-label-outside rd-input-label" for="reason">Reason for Transfer?</label>
+                            <textarea name="reason" class="form-control"><%= data.reason %></textarea>
+                        </div>
+
+                        <div class="cell-sm-12 offset-top-17 offset-sm-top-10">
+                            <label class="form-label form-label-outside rd-input-label" for="remark">Transfer Remarks / Note</label>
+                            <textarea name="remark" class="form-control"><%= data.remark %></textarea>
+                        </div>
+                    </div>
+
+
+
+                    <div class="range offset-top-7">                       
+                         <div class="cell-sm-6 offset-top-17 offset-sm-top-0">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="approved_date">Approved On <small><em>( Letter Date )</em></small></label>
+                                <input class="form-control" id="approved_date" type="date" name="approved_date" value="<%= data.approved_date %>" data-constraints="@Required"><span class="form-validation"></span>
+                              </div>
+                          </div>
+
+                          <div class="cell-sm-6">
+                              <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label" for="approved_by">Approved By ( Staff No ) </small></label>
+                                <input class="form-control form-control-has-validation form-control-last-child" id="approved_by" type="text" name="approved_by" value="<%= data.approved_by %>" data-constraints="@Required"><span class="form-validation"></span>
+                              </div>
+                          </div>
+                    </div>
+
+
+                      
+
+                        
+
+                        <br><div class="text-subline"></div><br>
+
+                        <div class="offset-top-25">
+                             <button class="btn btn-primary btn-2x" type="submit" onclick="return confirm('Do you want to Submit?');">SAVE</button>
+                             <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>
+                             <input name="id" type="hidden" value="<%= data.id || 0 %>" />
+                             <input name="unit_id" type="hidden" value="<%= data.to_unit || 0 %>" />
+                             <input name="type" type="hidden" value="<%= type || 'new' %>" />
+                        </div>
+                       <hr/>
+
+                       </form>
+
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

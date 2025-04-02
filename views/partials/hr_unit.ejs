@@ -1,0 +1,420 @@
+
+      <main class="page-content section-70 section-md-70">   
+        
+         
+        <!-- vertical link Tabs-->
+        <section>
+          <div class="shell">
+            <div class="range range-xs-center">
+                <div class="cell-xs-10 cell-lg-12">                   
+                    <div class="">
+                      <!-- Responsive-tabs-->
+                      <div class="responsive-tabs responsive-tabs-boxed vertical resp-vtabs tabs-group-default"  id="page" data-type="horizontal" style="width: 100%;">
+                        <ul class="resp-tabs-list text-center tabs-group-default" data-group="tabs-group-default">                               
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> ALL UNITS</li> 
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> PARENT UNITS</li> 
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> COLLEGES</li> 
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> FACULTIES</li> 
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> DEPARTMENTS</li> 
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> DIRECTORATES</li> 
+                                <li><i class="icon icon-xs mdi mdi-arrow-left-bold-hexagon-outline"></i> DIVISIONS</li> 
+                        </ul>
+                        <hr style="border:1px dashed #0d2d62;"/>
+                        
+                        <!-- UNIT & SECTIONS -->
+                        <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                          <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                
+                                 <!-- TITLE -->
+                                 <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                     <div class="col-md-6"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">UNIT & SECTIONS</h3></div>
+                                     <div class="col-md-6">
+                                         <a href="/hrm/addunit" class="btn btn-primary btn-sm pull-right" style="margin:0px 5px">Add New Unit</a>&nbsp;&nbsp;
+                                     </div>
+                                 </div>
+                            
+                                 <!-- UNIT CONTENT -->
+                                 <div class="table-responsive clearfix">
+                                    <table class="table table-bordered  dataTable" id="dynamic2"> 
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>UNIT</th>
+                                                <th>PARENT UNIT</th>                                                                                    
+                                                <th>UNIT LEVEL</th>
+                                                <th>UNIT TYPE</th>
+                                                <th>ACADEMIC AFFLIATES</th>
+                                                <th>NAME OF HEAD</th>
+                                                <th>LOCATION</th>
+                                                <th>&nbsp;</th>                                        
+                                            </tr>
+                                        </thead>   
+                                        <tbody> 
+                                            <% 
+                                                units.map(unit => {
+                                            %>  
+                                            <tr>   
+                                                <td><button class="btn btn-sm"><%= unit.id %></button></td> 
+                                                <td><%= unit.long_name %></td> 
+                                                <td><%= unit.parent_name %></td>  
+                                                <td><%= unit.level %></td> 
+                                                <td><%= unit.type %></td> 
+                                                <td><small>
+                                                    <%= unit.college %><br>
+                                                    <span class="text-danger"><%= unit.faculty %></span><br>
+                                                    <%= unit.dept %> 
+                                                    </small>                                              
+                                                </td> 
+                                                <td><%= unit.head_name %>
+                                                    <%- unit.sub_name != null ? '<span class="text-warning">_____________________________________</span><br><small class="text-danger">'+unit.sub_name+'</small>' : ''%>
+                                                </td>  
+                                                <td><%= unit.location %></td>                                                
+                                                <td>                                                      
+                                                    <div class="btn-group" style="width:250px;">                                                       
+                                                        <a class="btn btn-default btn-sm" href="/hrm/editunit/<%= unit.id%>?url=1" title="Edit Unit" onclick="return confirm('Edit Unit?')"><i class="fa fa-edit"></i></a>
+                                                        <a class="btn btn-default btn-sm" href="/hrm/delunit/<%= unit.id%>?url=1" title="Delete Unit" onclick="return confirm('Delete Unit?')"><i class="fa fa-trash"></i></a>
+                                                        <a class="btn btn-primary btn-sm " title="View Staff within Unit" href="/hrm/unit/list/<%= unit.id %>"><i class="fa fa-file-text-o"></i></a>
+                                                        <a class="btn btn-default btn-sm" href="javascript:;" onclick="var n = prompt('Enter Master Unit ID to Merge with!');if(n != undefined && n != ''){window.location='/hrm/unitmerge/<%= unit.id%>?id='+parseInt(n);Alert('Unit merged sucessfully!');}else{return false;}" title="Merge Units">Merge</a>
+                                                    </div>
+                                                                                                
+                                                </td>                                                                                                                          
+                                            </tr>     
+                                            <% }) %>                                       
+                                        </tbody>
+                                    </table>
+                                </div>
+                             </div>                        
+                        </div>
+
+
+                         <!-- PARENT UNIT -->
+                         <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                            <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                  
+                                   <!-- TITLE -->
+                                   <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                       <div class="col-md-6"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">PARENT UNITS</h3></div>
+                                       <div class="col-md-6">
+                                           <a href="/hrm/addunit" class="btn btn-primary btn-sm pull-right" style="margin:0px 5px">Add New Unit</a>&nbsp;&nbsp;
+                                       </div>
+                                   </div>
+                              
+                                   <!-- UNIT CONTENT -->
+                                   <div class="table-responsive clearfix">
+                                      <table class="table table-bordered  dataTable" id="dynamic2"> 
+                                          <thead>
+                                              <tr>
+                                                  <th>ID</th>
+                                                  <th>MOTHER UNIT</th>                                                                                    
+                                                  <th>UNIT LEVEL</th>
+                                                  <th>UNIT TYPE</th>
+                                                  <th>NAME OF HEAD</th>
+                                                  <th>NO. SUB-UNITS</th>
+                                                  <th>&nbsp;</th>                                        
+                                              </tr>
+                                          </thead>   
+                                          <tbody> 
+                                              <% 
+                                                  parents.map(unit => {
+                                              %>  
+                                              <tr>   
+                                                  <td><button class="btn btn-sm"><%= unit.id %></button></td>
+                                                  <td><%= unit.long_name %></td>  
+                                                  <td><%= unit.level %></td> 
+                                                  <td><%= unit.type %></td> 
+                                                  <td><%= unit.head_name %></td>
+                                                  <td><%= unit.count %></td>  
+                                                  <td>                                                      
+                                                      <div class="btn-group" style="width:120px;"> 
+                                                          <a class="btn btn-primary btn-sm " title="View Staff Under Mother Unit" href="/hrm/unit/alist/<%= unit.id %>"><i class="fa fa-file-text-o "></i></a>
+                                                          <a class="btn btn-default btn-sm" href="/hrm/editunit/<%= unit.id%>?url=2" title="Edit Unit"><i class="fa fa-edit"></i></a>
+                                                     </div>
+                                                                                                  
+                                                  </td>                                                                                                                          
+                                              </tr>     
+                                              <% }) %>                                       
+                                          </tbody>
+                                      </table>
+                                  </div>
+                               </div>                        
+                          </div>
+  
+
+
+
+
+                         <!-- COLLEGES UNIT -->
+                         <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                            <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                  
+                                   <!-- TITLE -->
+                                   <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                       <div class="col-md-6"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">COLLEGES</h3></div>
+                                       <div class="col-md-6">
+                                           <a href="/hrm/addunit" class="btn btn-primary btn-sm pull-right" style="margin:0px 5px">Add New Unit</a>&nbsp;&nbsp;
+                                       </div>
+                                   </div>
+                              
+                                   <!-- UNIT CONTENT -->
+                                   <div class="table-responsive clearfix">
+                                      <table class="table table-bordered  dataTable" id="dynamic2"> 
+                                          <thead>
+                                              <tr>
+                                                  <th>ID</th>
+                                                  <th>COLLEGE</th>                                                                                    
+                                                  <th>UNIT LEVEL</th>
+                                                  <th>NO. FACULTIES / SCHOOLS</th>
+                                                  <th>NO. DEPARTMENTS</th>
+                                                  <th>HEAD OF COLLEGE</th>
+                                                  <th>&nbsp;</th>                                        
+                                              </tr>
+                                          </thead>   
+                                          <tbody> 
+                                              <% 
+                                                  colleges.map(unit => {
+                                              %>  
+                                              <tr>   
+                                                  <td><button class="btn btn-sm"><%= unit.id %></button></td>
+                                                  <td><%= unit.long_name %></td>  
+                                                  <td><%= unit.level %></td> 
+                                                  <td><%= unit.fac %></td> 
+                                                  <td><%= unit.dep %></td>
+                                                  <td><%= unit.head_name %></td>
+                                                  <td>                                                      
+                                                      <div class="btn-group">                                                       
+                                                          <a class="btn btn-default btn-sm" href="/hrm/editunit/<%= unit.id%>?url=3" title="Edit Unit"><i class="fa fa-edit"></i></a>
+                                                     </div>
+                                                                                                  
+                                                  </td>                                                                                                                          
+                                              </tr>     
+                                              <% }) %>                                       
+                                          </tbody>
+                                      </table>
+                                  </div>
+                               </div>                        
+                          </div>
+
+
+
+                          <!-- FACULTIES UNIT -->
+                         <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                            <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                  
+                                   <!-- TITLE -->
+                                   <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                       <div class="col-md-6"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">FACULTIES / SCHOOLS</h3></div>
+                                       <div class="col-md-6">
+                                           <a href="/hrm/addunit" class="btn btn-primary btn-sm pull-right" style="margin:0px 5px">Add New Unit</a>&nbsp;&nbsp;
+                                       </div>
+                                   </div>
+                              
+                                   <!-- UNIT CONTENT -->
+                                   <div class="table-responsive clearfix">
+                                      <table class="table table-bordered  dataTable" id="dynamic2"> 
+                                          <thead>
+                                              <tr>
+                                                  <th>ID</th>
+                                                  <th>FACULTY/SCHOOL</th>                                                                                    
+                                                  <th>UNIT LEVEL</th>
+                                                  <th>NO. DEPARTMENTS</th>
+                                                  <th>HEAD OF FACULTY/SCHOOL</th>
+                                                  <th>COLLEGE</th>
+                                                  <th>&nbsp;</th>                                        
+                                              </tr>
+                                          </thead>   
+                                          <tbody> 
+                                              <% 
+                                                faculties.map(unit => {
+                                              %>  
+                                              <tr>   
+                                                  <td><button class="btn btn-sm"><%= unit.id %></button></td> 
+                                                  <td><%= unit.long_name %></td>  
+                                                  <td><%= unit.level %></td> 
+                                                  <td><%= unit.dep %></td>
+                                                  <td><%= unit.head_name %></td>
+                                                  <td><%= unit.college %></td>
+                                                  <td>                                                      
+                                                      <div class="btn-group">                                                       
+                                                          <a class="btn btn-default btn-sm" href="/hrm/editunit/<%= unit.id%>?url=4" title="Edit Unit"><i class="fa fa-edit"></i></a>
+                                                     </div>
+                                                                                                  
+                                                  </td>                                                                                                                          
+                                              </tr>     
+                                              <% }) %>                                       
+                                          </tbody>
+                                      </table>
+                                  </div>
+                               </div>                        
+                          </div>
+
+
+
+
+                         <!-- DEPARTMENTS UNIT -->
+                         <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                            <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                  
+                                   <!-- TITLE -->
+                                   <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                       <div class="col-md-6"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">DEPARTMENTS</h3></div>
+                                       <div class="col-md-6">
+                                           <a href="/hrm/addunit" class="btn btn-primary btn-sm pull-right" style="margin:0px 5px">Add New Unit</a>&nbsp;&nbsp;
+                                       </div>
+                                   </div>
+                              
+                                   <!-- UNIT CONTENT -->
+                                   <div class="table-responsive clearfix">
+                                      <table class="table table-bordered  dataTable" id="dynamic2"> 
+                                          <thead>
+                                              <tr>
+                                                  <th>ID</th>
+                                                  <th>DEPARTMENT</th>                                                                                    
+                                                  <th>UNIT LEVEL</th>
+                                                  <th>HEAD OF DEPARTMENT</th>
+                                                  <th>COLLEGE</th>
+                                                  <th>FACULTY</th>
+                                                  <th>&nbsp;</th>                                        
+                                              </tr>
+                                          </thead>   
+                                          <tbody> 
+                                              <% 
+                                                  depts.map(unit => {
+                                              %>  
+                                              <tr>   
+                                                  <td><button class="btn btn-sm"><%= unit.id %></button></td>
+                                                  <td><%= unit.long_name %></td>  
+                                                  <td><%= unit.level %></td> 
+                                                  <td><%= unit.head_name %></td>
+                                                  <td><%= unit.college %></td>
+                                                  <td><%= unit.faculty %></td>
+                                                  <td>                                                      
+                                                      <div class="btn-group">                                                       
+                                                          <a class="btn btn-default btn-sm" href="/hrm/editunit/<%= unit.id%>?url=5" title="Edit Unit"><i class="fa fa-edit"></i></a>
+                                                     </div>
+                                                                                                  
+                                                  </td>                                                                                                                          
+                                              </tr>     
+                                              <% }) %>                                       
+                                          </tbody>
+                                      </table>
+                                  </div>
+                               </div>                        
+                          </div>
+
+
+
+                         <!-- DIRECTORATE UNIT -->
+                         <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                            <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                  
+                                   <!-- TITLE -->
+                                   <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                       <div class="col-md-6"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">DIRECTORATES</h3></div>
+                                       <div class="col-md-6">
+                                           <a href="/hrm/addunit" class="btn btn-primary btn-sm pull-right" style="margin:0px 5px">Add New Unit</a>&nbsp;&nbsp;
+                                       </div>
+                                   </div>
+                              
+                                   <!-- UNIT CONTENT -->
+                                   <div class="table-responsive clearfix">
+                                      <table class="table table-bordered  dataTable" id="dynamic2"> 
+                                          <thead>
+                                              <tr>
+                                                  <th>ID</th>
+                                                  <th>DIRECTORATE</th>                                                                                    
+                                                  <th>UNIT LEVEL</th>
+                                                  <th>NO. DIVISIONS / SECTIONS</th>
+                                                  <th>HEAD OF DIRECTORATE</th>
+                                                  <th>&nbsp;</th>                                        
+                                              </tr>
+                                          </thead>   
+                                          <tbody> 
+                                              <% 
+                                                  directs.map(unit => {
+                                              %>  
+                                              <tr>   
+                                                  <td><button class="btn btn-sm"><%= unit.id %></button></td> 
+                                                  <td><%= unit.long_name %></td>  
+                                                  <td><%= unit.level %></td> 
+                                                  <td><%= unit.div %></td>
+                                                  <td><%= unit.head_name %></td>
+                                                  <td>                                                      
+                                                      <div class="btn-group">                                                       
+                                                          <a class="btn btn-default btn-sm" href="/hrm/editunit/<%= unit.id%>?url=6" title="Edit Unit"><i class="fa fa-edit"></i></a>
+                                                     </div>
+                                                                                                  
+                                                  </td>                                                                                                                          
+                                              </tr>     
+                                              <% }) %>                                       
+                                          </tbody>
+                                      </table>
+                                  </div>
+                               </div>                        
+                          </div>
+
+
+
+
+                           <!-- DIVISIONS/SECTIONS UNIT -->
+                         <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">                          
+                            <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-0">
+                                  
+                                   <!-- TITLE -->
+                                   <div class="row" style="background:#0d2d62;color:#fff;margin:-40px 0px 40px;border-radius:45px;padding:10px 20px;font-style:italic">
+                                       <div class="col-md-6"><h3 style="color:#bbb;font-size:23px;font-weight:bold;letter-spacing:0.25em;">DIVISIONS / SECTIONS</h3></div>
+                                       <div class="col-md-6">
+                                           <a href="/hrm/addunit" class="btn btn-primary btn-sm pull-right" style="margin:0px 5px">Add New Unit</a>&nbsp;&nbsp;
+                                       </div>
+                                   </div>
+                              
+                                   <!-- UNIT CONTENT -->
+                                   <div class="table-responsive clearfix">
+                                      <table class="table table-bordered  dataTable" id="dynamic2"> 
+                                          <thead>
+                                              <tr>
+                                                  <th>ID</th>
+                                                  <th>DIVISION / SECTION</th>                                                                                    
+                                                  <th>UNIT LEVEL</th>
+                                                  <th>HEAD OF SECTION / DIVISION</th>
+                                                  <th>DIRECTORATE</th>  
+                                                  <th>&nbsp;</th>                                        
+                                              </tr>
+                                          </thead>   
+                                          <tbody> 
+                                              <% 
+                                                  divs.map(unit => {
+                                              %>  
+                                              <tr>   
+                                                  <td><button class="btn btn-sm"><%= unit.id %></button></td> 
+                                                  <td><%= unit.long_name %></td>  
+                                                  <td><%= unit.level %></td> 
+                                                  <td><%= unit.head_name %></td>
+                                                  <td><%= unit.direct %></td>
+                                                  <td>                                                      
+                                                      <div class="btn-group">                                                       
+                                                          <a class="btn btn-default btn-sm" href="/hrm/editunit/<%= unit.id%>?url=7" title="Edit Unit"><i class="fa fa-edit"></i></a>
+                                                     </div>
+                                                                                                  
+                                                  </td>                                                                                                                          
+                                              </tr>     
+                                              <% }) %>                                       
+                                          </tbody>
+                                      </table>
+                                  </div>
+                               </div>                        
+                          </div>
+
+
+
+                      </div>
+                    </div>
+                  </div>
+              
+            </div>
+          </div>
+        </section>
+        <section class="offset-top-110">
+          
+          </div>
+        </section>
+      </main>

@@ -1,0 +1,203 @@
+        
+     
+     <main class="page-content">     
+        <section class="section-30 section-md-50">
+          <div class="container">
+             
+              <div class="cell-md-8 cell-sm-10">
+                  <section class="text-left">
+                      <h6 class="text-bold">RELATIVE REGISTRATION</h6>
+                      <div class="text-subline"></div><br>
+                  <form method="post" action="/hrm/postfamily" enctype="multipart/form-data">                         
+
+                        <div class="data2"> 
+
+                           
+                                <!-- Line 1 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">
+                                        <div class="cell-sm-3">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="dob">Relation</label>
+                                              <select name="relation" class="form-control" style="background-color:rgb(165, 218, 248);color: rgb(184,9,36);font-size:15px;">
+                                                   <option value="SPOUSE" <%= row.relation == 'SPOUSE' ? 'selected="selected"':'' %>>SPOUSE</option>
+                                                   <option value="CHILD" <%= row.relation == 'CHILD' ? 'selected="selected"':'' %>>CHILD</option>
+                                                   <option value="FATHER" <%= row.relation == 'FATHER' ? 'selected="selected"':'' %>>FATHER</option>
+                                                   <option value="MOTHER" <%= row.relation == 'MOTHER' ? 'selected="selected"':'' %>>MOTHER</option>
+                                                   <option value="WARD" <%= row.relation == 'WARD' ? 'selected="selected"':'' %>>WARD</option>
+                                                   <option value="AUNT" <%= row.relation == 'AUNT' ? 'selected="selected"':'' %>>AUNT</option>
+                                                   <option value="UNCLE" <%= row.relation == 'UNCLE' ? 'selected="selected"':'' %>>UNCLE</option>
+                                                   <option value="GRANDPARENT" <%= row.relation == 'GRANDPARENT' ? 'selected="selected"':'' %>>GRANDPARENT</option>
+                                                   <option value="SIBLING" <%= row.relation == 'SIBLING' ? 'selected="selected"':'' %>>SIBLING</option>
+                                                   <option value="OTHER" <%= row.relation == 'OTHER' ? 'selected="selected"':'' %>>OTHER</option>
+                                              </select>
+                                            </div>
+                                        </div>
+                                        <div class="cell-sm-3">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="birth_place">Relation First Name</label>
+                                            <input class="form-control form-control-has-validation form-control-last-child" id="birth_place" type="text" name="fname" value="<%= row.fname %>" data-constraints="@Required"><span class="form-validation"></span>
+                                          </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="hometown">Relation Middle Name(s)</label>
+                                            <input class="form-control form-control-has-validation form-control-last-child" id="hometown" type="text" name="mname" value="<%= row.mname %>" data-constraints="@Required"><span class="form-validation"></span>
+                                          </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="district">Relation Last Name</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="district" type="text" name="lname" value="<%= row.lname %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+
+                                   <!-- Line 2 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">
+                                        <div class="cell-sm-3">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="dob">Date of Birth</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="dob" type="date" name="dob" value="<%= row.dobx %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>
+                                        <div class="cell-sm-3">                                          
+                                          <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="gender">Gender</label>
+                                              <select name="gender" class="form-control">
+                                                  <option value="M" <%= row.gender == 'M' ? 'selected="selected"':'' %>>MALE</option>
+                                                  <option value="F" <%= row.gender == 'F' ? 'selected="selected"':'' %>>FEMALE</option>                                                
+                                             </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                          <div class="form-group">
+                                            <label class="form-label form-label-outside rd-input-label" for="phone">Phone</label>
+                                            <input class="form-control form-control-has-validation form-control-last-child" id="phone" type="text" name="phone" value="<%= row.phone %>" data-constraints="@Required"><span class="form-validation"></span>
+                                          </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="address">Address</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="address" type="text" name="address" value="<%= row.address %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                    <!-- Line 2 -->
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">
+                                        <!--
+                                        <div class="cell-sm-3">
+                                            <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="code">Code</label>
+                                              <input class="form-control form-control-has-validation form-control-last-child" id="code" type="text" name="code" value="<%= row.code %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>
+                                      -->
+                                        <div class="cell-sm-3">
+                                            <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="hometon">Home Town</label>
+                                                <input class="form-control form-control-has-validation form-control-last-child" id="hometown" type="text" name="hometown" value="<%= row.hometown %>" data-constraints="@Required"><span class="form-validation"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="cell-sm-3">                                          
+                                          <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="gender">Next of Kin?</label>
+                                              <select name="kin" class="form-control">
+                                                  <option value="0" <%= row.gender == '0' ? 'selected="selected"':'' %>>NO</option>     
+                                                  <option value="1" <%= row.gender == '1' ? 'selected="selected"':'' %>>YES</option>
+                                               </select>
+                                            </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                                <!-- PHOTO -->                                       
+                                                <label class="form-label form-label-outside rd-input-label">Photo <em><small>( JPG only )</small></em></label>
+                                                 <% if(row.photo != null){ %>
+                                                 <%- '<a href="/viewer/#'+row.photo+'" target="_blank"><i class="fa fa-check fa-lg" style="position:relative;bottom:-45px;left:120px;color:green;"></i></a>' %>
+                                                 <% } %>
+                                                <input name="photo" id="photo" type="file" class="form-control form-control-has-validation form-control-last-child">                                         
+                                            </div>
+                                        </div>
+                                        <div class="cell-sm-3 offset-top-17 offset-sm-top-0">
+                                            <div class="form-group">
+                                                <!-- BIRTH CERTIFICATE-->                                       
+                                                <label class="form-label form-label-outside rd-input-label" >Birth Certificate <em><small>( PDF Versions only )</small></em></label>
+                                                 <% if(row.path != null){ %>
+                                                 <%- '<a href="/viewer/#'+row.path+'" target="_blank"><i class="fa fa-check fa-lg" style="position:relative;bottom:-45px;left:120px;color:green;"></i></a>' %>
+                                                 <% } %>
+                                                <input name="birth" id="birth" type="file" class="form-control form-control-has-validation form-control-last-child">                                         
+                                            </div>
+                                        </div>
+                                        <div class="cell-sm-3">                                          
+                                          <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="alive">Alive?</label>
+                                              <select name="alive" class="form-control">
+                                                 <option value="1" <%= row.active == '1' ? 'selected="selected"':'' %>>YES</option>  
+                                                 <option value="0" <%= row.active == '0' ? 'selected="selected"':'' %>>NO</option>                                                 
+                                             </select>
+                                            </div>
+                                        </div> 
+                                        <div class="cell-sm-3">                                          
+                                            <div class="form-group">
+                                                <label class="form-label form-label-outside rd-input-label" for="active">Active</label>
+                                                <select name="active" class="form-control">
+                                                    <option value="1" <%= row.active == '1' ? 'selected="selected"':'' %>>YES</option>                    
+                                                    <option value="0" <%= row.active == '0' ? 'selected="selected"':'' %>>NO</option> 
+                                                </select>
+                                              </div>
+                                          </div> 
+                                                
+                                      </div>
+                                    </div>
+                                  </div>
+
+
+                                      <!-- Line 2 
+                                <div class="range offset-top-17">                          
+                                    <div class="cell-sm-12 offset-top-17 offset-sm-top-0">
+                                      <div class="range">                                        
+                                        <div class="cell-sm-3">                                          
+                                          <div class="form-group">
+                                              <label class="form-label form-label-outside rd-input-label" for="verified">Verified</label>
+                                              <select name="verified" class="form-control">
+                                                  <option value="0" <%= row.verified == '0' ? 'selected="selected"':'' %>>No</option> 
+                                                  <option value="1" <%= row.verified == '1' ? 'selected="selected"':'' %>>Yes</option>                                                                                                
+                                             </select>
+                                            </div>
+                                        </div>
+                                                                              
+                                      
+                                      </div>
+                                    </div>
+                                  </div>-->
+                                  <br><br><div class="text-subline"></div><br>
+                        </div>
+
+                        <div class="offset-top-25">
+                             <input type="hidden" name="staff_no" value="<%= row.staff_no %>"/>
+                             <input type="hidden" name="id" value="<%= row.id || 0 %>"/>                             
+                             <button class="btn btn-primary btn-2x" type="submit">SAVE</button>
+                             <a href="javascript:history.back();" onclick="return confirm('Cancel?')" class="btn">CANCEL</a>                      
+                        </div>
+                       <hr/>
+                       </form>
+                    </section>
+              </div>
+          </div>
+        </section>
+        
+      </main>
+      

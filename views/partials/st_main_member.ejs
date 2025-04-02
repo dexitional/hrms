@@ -1,0 +1,43 @@
+
+        <div class="row">
+            <!-- STAFF OVERVIEW PAGE -->
+            <div class="col-lg-12">
+                   <div class="table-responsive">
+                        <table class="table table-bordered ">
+                            <thead>
+                                <tr class="btn-danger">                                    
+                                    <th>PHOTO</th>
+                                    <th>STAFF NUMBER</th>
+                                    <th>FULL NAME</th>
+                                    <th>CONTACT</th>
+                                    <th>JOB TITLE</th>
+                                    <th>UNIT</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 <% data[2].map((row,i) =>{ %>
+                                    <tr class="<%- (i+1)%2 == 2 ? 'even':'odd'%>">                                    
+                                        <td><img class="img-responsive" src="<%- row.photo != null ? row.photo : '/public/images/none.png';%>" style="height:40px;display:block;margin:0 auto;border-radius:50%" onclick="window.open('<%- row.photo != null ? row.photo : '/public/images/none.png';%>')"/></td>
+                                        <td><b><%- row.nox %></b></td>
+                                        <td><small><b><%- row.fname+' '+row.mname+' '+row.lname %></b></small></td>
+                                        <td><b><%- row.phone %><br><small><em class="text-info"><%- row.ucc_mail %></em></small></b></td>
+                                        <td><small><b><%- row.jobtitle %></b></small></td>
+                                        <td><!--
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-default">Action</button>
+                                                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                  <li><a data-toggle="modal" data-target="#applyleave" class="clkapplyleave" title="<%- row.nox %>">Place on Leave</a></li>                                        
+                                                </ul>
+                                            </div>-->
+                                            <small><b><%- row.long_name %></b></small>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                   </div>
+            </div>    
+        </div>
+    
+

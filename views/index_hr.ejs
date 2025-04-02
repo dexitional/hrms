@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html class="wide wow-animation scrollTo" lang="en">
+  <head>
+    <!-- Site Title-->
+    <title>HR DASHBOARD</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="keywords" content="intense web design multipurpose template">
+    <meta name="date" content="Dec 26">
+    <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
+    <!-- Stylesheets-->
+    <link type="text/css" rel="preload" as="style" href="//fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,400italic,600,700%7CMerriweather:400,300,300italic,400italic,700,700italic">
+    <link rel="stylesheet" href="/public/css/style.css">
+   <!-- <link type="text/css" rel="preload" as="style" href="https://cdn.datatables.net/w/bs/dt-1.10.18/datatables.min.css"/>-->
+    <link href="/public/js/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+
+		<!--[if lt IE 10]>
+    <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+    <script src="js/html5shiv.min.js"></script>
+		<![endif]-->
+  </head>
+  <body>
+    <!-- Page-->
+    <div class="page text-center">
+      <!-- Page Header-->
+      <header class="page-head">
+        <!-- RD Navbar Transparent-->
+        <div class="rd-navbar-wrap">
+          <nav class="rd-navbar rd-navbar-default" data-md-device-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-stick-up-offset="210" data-xl-stick-up-offset="85" data-lg-auto-height="true" data-md-layout="rd-navbar-static" data-lg-layout="rd-navbar-static" data-lg-stick-up="true">
+            <div class="rd-navbar-inner">
+              <!-- RD Navbar Panel-->
+              <div class="rd-navbar-panel">
+                <!-- RD Navbar Toggle-->
+                <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar, .rd-navbar-nav-wrap"><span></span></button>
+                <h4 class="panel-title veil-md">DASHBOARD</h4>
+                <!-- RD Navbar Right Side Toggle-->
+                <button class="rd-navbar-top-panel-toggle veil-md" data-rd-navbar-toggle=".rd-navbar-top-panel"><span></span></button>
+               
+               
+                <div class="rd-navbar-top-panel">
+                  <div class="rd-navbar-top-panel-left-part">
+                    <ul class="list-unstyled">
+                      <li>
+                        <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                          <div class="unit-left"><span class="icon mdi mdi-apps text-middle"></span></div>
+                          <div class="unit-body text-bold" style="opacity:0.5;">HR DASHBOARD </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                          <div class="unit-left"><span class="icon mdi mdi-account-circle text-middle"></span></div>
+                          <div class="unit-body"><a href="#">WELCOME, <%= (user.fname+' '+user.mname+' '+user.lname).toUpperCase() %></a></div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                          <div class="unit-left"><span class="icon mdi mdi-credit-card text-middle"></span></div>
+                          <div class="unit-body"><span style="opacity:0.5;">UNIVERSITY STAFF ID :</span> <%= user.staff_no %></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="rd-navbar-top-panel-right-part">
+                    <div class="rd-navbar-top-panel-left-part">
+                      <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                        <div class="unit-left"><span class="icon fa fa-sign-out text-middle"></span></div>
+                        <div class="unit-body"><a href="/logout" onclick="return confirm('Do you want to logout?')">LOGOUT</a></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+             
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!-- Classic Breadcrumbs-->
+      <section class="breadcrumb-classic context-dark" style="background:rgba(184,9,36,0.6) url(/public/images/bg1.png) repeat-x 0 49%;">
+        <div class="shell section-0 section-sm-top-20 section-sm-bottom-30 right">
+          <h4 class="veil reveal-sm-block text-bold text-italic" style="text-shadow:0 0 8px rgb(218, 16, 16);position:relative;top:20px;left:100px">Welcome, <%= (user.fname+' '+user.mname) %></h4>      
+        </div>
+        <div class="profile_pic" style="position:absolute;right:19%;top:5%;"><img style="display:block;width:70px;height:90px;background:rgba(255,255,255,0.9);z-index:9999;border:2px solid #171949;border-radius:50%;box-shadow:0 0 5px #000;padding:2px;" src="<%- user.photo != null ? user.photo : '/public/images/none.png' %>" alt="" title=""/></div>
+      </section>
+      <!-- Sub Header of System ( Containers :) -->
+      <div class="sub_header" style="background:#0d2d62;max-height:30px;">
+            <div class="container">
+                <p class="text-bold pull-left" style="line-height:30px;color:#fff;font-size:11px;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">HUMAN RESOURCE MANAGEMENT SYSTEM &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>  &nbsp;&nbsp;&nbsp; 
+                  <% /*
+                      var title = null;
+                      switch(view){
+                        case 'dash' : title = 'HR DASHBOARD';break;
+                        case 'staff' : title = 'STAFF MODULE';break;
+                        case 'addstaff' : title = 'ADD NEW STAFF';break;
+                        case 'editstaff' : title = 'EDIT STAFF';break;
+                        case 'staffpage' : title = 'STAFF PAGE';break;
+                        case 'appoint' : title = 'APPOINTMENT MODULE';break;
+                        case 'leave' : title = 'LEAVE MODULE';break;
+                      }  
+                      */             
+                   %>
+                   <%= title %>
+                </p>
+                <div class="pull-right">
+                  <% if(view === 'staffpage'){%>
+                    <a href="/hrm/staff" class="btn btn-warning btn-md"><i class="mdi mdi-arrow-left-bold"></i> BACK</a>
+                  <%} else if(view !== 'dash' && view !== 'staff'){%>
+                    <!--<a href="javascript: history.back();" class="btn btn-warning btn-md"><i class="mdi mdi-arrow-left-bold"></i> BACK</a>-->
+                    <a href="/hrm/dash" class="btn btn-warning btn-sm pull-left" style="margin:0px"><i class="fa fa-home fa-2x"></i> DASHBOARD</a>
+                  <%}%>
+                  
+                 </div>
+            </div>
+      </div>
+
+      <!-- Page Content | Dynamic Content -->
+           <%- include('partials/hr_'+view) %>
+     
+      <!-- Page Footer-->
+      <!-- Corporate footer-->
+      <footer class="page-footer">
+        <div class="shell-wide">
+          <div class="hr bg-gray-light"></div>
+        </div>
+       
+        <div class="bg-madison context-dark">
+          <div class="shell text-md-left section-5">
+            <p>Copyright &copy; <span id="copyright-year"><%- new Date().getFullYear()%>,</span><small> DICTS, All Rights Reserved.</small></p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+   
+    <!-- Java script-->
+     <script src="/public/js/core.min.js"></script>
+     <!-- <script type="text/javascript" rel="preload" as="script" src="https://cdn.datatables.net/w/bs/dt-1.10.18/datatables.min.js"></script>-->
+    
+     <script src="/public/js/jquery-datatable/jquery.dataTables.js"></script>
+     <script src="/public/js/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+     <script src="/public/js/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+     <script src="/public/js/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+     <script src="/public/js/jquery-datatable/extensions/export/jszip.min.js"></script>
+     <script src="/public/js/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+     <script src="/public/js/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+     <script src="/public/js/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+     <script src="/public/js/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+     <script src="/public/js/script.js"></script>
+     
+  </body>
+</html>

@@ -1,0 +1,71 @@
+{
+  "_from": "install-changed",
+  "_id": "install-changed@1.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-APUWMdQnwGcyv9bmuvgxCcrR6qtD996+hofEEAPGSjsvGIZuBpBF0yrYAKOl9tmhm2AzxJC4EXUbxZ/SId4NIA==",
+  "_location": "/install-changed",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "install-changed",
+    "name": "install-changed",
+    "escapedName": "install-changed",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/install-changed/-/install-changed-1.1.0.tgz",
+  "_shasum": "661187dd36f034053b92068a3a71c22aec7410a1",
+  "_spec": "install-changed",
+  "_where": "/var/www/html/hrms.ucc.edu.gh",
+  "author": {
+    "name": "Youssef Swailem",
+    "email": "youssefswailem@gmail.com",
+    "url": "http://github.com/ninesalt"
+  },
+  "bin": {
+    "install-changed": "bin/install-changed.js"
+  },
+  "bugs": {
+    "url": "https://github.com/ninesalt/install-changed/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Only npm installs if package.json has been modified",
+  "devDependencies": {
+    "eslint": "^6.0.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0"
+  },
+  "homepage": "https://github.com/ninesalt/install-changed#readme",
+  "keywords": [
+    "npm",
+    "install",
+    "install-modified",
+    "install-changed",
+    "install-changes",
+    "modified",
+    "changed",
+    "changes",
+    "package"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "install-changed",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ninesalt/install-changed.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.1.0"
+}
