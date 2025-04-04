@@ -222,14 +222,9 @@ module.exports = (function() {
                 }
             } 
 
-            await sms('0206446438','Greetings, Please do well to respond!');
-        
-
-
-
-       }, 10000);
+       }, 86400000);
    // }
-// 86400000
+
 
 setInterval(async () => {
     /*
