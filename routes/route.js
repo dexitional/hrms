@@ -328,7 +328,7 @@ module.exports = (function() {
                             if(m == 0){
                             //var token = new Date().getFullYear()+''+(new Date().getMonth()+1)+''+new Date().getDate();
                             var token = moment().format('YYYYMMDD');
-                            row.staff_no = (row.photo != null ? '<img src="'+row.photo+'" style="height:50px;text-align:center;margin:3px auto;border-radius:5px;display:block;"/>':'<a href="javascript:alert(\'Please take Snapshot of Staff!\');" style="display:block"><i class="icon fa fa-camera fa-3x" style="border-radius:50%;margin:3px auto;padding-top:10px;color:#fff;text-align:center;width:60px;height:60px;background:brown;"></i></a>');
+                            row.staff_no = '<img src="https://cdn.ucc.edu.gh/photos/?tag='+row.staff_no+'" style="height:50px;text-align:center;margin:3px auto;border-radius:5px;display:block;"/>';
                             row.staff_no += '<center><h5 style="'+(row.staff_group != null ? row.staff_group+'-':'')+(row.staff_status == 'TEMPORAL' ? 'color:#eea236' : (row.staff_status == 'PERMANENT' ? 'color:seagreen' : (row.staff_status == null ? 'color:seablue' : 'color:brown')))+'">'+row.nox+'</h5></center>';
                             row.action = `<div class="btn-group" style="width:155px;margin-left:-50px;">
                                              ${req.session.user.adminrole != '01' ?`<a class="btn btn-primary btn-sm" href="/hrm/staff/page/${row.nox}" title="Goto Staff Folder"><i class="fa fa-folder-open"></i></a>`:``}
@@ -400,7 +400,7 @@ module.exports = (function() {
                 let data = await Promise.all(rowsRec.map(async (row,i,array) =>{
                         let m = 0;
                         if(m == 0){
-                        row.staff_no = (row.photo != null ? '<img src="'+row.photo+'" style="height:50px;text-align:center;margin:3px auto;border-radius:5px;display:block;"/>':'<a href="javascript:alert(\'Please take Snapshot of Staff!\');" style="display:block"><i class="icon fa fa-camera fa-3x" style="border-radius:50%;margin:3px auto;padding-top:10px;color:#fff;text-align:center;width:60px;height:60px;background:brown;"></i></a>');
+                        row.staff_no = '<img src="https://cdn.ucc.edu.gh/photos/?tag='+row.staff_no+'" style="height:50px;text-align:center;margin:3px auto;border-radius:5px;display:block;"/>';
                         row.staff_no += '<center><h5 style="'+(row.staff_group != null ? row.staff_group+'-':'')+(row.staff_status == 'DEAD' ? 'color:#eea236' : (row.staff_status == 'RETIRED' ? 'color:seagreen' : (row.staff_status == null ? 'color:seablue' : 'color:brown')))+'">'+row.nox+'</h5></center>';
                         row.action = `<div class="btn-group" style="width:155px;margin-left:-50px;">
                                          ${req.session.user.adminrole == '07' || req.session.user.adminrole == '08' ?`<a class="btn btn-primary btn-sm" href="/hrm/staff/page/${row.nox}" title="Goto Staff Folder"><i class="fa fa-folder-open"></i></a>`:``}
@@ -1496,10 +1496,6 @@ module.exports = (function() {
                 } 
                 var days = (ent-used+(type == '2' ? (add+bal-sub): 0));
                 var due = days > 0 ? days : 0;
-
-                    console.log('Entitlement :'+ent);
-                    console.log('Used :'+used);
-                    console.log('Calculation :'+due);
                     // Initialize Form
                     if(defer.length > 0 && (type == '2' || type == '3')){
                         // Leave Deferred for the year -- both Annual & Casual Leave

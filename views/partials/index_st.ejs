@@ -255,7 +255,7 @@
                     <div class="row">
                         <div class="col-xs-7 col-sm-0">
                             <img src="/public/images/hrms.png" class="pull-left visible-xs" style="display:inline-block;height:35px;border-radius:15px;padding:5px;background:#fff;margin-top:-5px;margin-right:5px;"/>
-                            <img src="<%- user.photo != null ? user.photo : '/public/images/logo-170x172.png' %>" class="pull-left visible-xs" style="display:inline-block;height:35px;border-radius:15px;padding:5px;background:#fff;margin-top:-5px;"/>
+                            <img src="https://cdn.ucc.edu.gh/photos/?tag=<%= user.staff_no %>" class="pull-left visible-xs" style="display:inline-block;height:35px;border-radius:15px;padding:5px;background:#fff;margin-top:-5px;"/>
                         </div>
                         <div class="col-xs-5 col-sm-12">
                             <span class="pull-center hidden-xs" style="font-family: cabin-sketch;font-size:28px;color:pink;font-weight:bolder;">UCC-HRMS<sup>&reg;</sup></span>
@@ -270,7 +270,7 @@
 
                     <li class="hidden-xs">  
                         <div style="margin:15px auto 35px;width:150px;">                      
-                           <img src="<%- user.photo != null ? user.photo : '/public/images/logo-170x172.png' %>" class="pull-right" style="display:inline-block;height:60px;border-radius:15px;padding:5px;background:#fff;"/>
+                           <img src="https://cdn.ucc.edu.gh/photos/?tag=<%= user.staff_no %>" class="pull-right" style="display:inline-block;height:60px;border-radius:15px;padding:5px;background:#fff;"/>
                            <img src="/public/images/hrms.png" class="pull-right" style="display:inline-block;height:60px;border-radius:15px;padding:5px;background:#fff;margin:0 5px"/>
                         </div><br><br><br>
                     </li>

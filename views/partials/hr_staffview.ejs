@@ -244,7 +244,7 @@
               </div>
           </header>  
           <content>
-              <%- data.bio.photo == null ? '<img src="/public/images/none.png" class="file_photo"/>':'<img src="'+data.bio.photo+'" class="file_photo"/>' %>
+              <img src="https://cdn.ucc.edu.gh/photos/?tag=<%= data.bio.staff_no %>" class="file_photo"/>
               <h2 class="heading"><%= title %></h2>              
               <div class="content">
                   <% if(data.doc.length > 0){ 

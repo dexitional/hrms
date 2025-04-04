@@ -7,7 +7,7 @@
           <div class="shell">
             <div class="range range-xs-center" style="position:relative;">
                     <div style="position:absolute;left:0%;top:-65px;">
-                            <img src="<%= data.bio.photo != null ? data.bio.photo: '/public/images/none.png' %>" style="height:100px;box-shadow:0 0 3px #000;display:block;padding:3px;border-radius:10px;"/>
+                            <img src="https://cdn.ucc.edu.gh/photos/?tag=<%= data.bio.staff_no %>" style="height:100px;box-shadow:0 0 3px #000;display:block;padding:3px;border-radius:10px;"/>
                             <a href="/hrm/staff/view/<%= data.bio.staff_no %>" title="<% data.bio.fname+' '+data.bio.lname;%>" target="_blank" class="btn btn-sm btn-primary" style="font-size: 17px; padding:0px 5px;margin-top:10px;"><i class="fa fa-print"></i> <%= data.bio.staff_no %></a>
                       </div>
 

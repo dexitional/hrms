@@ -245,7 +245,7 @@
               
           </header>  
           <content>
-              <%- data[0].photo == null ? '<img src="/public/images/none.png" class="file_photo"/>':'<img src="'+data[0].photo+'" class="file_photo"/>' %>
+              <img src="https://cdn.ucc.edu.gh/photos/?tag=<%= data[0].staff_no %>" class="file_photo"/>
               <h2 class="heading"><%= title %> -  <%- data[0].staff_no != null ? data[0].staff_no : '' %></h2>              
               <div class="content">
                   
